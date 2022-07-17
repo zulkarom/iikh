@@ -87,14 +87,12 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
     ?>
     <!-- Header End -->
 
-    <!-- Main Start -->
+    <!-- Content Start -->
     <main class="main">
-    <?=$this->render('section', [
-        'dirAsset' => $dirAsset,
-    ]);
-    ?>
+        <?= Alert::widget() ?>
+        <?=$content?>
     </main>
-    <!-- Main End -->
+    <!-- Content End -->
 
     <!-- Footer Start -->
     <?=$this->render('footer', [

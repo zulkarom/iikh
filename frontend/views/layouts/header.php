@@ -67,26 +67,6 @@
 
           <!-- Menu Right Start  -->
           <div class="menu-right">
-            <div class="select-menu">
-              <div class="dropdown select-dropdown">
-                <button id="unitSelected"><span>USD</span> <i data-feather="chevron-down"></i></button>
-                <ul class="onhover-show-div">
-                  <li class="unit">USD</li>
-                  <li class="unit">EUR</li>
-                  <li class="unit">INR</li>
-                  <li class="unit">CNY</li>
-                </ul>
-              </div>
-              <div class="dropdown select-dropdown" id="translate">
-                <button id="languageSelected"><span>English</span> <i data-feather="chevron-down"></i></button>
-                <ul class="onhover-show-div">
-                  <li class="lang">English</li>
-                  <li class="lang">Chinese</li>
-                  <li class="lang">Arabic</li>
-                  <li class="lang">Russian</li>
-                </ul>
-              </div>
-            </div>
 
             <!-- Icon Menu Start -->
             <ul class="icon-menu">
@@ -180,7 +160,7 @@
                 </div>
               </li>
 
-              <li>
+              <!-- <li>
                 <div class="dropdown whislist-dropdown">
                   <a href="javascript:void(0)"><i data-feather="heart"></i> <span class="notification-label">0</span></a>
                   <div class="onhover-show-div">
@@ -193,7 +173,7 @@
                     </div>
                   </div>
                 </div>
-              </li>
+              </li> -->
 
               <!-- Cart Menu Start -->
               <li>
@@ -213,38 +193,6 @@
                         <!-- Cart Item Start -->
                         <div class="cart-card media">
                           <a href="product.html"> <img src="<?=$dirAsset?>/images/fashion/product/front/8.jpg" class="img-fluid" alt="product" /> </a>
-                          <div class="media-body">
-                            <a href="product.html"> <h6>Concrete Jungle Pack</h6></a>
-                            <span>$120.00</span>
-                            <div class="plus-minus">
-                              <i class="sub" data-feather="minus"></i>
-                              <input type="number" value="1" min="1" max="10" />
-                              <i class="add" data-feather="plus"></i>
-                            </div>
-                          </div>
-                          <button class="remove-cart"><i data-feather="x"></i></button>
-                        </div>
-                        <!-- Cart Item End -->
-
-                        <!-- Cart Item Start -->
-                        <div class="cart-card media">
-                          <a href="product.html"> <img src="<?=$dirAsset?>/images/fashion/product/front/9.jpg" class="img-fluid" alt="product" /> </a>
-                          <div class="media-body">
-                            <a href="product.html"> <h6>Concrete Jungle Pack</h6></a>
-                            <span>$120.00</span>
-                            <div class="plus-minus">
-                              <i class="sub" data-feather="minus"></i>
-                              <input type="number" value="1" min="1" max="10" />
-                              <i class="add" data-feather="plus"></i>
-                            </div>
-                          </div>
-                          <button class="remove-cart"><i data-feather="x"></i></button>
-                        </div>
-                        <!-- Cart Item End -->
-
-                        <!-- Cart Item Start -->
-                        <div class="cart-card media">
-                          <a href="product.html"> <img src="<?=$dirAsset?>/images/fashion/product/front/7.jpg" class="img-fluid" alt="product" /> </a>
                           <div class="media-body">
                             <a href="product.html"> <h6>Concrete Jungle Pack</h6></a>
                             <span>$120.00</span>

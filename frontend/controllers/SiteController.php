@@ -31,10 +31,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup', 'login'],
+                'only' => ['logout', 'signup', 'login', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['signup', 'index', 'login', 'download'],
+                        'actions' => ['signup', 'index', 'login'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -55,17 +55,13 @@ class SiteController extends Controller
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function actions()
     {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
@@ -77,7 +73,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->redirect('index');
+      
+        return $this->render('index');
        
     }
 

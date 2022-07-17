@@ -35,7 +35,7 @@
                   <div class="card-wrap">
                     <div class="card card1">
                       <div class="img-wrap">
-                        <a href="product.html"> <img class="img-fluid" src="<?=$dirAsset?>/images/ikhtiar/DSC_7029.jpg" alt="card" /> </a>
+                        <a href="product.html"> <img class="img-fluid" src="<?=$dirAsset?>/images/ikhtiar/DSC_7029.jpg<?=$dirAsset?>/images/ikhtiar/DSC_7029.jpg/DSC_7029.jpg" alt="card" /> </a>
                       </div>
                       <div class="content">
                         <a href="product.html">
@@ -370,124 +370,6 @@
       </section>
       <!-- Top Product Section End -->
 
-      <!-- Special Product Section Start -->
-      <!-- <section class="special-product pb-0 wow-section-overflow">
-        <div class="container-lg">
-          <div class="title-box">
-            <h2 class="unique-heading">SPECIAL PRODUCTS</h2>
-            <span class="title-divider1"><span class="squre"></span><span class="squre"></span></span>
-            <p>Structured chic panels power party flattering ultimate trim back pencil silhouette perfect look.</p>
-          </div>
-
-          <div class="row g-2 g-lg-3 g-xxl-4">
-            <div class="col-md-4 col-xl-5">
-              <div class="row g-2 g-lg-3">
-                <div class="col-12 ratio2_3 span3 wow fadeInLeft" data-wow-delay="0.6s">
-                  <div class="product-box">
-                    <a href="shop-left-sidebar.html" class="img-wrap">
-                      <img class="img-fluid bg-img" src="<?=$dirAsset?>/images/fashion/category/1.jpg" alt="product" />
-                    </a>
-
-                    <div class="catagories-small-label">
-                      <a href="shop-left-sidebar.html">
-                        <span>Best Brand</span>
-                        <h3>man-dressed-shirt-lies</h3></a
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6 ratio_asos span3 wow fadeInLeft" data-wow-delay="0.7s">
-                  <div class="product-box">
-                    <a href="shop-left-sidebar.html" class="img-wrap">
-                      <img class="img-fluid bg-img" src="<?=$dirAsset?>/images/fashion/category/2.jpg" alt="product" />
-                    </a>
-
-                    <div class="catagories-small-label">
-                      <a href="shop-left-sidebar.html">
-                        <span>All Collection</span>
-                        <h3>Accessories</h3></a
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6 ratio_asos span3 wow fadeInLeft" data-wow-delay="0.8s">
-                  <div class="product-box">
-                    <a href="shop-left-sidebar.html" class="img-wrap">
-                      <img class="img-fluid bg-img" src="<?=$dirAsset?>/images/fashion/category/3.jpg" alt="product" />
-                    </a>
-                    <div class="catagories-small-label">
-                      <a href="shop-left-sidebar.html">
-                        <span>Top Brand</span>
-                        <h3>Woman Tops</h3></a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-5 col-xl-5 ratio_124 span3 wow fadeInUp" data-wow-delay="0.9s">
-              <div class="product-box">
-                <a href="shop-left-sidebar.html" class="img-wrap">
-                  <img class="img-fluid bg-img" src="<?=$dirAsset?>/images/fashion/category/4.jpg" alt="product" />
-                </a>
-
-                <div class="catagories-large-label">
-                  <a href="shop-left-sidebar.html">
-                    <span>Going Out Collection</span>
-                    <h3>GOING ON COLLECTION</h3>
-
-                    <ul class="timer">
-                      <li><span class="days time-value"></span> <span class="timer-label">Days</span></li>
-                      <li><span class="hours time-value"></span> <span class="timer-label">Hours</span></li>
-                      <li><span class="minutes time-value"></span> <span class="timer-label">Minute</span></li>
-                      <li><span class="seconds time-value"></span> <span class="timer-label">Seconds</span></li>
-                    </ul>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-3 col-xl-2">
-              <div class="row g-2 g-lg-3 ratio_163">
-                <div class="col-6 col-md-12 span3 wow fadeInRight" data-wow-delay="0.7s">
-                  <div class="product-box">
-                    <a href="shop-left-sidebar.html" class="img-wrap">
-                      <img class="img-fluid bg-img" src="<?=$dirAsset?>/images/fashion/category/5.jpg" alt="product" />
-                    </a>
-
-                    <div class="catagories-small-label">
-                      <a href="shop-left-sidebar.html">
-                        <span>Best Collection</span>
-                        <h3>Woman Bag</h3></a
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-12 span3 wow fadeInRight" data-wow-delay="0.7s">
-                  <div class="product-box">
-                    <a href="shop-left-sidebar.html" class="img-wrap">
-                      <img class="img-fluid bg-img" src="<?=$dirAsset?>/images/fashion/category/6.jpg" alt="product" />
-                    </a>
-
-                    <div class="catagories-small-label">
-                      <a href="shop-left-sidebar.html">
-                        <span>New Style</span>
-                        <h3>Casual Collection</h3></a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      <!-- Special Product Section End -->
-
       <!-- New Arrived Section Start -->
       <section class="pb-0 ratio_asos">
         <div class="container-lg">
@@ -537,14 +419,14 @@
                   </div>
 
                   <!-- Content Box -->
-                  <div class="content-box">
+                  <!-- <div class="content-box">
                     <a href="product.html">
-                      <!-- <p>2i+Honey</p> -->
+                      <p>2i+Honey</p>
                       <h5>2i+Honey</h5>
                       <span>RM100.00</span> 
-                      <!-- <del>RM150.00</del> -->
+                      <del>RM150.00</del>
                     </a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
 
@@ -586,14 +468,14 @@
                   </div>
 
                   <!-- Content Box -->
-                  <div class="content-box">
+                  <!-- <div class="content-box">
                     <a href="product.html">
-                      <!-- <p>2i+Honey</p> -->
+                      <p>2i+Honey</p>
                       <h5>2i+Honey</h5>
                       <span>RM100.00</span> 
-                      <!-- <del>RM150.00</del> -->
+                      <del>RM150.00</del>
                     </a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
 
@@ -635,14 +517,14 @@
                   </div>
 
                   <!-- Content Box -->
-                  <div class="content-box">
+                  <!-- <div class="content-box">
                     <a href="product.html">
-                      <!-- <p>2i+Honey</p> -->
+                      <p>2i+Honey</p>
                       <h5>2i+Honey</h5>
                       <span>RM100.00</span> 
-                      <!-- <del>RM150.00</del> -->
+                      <del>RM150.00</del>
                     </a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
 
@@ -684,14 +566,14 @@
                   </div>
 
                   <!-- Content Box -->
-                  <div class="content-box">
+                  <!-- <div class="content-box">
                     <a href="product.html">
-                      <!-- <p>2i+Honey</p> -->
+                      <p>2i+Honey</p>
                       <h5>2i+Honey</h5>
                       <span>RM100.00</span> 
-                      <!-- <del>RM150.00</del> -->
+                      <del>RM150.00</del>
                     </a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
 
@@ -733,14 +615,14 @@
                   </div>
 
                   <!-- Content Box -->
-                  <div class="content-box">
+                  <!-- <div class="content-box">
                     <a href="product.html">
-                      <!-- <p>2i+Honey</p> -->
+                      <p>2i+Honey</p>
                       <h5>2i+Honey</h5>
                       <span>RM100.00</span> 
-                      <!-- <del>RM150.00</del> -->
+                      <del>RM150.00</del>
                     </a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
 
