@@ -37,29 +37,6 @@
 // Body Selection //
 const body = document.querySelector("body");
 
-/*==================
-  01. Loader js
-======================*/
-const loaderSpan = document.querySelector(".loader").children
-const animate = function () {
-    document.querySelector(".loader").classList.toggle('animate');
-}
-const timeOutAnimation = setInterval(animate, 1000);
-document.onreadystatechange = function () {
-    if (document.readyState !== "complete") {
-
-        timeOutAnimation;
-        body.classList.add("loader-overflow")
-    } else {
-        setTimeout(function () {
-            document.querySelector(".loader-wrapper").classList.add("hidden")
-            clearInterval(timeOutAnimation)
-            body.classList.remove("loader-overflow")
-        }, 4000)
-
-    }
-};
-
 /*====================
    02. Ratio js
 =======================*/

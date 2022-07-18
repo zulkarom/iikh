@@ -7,6 +7,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\db\Expression;
+use backend\models\Order;
+use backend\models\OrderItem;
+use backend\models\OrderAddress;
 /**
  * BizCanvasController implements the CRUD actions for BizCanvas model.
  */
@@ -19,11 +22,40 @@ class ProductController extends Controller
      * Lists all Product models.
      * @return mixed
      */
+   
     public function actionIndex()
     {
         
+        //  Yii::$app->session->set(CartItem::SESSION_KEY, []);
+        $orderAddress = new OrderAddress();
+    
+        $order = new Order();
+        $orderItem = new OrderItem();
 
+       /* echo "<pre>";
+        print_r(Yii::$app->request->post());
+        die();*/
+
+        if ($order->load(Yii::$app->request->post()) && 
+            $orderAddress->load(Yii::$app->request->post())) {
+
+
+
+
+
+        }
+        
+        
+        
         return $this->render('index', [
+            // 'items' => $cartItems,
+            'order' => $order,
+            // 'totalPrice' => $totalPrice,
+            'orderAddress' => $orderAddress
         ]);
+    }
+
+    public function actionThanks(){
+        return $this->render('thank-you');
     }
 }

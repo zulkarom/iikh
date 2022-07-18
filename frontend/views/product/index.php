@@ -4,6 +4,8 @@ use kartik\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Expert;
 use kartik\select2\Select2;
+use backend\models\Negeri;
+use backend\models\Fpx;
 
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
 ?>
@@ -99,6 +101,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
             <div class="col-md-5">
               <div class="product-detail-box">
                 <div class="product-option">
+                  <?php $form = ActiveForm::begin(); ?> 
                   <h2>2i+Honey</h2>
                   <div class="option rating-option">
                     <ul class="rating p-0">
@@ -125,12 +128,11 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
                   <div class="option">
                     <p class="content-color">
-                      100% Cotton Indigo shirt with western yoke. Apt for casual outings, this shirt will keep you comfortable and stylish all day long.Indigo shirt with western yoke. Apt for casual
-                      outings
+                      Pati Campuran Madu Tualang, Delima & Habbatus'sauda
                     </p>
                   </div>
 
-                  <?php $form = ActiveForm::begin(); ?>
+                  
 
                   <div class="option-side">
                     
@@ -140,14 +142,17 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                       </div>
                       <div class="plus-minus">
                         <i class="sub" data-feather="minus"></i>
-                        <input type="number" value="1" min="1" max="10" />
+                        <input name="quantity" type="number" value="1" min="1" max="1000" />
                         <i class="add" data-feather="plus"></i>
                       </div>
                     </div>
                   </div>
 
                   <div class="option">
-                    <a href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#loginAction">Jika anda telah mempunyai akaun, sila login</a>
+                    <!-- <a href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#loginAction">Jika anda telah mempunyai akaun, sila login</a> -->
+                    <button class="nav-link"  data-bs-toggle="modal" data-bs-target="#loginAction" type="button" role="tab" aria-controls="description" aria-selected="true">
+                      Jika anda telah mempunyai akaun, sila login
+                    </button>
 
                     <div class="modal fade" id="loginAction" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
                       <div class="modal-sm modal-dialog modal-dialog-centered">
@@ -197,100 +202,78 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
                   <div class="option sale-details">
                     <div class="title-box4">
-                      <h4 class="heading">Alamat<span class="bg-theme-blue"></span></h4>
+                      <h4 class="heading">Alamat Penghantaran<span class="bg-theme-blue"></span></h4>
                     </div>
-                    <form action="javascript:void(0)" class="custom-form form-pill">
+                    
+                   
               <div class="row g-3 g-md-4">
                 <div class="col-12">
                   <div class="input-box">
-                    <label for="name">Nama Penuh</label>
-                    <input class="form-control" type="text" required name="name" id="name" />
+                    <?= $form->field($order, 'fullname')->textInput(['class' => 'form-control'])->label('Nama Penuh') ?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <label for="email2">Email</label>
-                    <input class="form-control" type="email" required name="email" id="email2" />
+                    <?= $form->field($order, 'email')->textInput(['class' => 'form-control'])->label('Email') ?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <label for="mobile2">No Telefon</label>
-                    <input maxlength="9" class="form-control" type="number" required name="mobile2" id="mobile2" />
+                    <?= $form->field($orderAddress, 'phone')->textInput(['class' => 'form-control', 'type'=>'number'])->label('No Telefon') ?>
                   </div>
                 </div>
 
                 <div class="col-12">
                   <div class="input-box">
-                    <label for="address3">Alamat</label>
-                    <input class="form-control" type="text" required name="address3" id="address3" />
+                    <?= $form->field($orderAddress, 'address')->textInput(['class' => 'form-control'])->label('Alamat') ?>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="input-box">
+                    <?= $form->field($orderAddress, 'city')->textInput(['class' => 'form-control'])->label('Bandar') ?>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="input-box">
+                    <?= $form->field($orderAddress, 'zipcode')->textInput(['class' => 'form-control', 'type'=>'number'])->label('Poskod') ?>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="input-box">
+                    <?= $form->field($orderAddress, 'state_id')->dropDownList( ArrayHelper::map(Negeri::find()->orderBy('negeri_name')->all(),'id', 'negeri_name'), ['prompt' => 'Select State', 'class' => 'form-select form-control'])->label('Negeri');?>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="input-box">
+                    <?= $form->field($orderAddress, 'country_code')->dropDownList( ['MY' => 'Malaysia'])->label('Negara');?>
                   </div>
                 </div>
 
                 
-
-                <div class="col-6 col-sm-4">
-                  <div class="input-box">
-                    <label for="country">Negara</label>
-                    <select class="form-select form-control" id="country">
-                      <option selected disabled value="">Choose...</option>
-                      <option>United States</option>
-                      <option>India</option>
-                      <option>America</option>
-                      <option>South America</option>
-                      <option>Dubai</option>
-                      <option>Hong Kong</option>
-                      <option>Indonesia</option>
-                      <option>Pakistan</option>
-                      <option>Saudi Arabia</option>
-                      <option>China</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-6 col-sm-4">
-                  <div class="input-box">
-                    <label for="city2">Bandar</label>
-                    <select class="form-select form-control" id="city2">
-                      <option selected disabled value="">Choose...</option>
-                      <option>Almaty</option>
-                      <option>India</option>
-                      <option>America</option>
-                      <option>South America</option>
-                      <option>Dubai</option>
-                      <option>Hong Kong</option>
-                      <option>Indonesia</option>
-                      <option>Pakistan</option>
-                      <option>Saudi Arabia</option>
-                      <option>China</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="input-box">
-                    <label for="zip">Zip Code</label>
-                    <input maxlength="4" class="form-control" type="number" required name="zip" id="zip" />
-                  </div>
-                </div>
               </div>
-            </form>
+            
                   </div>
 
-                  <div class="option"> 
+                  
+                  <div class="option sale-details">
+                    <div class="title-box4">
+                      <h4 class="heading">Kaedah Pembayaran<span class="bg-theme-blue"></span></h4>
+                    </div>
                     <div class="row g-3 g-md-4">
-                      <div class="col-6">
+                      <div class="col-12">
                         <img src="<?=$dirAsset?>/images/ikhtiar/payment/Billplz.png"  style="width:100%;">
                       </div>
-                      <div class="col-6">
-                        <img src="<?=$dirAsset?>/images/ikhtiar/payment/fpx.png"  style="width:100%;">
+                      <div class="col-12">
+                        <br/>
+                        <?= $form->field($order, 'payment')->dropDownList( ArrayHelper::map(Fpx::find()->orderBy('bank_name')->all(),'id', 'bank_name'), ['prompt' => 'Sila Pilih', 'class' => 'form-select form-control'])->label('Perbankan Atas Talian');?>
                       </div>
                     </div>
-
-
-                      
                   </div>
 
                   <!-- <div class="btn-group">
@@ -328,99 +311,74 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   <!-- Description Tab Content Start -->
                   <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                     <div class="details-product">
-                      <p>
-                        The Model is wearing a white blouse from our stylist's collection, see the image for a mock-up of what the actual blouse would look like.it has text written on it in a black
-                        glass is a heady concoction of madness mixed with a hint of wicked along with several bursts of outrageousness and a tingling spiciness of twisted humour bottled up in
-                        intriguing grandeur cursive language which looks great on a white color.
-                      </p>
+                      
 
                       <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Comfort: <span class="bg-theme-blue"></span></h4>
+                        <h4 class="heading mt-0">Ada pantang larang tak? <span class="bg-theme-blue"></span></h4>
                       </div>
 
-                      <p>
-                        Glass is a heady concoction of madness mixed with a hint of wicked along with several bursts of wicked along with several bursts outrageousness and a tingling spiciness of
-                        twisted humour bottled up in intriguing grandeur
-                      </p>
+                  
 
                       <div class="row g-3 g-lg-4 ratio_landscape mb-3">
-                        <div class="col-md-4">
-                          <div class="frame-wrap">
-                            <video class="video-tag" loop autoplay muted>
-                              <source src="<?=$dirAsset?>/video/clothing.mp4" type="video/mp4" />
-                              <source src="<?=$dirAsset?>/video/clothing.ogg" type="video/ogg" />
-                              Your browser does not support the video tag.
-                            </video>
-                          </div>
-                        </div>
-                        <div class="col-md-8">
+                      
+                        <div class="col-md-12">
                           <div class="speciation-summery">
                             <ul class="general-summery">
                               <li>
                                 <i data-feather="check-circle"></i>
-                                <span> Madness mixed with a hint of wicked along</span>
+                                <span> Jarakkan 30minit selepas / sebelum pengambilan ubatan.</span>
                               </li>
                               <li>
                                 <i data-feather="check-circle"></i>
-                                <span>Tingling spiciness of twisted humour bottled up in intriguing grandeur</span>
+                                <span>Tidak digalakkan untuk ibu mengandung</span>
                               </li>
                               <li>
                                 <i data-feather="check-circle"></i>
-                                <span>Comfortable and stylish all day long.Indigo shirt with western yoke</span>
+                                <span>Elakkan daripada pengambilan dengan minuman berkaffein/ berkarbonat secara serentak.</span>
                               </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Intriguing grandeur cursive language which looks great on a white color.</span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Synthetic fibres like rayon. It's light in weight and is soft </span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Minima possums, pariah's sed, quasi provident dolorous molesting</span>
-                              </li>
+                              
                             </ul>
                           </div>
                         </div>
                       </div>
 
-                      <p>
-                        Smart rich stretch viscose green yellow poly- blend fabric spaghetti straps figure-skimming fit. Tops shift shape rich fabric relaxed fitting size true black gold zip virgin
-                        wool. Stretch lining hemline above knee burgundy satin finish concealed zip small buttons rayon.
-                      </p>
+                      <div class="title-box4 mb-3 mt-4">
+                        <h4 class="heading mt-0">  Betul ke berkesan? <span class="bg-theme-blue"></span></h4>
+                      </div>
+
+                  
+
+                      <div class="row g-3 g-lg-4 ratio_landscape mb-3">
+                      
+                        <div class="col-md-12">
+                          <div class="speciation-summery">
+                            <ul class="general-summery">
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span> Kesan adalah berbeza bagi setiap individu bergantung pada faktor kekerapan GUNA dan juga tahap kesihatan tubuh individu terbabit.</span>
+                              </li>
+                              
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      
 
                       <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Material Details <span class="bg-theme-blue"></span></h4>
+                        <h4 class="heading mt-0">Cara guna macam mana? <span class="bg-theme-blue"></span></h4>
                       </div>
-                      <p>
-                        Glass is a heady concoction of madness mixed with a hint of wicked along with several bursts of wicked along with several bursts outrageousness and a tingling spiciness of
-                        twisted humour bottled up in intriguing grandeur
-                      </p>
-                      <p>
-                        Structured chic panels power party flattering ultimate trim back pencil silhouette perfect look. Best seller signature waist cut pockets cotton-mix navy blue tailoring elegant
-                        cashmere. Stretch lining hemline above knee burgundy satin finish concealed zip small buttons rayon. Tops shift shape rich fabric relaxed fitting size true black gold zip
-                        virgin wool. Stretch lining hemline above knee burgundy satin finish concealed zip small buttons rayon.
-                      </p>
                       <div class="row row g-3 g-lg-4">
                         <div class="col-md-8 order-2 order-md-1">
                           <div class="speciation-summery">
                             <ul class="general-summery">
                               <li>
                                 <i data-feather="check-circle"></i>
-                                <span>Tingling spiciness of twisted humour bottled up in intriguing grandeur</span>
+                                <span>Bagi yang sihat – Ambil satu (1) sachet sehari sebelum sarapan.</span>
                               </li>
                               <li>
                                 <i data-feather="check-circle"></i>
-                                <span>Comfortable and stylish all day long.Indigo shirt with western yoke</span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Intriguing grandeur cursive language which looks great on a white color.</span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Synthetic fibres like rayon. It's light in weight and is soft </span>
+                                <span>Bagi yang mempunyai masalah kesihatan – Ambil dua (2) sachet sehari pada waktu pagi dan malam.</span>
                               </li>
                             </ul>
                           </div>

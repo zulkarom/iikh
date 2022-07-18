@@ -13,7 +13,7 @@ class IkhtiarAsset extends AssetBundle
 {
     public $sourcePath = '@frontend/assets/ikhtiar';
     public $css = [
-        'css/vendors/bootstrap.css',
+        // 'css/vendors/bootstrap.css',
         'css/vendors/wow-animate.css',
         'css/vendors/swiper-bundle.min.css',
         'css/style.css',
@@ -21,16 +21,16 @@ class IkhtiarAsset extends AssetBundle
     ];
 
     public $js = [
-        'js/bootstrap/bootstrap.bundle.min.js',
+        // 'js/bootstrap/bootstrap.bundle.min.js',
         'js/feather/feather.min.js',
         'js/swiper-slider/swiper-bundle.min.js',
         'js/swiper-slider/swiper-custom.min.js',
         'js/timer.js',
         'js/sticky-header.js',
         'js/active-class.js',
-        'js/wow.js',
-        'js/wow-custom.js',
-        'js/password-showhide.js',
+        //'js/wow.js',
+        //'js/wow-custom.js',
+        //'js/password-showhide.js',
         'js/script.js',
     ];
 
