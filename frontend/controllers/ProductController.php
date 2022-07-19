@@ -32,15 +32,15 @@ class ProductController extends Controller
         $order = new Order();
         $orderItem = new OrderItem();
 
-       /* echo "<pre>";
-        print_r(Yii::$app->request->post());
-        die();*/
+       
 
         if ($order->load(Yii::$app->request->post()) && 
             $orderAddress->load(Yii::$app->request->post())) {
 
 
-
+ echo "<pre>";
+        print_r(Yii::$app->request->post());
+        die();
 
 
         }

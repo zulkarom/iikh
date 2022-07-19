@@ -28,9 +28,9 @@ class IkhtiarAsset extends AssetBundle
         'js/timer.js',
         'js/sticky-header.js',
         'js/active-class.js',
-        //'js/wow.js',
-        //'js/wow-custom.js',
-        //'js/password-showhide.js',
+        'js/wow.js',
+        'js/wow-custom.js',
+        'js/password-showhide.js',
         'js/script.js',
     ];
 

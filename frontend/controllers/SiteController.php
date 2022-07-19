@@ -15,9 +15,8 @@ use frontend\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
-use frontend\models\ContactForm;
-use backend\models\Question;
-use backend\models\Batch;
+use backend\models\UserAddress;
+
 /**
  * Site controller
  */
@@ -31,7 +30,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup', 'login', 'index'],
+                'only' => ['logout', 'signup', 'login'],
                 'rules' => [
                     [
                         'actions' => ['signup', 'index', 'login'],
@@ -79,13 +78,60 @@ class SiteController extends Controller
     }
 
     /**
-     * Logs in a user.
+     * Login action.
      *
-     * @return mixed
+     * @return string
      */
     public function actionLogin()
     {
+        $email = Yii::$app->request->post('email');
+        $password = Yii::$app->request->post('password');
+
+        $model = new LoginForm();
+        $model->username = $email;
+        $model->password = $password;
+
+        $out=[];
+        $out=[
+                'fullname' => '',
+                'email' => '',
+                'address' => '',
+                'city' => '',
+                'state' => '',
+                'country' => '',
+                'zipcode' => '',
+                'phone' => '',
+            ];
+        if ($model->login()) {
+             $userAddress = UserAddress::find()
+             ->where(['user_id' => Yii::$app->user->identity->id])
+             ->one();
+
+            
+            
+            if($userAddress){
+                
         
+                $out=[
+                    'fullname' => $userAddress->user->fullname,
+                    'email' => $userAddress->user->username,
+                    'address' => $userAddress->address,
+                    'city' => $userAddress->city,
+                    'state' => $userAddress->state,
+                    'country' => $userAddress->country,
+                    'zipcode' => $userAddress->zipcode,
+                    'phone' => $userAddress->phone,
+                ];
+            }
+
+            
+            // ksort($out);
+
+            // print_r($userAddress->user->fullname);
+
+            return json_encode($out);
+        }
+       
     }
 
     /**

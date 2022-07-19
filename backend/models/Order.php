@@ -61,7 +61,7 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['total_price', 'status', 'fullname', 'email', 'billPhone', 'payment'], 'required'],
+            [['total_price', 'status', 'fullname', 'email', 'billPhone', 'bank_code'], 'required'],
             [['total_price'], 'number'],
             [['email'], 'email'],
             [['created_at', 'created_by', 'status', 'ship_method', 'payment'], 'integer'],

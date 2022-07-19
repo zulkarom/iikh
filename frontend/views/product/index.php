@@ -6,6 +6,7 @@ use backend\models\Expert;
 use kartik\select2\Select2;
 use backend\models\Negeri;
 use backend\models\Fpx;
+use yii\helpers\Url;
 
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
 ?>
@@ -101,7 +102,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
             <div class="col-md-5">
               <div class="product-detail-box">
                 <div class="product-option">
-                  <?php $form = ActiveForm::begin(); ?> 
+                   
                   <h2>2i+Honey</h2>
                   <div class="option rating-option">
                     <ul class="rating p-0">
@@ -170,13 +171,13 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                                 <div class="custom-form form-pill">
                                   <div class="input-box">
                                     <label for="email">Email</label>
-                                    <input class="form-control" type="email" required="" name="email" id="email">
+                                    <input class="form-control" type="email" required="" name="email" id="login-email">
                                   </div>
 
                                   <div class="input-box">
                                     <label for="password">Password</label>
                                     <div class="icon-input">
-                                      <input class="form-control" type="password" required="" name="password" id="password">
+                                      <input class="form-control" type="password" required="" name="password" id="login-password">
                                       <img class="showHidePassword" src="<?=$dirAsset?>/icons/svg/eye-1.svg" alt="eye">
                                     </div>
                                   </div>
@@ -184,7 +185,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                                   <div align="right"><a class="forgot-link" href="forgot-password.html">Forgot Password?</a></div>
                                   <br/>
 
-                                  <center><button type="submit" class="btn-solid rounded-pill line-none">Login <i class="arrow"></i></button></center>
+                                  <center><button id="btn-login" type="submit" class="btn-solid rounded-pill line-none" data-url="<?php echo Url::to(['/site/login'])?>">Login <i class="arrow"></i></button></center>
                                   
                                 </div>
 
@@ -204,54 +205,54 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                     <div class="title-box4">
                       <h4 class="heading">Alamat Penghantaran<span class="bg-theme-blue"></span></h4>
                     </div>
-                    
+                    <?php $form = ActiveForm::begin(); ?>
                    
               <div class="row g-3 g-md-4">
                 <div class="col-12">
                   <div class="input-box">
-                    <?= $form->field($order, 'fullname')->textInput(['class' => 'form-control'])->label('Nama Penuh') ?>
+                    <?= $form->field($order, 'fullname')->textInput(['id' => 'fullname', 'class' => 'form-control'])->label('Nama Penuh') ?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($order, 'email')->textInput(['class' => 'form-control'])->label('Email') ?>
+                    <?= $form->field($order, 'email')->textInput(['id' => 'email', 'class' => 'form-control'])->label('Email') ?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'phone')->textInput(['class' => 'form-control', 'type'=>'number'])->label('No Telefon') ?>
+                    <?= $form->field($orderAddress, 'phone')->textInput(['id' => 'phone', 'class' => 'form-control', 'type'=>'number'])->label('No Telefon') ?>
                   </div>
                 </div>
 
                 <div class="col-12">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'address')->textInput(['class' => 'form-control'])->label('Alamat') ?>
+                    <?= $form->field($orderAddress, 'address')->textInput(['id' => 'address', 'class' => 'form-control'])->label('Alamat') ?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'city')->textInput(['class' => 'form-control'])->label('Bandar') ?>
+                    <?= $form->field($orderAddress, 'city')->textInput(['id' => 'city', 'class' => 'form-control'])->label('Bandar') ?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'zipcode')->textInput(['class' => 'form-control', 'type'=>'number'])->label('Poskod') ?>
+                    <?= $form->field($orderAddress, 'zipcode')->textInput(['id' => 'zipcode', 'class' => 'form-control', 'type'=>'number'])->label('Poskod') ?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'state_id')->dropDownList( ArrayHelper::map(Negeri::find()->orderBy('negeri_name')->all(),'id', 'negeri_name'), ['prompt' => 'Select State', 'class' => 'form-select form-control'])->label('Negeri');?>
+                    <?= $form->field($orderAddress, 'state_id')->dropDownList( ArrayHelper::map(Negeri::find()->orderBy('negeri_name')->all(),'id', 'negeri_name'), ['id' => 'state', 'prompt' => 'Select State', 'class' => 'form-select form-control'])->label('Negeri');?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'country_code')->dropDownList( ['MY' => 'Malaysia'])->label('Negara');?>
+                    <?= $form->field($orderAddress, 'country_code')->dropDownList(['MY' => 'Malaysia', 'IND' => 'Indonesia'], ['id' => 'country'])->label('Negara');?>
                   </div>
                 </div>
 
@@ -271,7 +272,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                       </div>
                       <div class="col-12">
                         <br/>
-                        <?= $form->field($order, 'payment')->dropDownList( ArrayHelper::map(Fpx::find()->orderBy('bank_name')->all(),'id', 'bank_name'), ['prompt' => 'Sila Pilih', 'class' => 'form-select form-control'])->label('Perbankan Atas Talian');?>
+                        <?= $form->field($order, 'bank_code')->dropDownList( ArrayHelper::map(Fpx::find()->orderBy('bank_name')->all(),'bank_code', 'bank_name'), ['prompt' => 'Sila Pilih', 'class' => 'form-select form-control'])->label('Perbankan Atas Talian');?>
                       </div>
                     </div>
                   </div>
@@ -343,7 +344,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                       </div>
 
                       <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">  Betul ke berkesan? <span class="bg-theme-blue"></span></h4>
+                        <h4 class="heading mt-0">Betul ke berkesan? <span class="bg-theme-blue"></span></h4>
                       </div>
 
                   
@@ -355,7 +356,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                             <ul class="general-summery">
                               <li>
                                 <i data-feather="check-circle"></i>
-                                <span> Kesan adalah berbeza bagi setiap individu bergantung pada faktor kekerapan GUNA dan juga tahap kesihatan tubuh individu terbabit.</span>
+                                <span>Kesan adalah berbeza bagi setiap individu bergantung pada faktor kekerapan GUNA dan juga tahap kesihatan tubuh individu terbabit.</span>
                               </li>
                               
                             </ul>
@@ -398,3 +399,50 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
       </section>
       <!-- Product Section End -->
     </main>
+
+
+<?php 
+
+$this->registerJs("
+
+$('#btn-login').click(function(){
+    var email = $('#login-email').val();
+    var password = $('#login-password').val();
+    var url = $('#btn-login').attr('data-url');
+    // alert(password);
+    $.ajax({
+    url: url, 
+    type: 'POST',  
+    data: { 
+        email: email,
+        password: password,
+    },
+    success: function(result){
+        if(result){
+          // var data = result;
+          
+          var data = JSON.parse(result);
+          // console.log(data);
+
+            $('#fullname').val(data.fullname);
+            $('#email').val(data.email);
+            $('#address').val(data.address);
+            $('#city').val(data.city);
+            $('#state').val(data.state);
+            $('#country').val(data.country);
+            $('#zipcode').val(data.zipcode);
+            $('#phone').val(data.phone);
+          
+           $('#loginAction').modal('toggle');
+        }
+    }
+    });
+
+
+});
+
+");
+
+
+
+?>

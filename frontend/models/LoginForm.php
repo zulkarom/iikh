@@ -24,11 +24,11 @@ class LoginForm extends Model
     {
         return [
             // username and password are both required
-            [['username'], 'required', 'on' => 'login'],
+            [['username', 'password'], 'required'],
             // rememberMe must be a boolean value
             // ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
-            ['username', 'validatePassword'],
+            ['password', 'validatePassword'],
         ];
     }
     
