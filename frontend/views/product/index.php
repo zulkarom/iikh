@@ -9,7 +9,14 @@ use backend\models\Fpx;
 use yii\helpers\Url;
 
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
+
 ?>
+
+<style type="text/css">
+  .plus-minus input {
+     width: 100px; 
+}
+</style>
 
 <!-- Main Start -->
     <main class="main">
@@ -125,7 +132,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                     <span>120 Rating</span>
                   </div>
 
-                  <div class="option price"><span> RM100.00 </span></div>
+                  <div class="option price"><span>RM</span><span class="item-price">100.00 </span></div>
 
                   <div class="option">
                     <p class="content-color">
@@ -136,67 +143,35 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   
 
                   <div class="option-side">
-                    
                     <div class="option">
                       <div class="title-box4">
                         <h4 class="heading">Kuantiti: <span class="bg-theme-blue"></span></h4>
                       </div>
                       <div class="plus-minus">
                         <i class="sub" data-feather="minus"></i>
-                        <input name="quantity" type="number" value="1" min="1" max="1000" />
+                        <input class="quantity form-control" type="number" value="1" min="1" max="1000" />
                         <i class="add" data-feather="plus"></i>
                       </div>
                     </div>
                   </div>
 
-                  <div class="option">
+                  <div class="option total-price" style="">
+                      <div class="title-box4">
+                        <h4 class="heading">Jumlah: RM <font id="amount">100.00</font><span class="bg-theme-blue"></span></h4>
+                      </div>
+                  </div>
+
+
+                  <div class="option login-content">
                     <!-- <a href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#loginAction">Jika anda telah mempunyai akaun, sila login</a> -->
-                    <button class="nav-link"  data-bs-toggle="modal" data-bs-target="#loginAction" type="button" role="tab" aria-controls="description" aria-selected="true">
+
+                    <?php if(Yii::$app->user->isGuest){?>
+                    <button id="login-link" class="nav-link"  data-bs-toggle="modal" data-bs-target="#loginAction" type="button" role="tab" aria-controls="description" aria-selected="true">
                       Jika anda telah mempunyai akaun, sila login
                     </button>
+                  <?php }?>
 
-                    <div class="modal fade" id="loginAction" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
-                      <div class="modal-sm modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                         <!--  <div class="modal-header">
-                            <h5 class="modal-title" id="loginLabel">Login</h5>
-                            
-                          </div> -->
-                          <span class="close-modal" data-bs-dismiss="modal"><i data-feather="x"></i></span>
-                          <div class="modal-body full-grid-mobile">
-                            <div>
-                                <h3>LOGIN <span class="bg-theme-blue"></span></h3>
-                                <br/>
-
-                                <div class="custom-form form-pill">
-                                  <div class="input-box">
-                                    <label for="email">Email</label>
-                                    <input class="form-control" type="email" required="" name="email" id="login-email">
-                                  </div>
-
-                                  <div class="input-box">
-                                    <label for="password">Password</label>
-                                    <div class="icon-input">
-                                      <input class="form-control" type="password" required="" name="password" id="login-password">
-                                      <img class="showHidePassword" src="<?=$dirAsset?>/icons/svg/eye-1.svg" alt="eye">
-                                    </div>
-                                  </div>
-
-                                  <div align="right"><a class="forgot-link" href="forgot-password.html">Forgot Password?</a></div>
-                                  <br/>
-
-                                  <center><button id="btn-login" type="submit" class="btn-solid rounded-pill line-none" data-url="<?php echo Url::to(['/site/login'])?>">Login <i class="arrow"></i></button></center>
-                                  
-                                </div>
-
-                                <br/>
-                                <center><span class="backto-link font-default content-color text-decoration-none">If you are new, <a class="text-decoration-underline theme-color" href="register.html"> Create Now </a> </span></center>
-                                
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    
                   </div>
 
                   
@@ -277,10 +252,88 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                     </div>
                   </div>
 
-                  <!-- <div class="btn-group">
-                    <a href="javascript:void(0)" class="btn-solid btn-sm addtocart-btn">Make Payment </a>
-                    <a href="javascript:void(0)" class="btn-outline btn-sm wishlist-btn">Add To Wishlist</a>
-                  </div> -->
+                  <div class="container-lg summary" style="">
+                    <div class="row g-3 g-md-4 cart">
+                      <div class="col-md-12 col-lg-12 col-xl-12">
+                        <div class="summery-box">
+                          <div class="row g-3 g-lg-4">
+                            <div class="col-12">
+                              <div class="summery-wrap">
+                                <div class="cart-wrap grand-total-wrap">
+                                  <div>
+                                    <div class="order-summery-box">
+                                      <h5 class="cart-title">Ringkasan</h5>
+                                      <ul class="order-summery">
+                                        <li>
+                                          <span>Produk</span>
+                                          <span>2i+Honey</span>
+                                        </li>
+
+                                        <li>
+                                          <span>Harga</span>
+                                          <span>RM100.00</span>
+                                        </li>
+
+                                        <li>
+                                          <span>Kuantiti</span>
+                                          <span id="sum-quantity">1</span>
+                                        </li>
+
+                                        <li class="pb-0">
+                                          <span>Jumlah</span>
+                                          <span id="sum-total">RM100.00</span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="summery2">
+                                <div class="row g-4">
+                                  <div class="col-12">
+                                    <div class="order-summery-box">
+                                      <h5 class="cart-title">Alamat Penghantaran</h5>
+                                    </div>
+                                    <?php if(!Yii::$app->user->isGuest){?>
+                                      <ul>
+                                        <li><span id="li-name"><?=$order->fullname?></span></li>
+                                        <li><span id="li-email"><?=$order->email?></li>
+                                        <li>
+                                          <span id="li-address"><?=$orderAddress->address.', '?></span>
+                                          <span id="li-zipcode"><?=$orderAddress->zipcode.', '?></span>
+                                          <span id="li-city"><?=$orderAddress->city.', '?></span>
+                                          <span id="li-state"><?=$orderAddress->state->negeri_name.', '?></span>
+                                          <span id="li-country"><?=$orderAddress->state->negeri_name?></span>
+                                        </li>
+                                        <li><span id="li-email"><?=$orderAddress->phone?></li>
+                                      </ul>
+                                    <?php }else { ?>
+                                        <ul>
+                                        <li><span id="li-name"></span></li>
+                                        <li><span id="li-email"></li>
+                                        <li>
+                                          <span id="li-address"></span>
+                                          <span id="li-zipcode"></span>
+                                          <span id="li-city"></span>
+                                          <span id="li-state"></span>
+                                          <span id="li-country"></span>
+                                        </li>
+                                        <li><span id="li-email"></li>
+                                      </ul>
+                                    <?php } ?>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br/>
+
                   <div class="btn-group">
                       <?= Html::submitButton('Make Payment', ['class' => 'btn-solid btn-sm addtocart-btn']) ?>
                   </div>
@@ -400,6 +453,47 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
       <!-- Product Section End -->
     </main>
 
+    <div class="modal fade modal-md" id="loginAction" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+                      <div class=" modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                         <!--  <div class="modal-header">
+                            <h5 class="modal-title" id="loginLabel">Login</h5>
+                            
+                          </div> -->
+                          <span class="close-modal" data-bs-dismiss="modal"><i data-feather="x"></i></span>
+                          <div class="modal-body full-grid-mobile">
+                            <div>
+                                <h3>LOGIN <span class="bg-theme-blue"></span></h3>
+                                <br/>
+
+                                <div class="custom-form form-pill">
+                                  <div class="input-box">
+                                    <label for="email">Email</label>
+                                    <input class="form-control" type="email" required="" name="email" id="login-email">
+                                  </div>
+
+                                  <div class="input-box">
+                                    <label for="password">Password</label>
+                                    <div class="icon-input">
+                                      <input class="form-control" type="password" required="" name="password" id="login-password">
+                                      <img class="showHidePassword" src="<?=$dirAsset?>/icons/svg/eye-1.svg" alt="eye">
+                                    </div>
+                                  </div>
+
+                                  <div align="right"><a class="forgot-link" href="forgot-password.html">Forgot Password?</a></div>
+
+                                  <center><button id="btn-login" type="submit" class="btn-solid rounded-pill line-none" data-url="<?php echo Url::to(['/site/login'])?>">Login <i class="arrow"></i></button></center>
+                                  
+                                </div>
+
+                                <center><span class="backto-link font-default content-color text-decoration-none">If you are new, <a class="text-decoration-underline theme-color" href="register.html"> Create Now </a> </span></center>
+                                
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
 
 <?php 
 
@@ -432,14 +526,77 @@ $('#btn-login').click(function(){
             $('#country').val(data.country);
             $('#zipcode').val(data.zipcode);
             $('#phone').val(data.phone);
+
+            //summary
+
+            
           
            $('#loginAction').modal('toggle');
+           $('.login-content').slideUp();
+           $('.login-content').remove();
         }
     }
     });
-
-
 });
+
+
+function calc(){
+
+    var price = 0;
+    var quantity = 0;
+    var total = 0;
+    
+        price = parseFloat($('.item-price').text());
+        quantity = $('.quantity').val();
+        if(price && quantity){
+            total = price * quantity;
+        }
+    
+    $('#amount').text((parseFloat(total)).toFixed(2));
+    $('#sum-total').text('RM'+(parseFloat(total)).toFixed(2));
+    $('#sum-quantity').text(quantity);
+    
+}
+
+$('.add').click(function(){
+  calc();
+});
+$('.sub').click(function(){
+  calc();
+});
+
+$('.quantity').change(function(){
+  calc();
+});
+
+
+
+
+$('#fullname').on('input', function() {
+  $('#li-name').text(this.value);
+});
+
+$('#email').on('input', function() {
+  $('#li-email').text(this.value);
+});
+
+$('#address').on('input', function() {
+  $('#li-address').text(this.value);
+});
+
+$('#zipcode').on('input', function() {
+  $('#li-zipcode').text(this.value);
+});
+
+$('#city').on('input', function() {
+  $('#li-city').text(this.value);
+});
+
+$('#state').on('input', function() {
+  $('#li-state').text(this.value);
+});
+
+
 
 ");
 

@@ -7,7 +7,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-
+use backend\models\UserAddress;
 /**
  * User model
  *
@@ -215,5 +215,10 @@ class User extends ActiveRecord implements IdentityInterface
     public static function countUser(){
         return self::find()
         ->count();
+    }
+
+    public function getDefaultAddress(){
+        $userAddress = UserAddress::findOne(['user_id' => $this->id]);
+        return $userAddress;
     }
 }
