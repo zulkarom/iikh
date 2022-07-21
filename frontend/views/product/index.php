@@ -110,7 +110,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
               <div class="product-detail-box">
                 <div class="product-option">
                    
-                  <h2>2i+Honey</h2>
+                  <h2><?=$product->name?></h2>
                   <div class="option rating-option">
                     <ul class="rating p-0">
                       <li>
@@ -132,7 +132,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                     <span>120 Rating</span>
                   </div>
 
-                  <div class="option price"><span>RM</span><span class="item-price">100.00 </span></div>
+                  <div class="option price"><span>RM</span><span class="item-price"><?=$product->price?> </span></div>
 
                   <div class="option">
                     <p class="content-color">
@@ -149,7 +149,8 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                       </div>
                       <div class="plus-minus">
                         <i class="sub" data-feather="minus"></i>
-                        <input class="quantity form-control" type="number" value="1" min="1" max="1000" />
+
+                        <input id="quantity" class="quantity form-control" type="number" value="1" min="1" max="1000" />
                         <i class="add" data-feather="plus"></i>
                       </div>
                     </div>
@@ -181,6 +182,8 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                       <h4 class="heading">Alamat Penghantaran<span class="bg-theme-blue"></span></h4>
                     </div>
                     <?php $form = ActiveForm::begin(); ?>
+                    <?=$form->field($order, 'quantity')->hiddenInput(['id'=>'hidden-quantity', 'value' => 1])->label(false)?>
+
                    
               <div class="row g-3 g-md-4">
                 <div class="col-12">
@@ -266,12 +269,12 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                                       <ul class="order-summery">
                                         <li>
                                           <span>Produk</span>
-                                          <span>2i+Honey</span>
+                                          <span><?=$product->name?></span>
                                         </li>
 
                                         <li>
                                           <span>Harga</span>
-                                          <span>RM100.00</span>
+                                          <span><?=$product->price?></span>
                                         </li>
 
                                         <li>
@@ -279,9 +282,17 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                                           <span id="sum-quantity">1</span>
                                         </li>
 
+                                        <li>
+                                          <span>Kos Penghantaran</span>
+                                          <span id="show-ship-cost" data-url="<?php echo Url::to(['/product/shipping-cost'])?>" data-cost="0.00">0.00</span>
+                                        </li>
+
                                         <li class="pb-0">
                                           <span>Jumlah</span>
-                                          <span id="sum-total">RM100.00</span>
+                                          <span id="sum-total">
+                                           
+                                            
+                                          </span>
                                         </li>
                                       </ul>
                                     </div>
@@ -307,7 +318,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                                           <span id="li-state"><?=$orderAddress->state->negeri_name.', '?></span>
                                           <span id="li-country"><?=$orderAddress->state->negeri_name?></span>
                                         </li>
-                                        <li><span id="li-email"><?=$orderAddress->phone?></li>
+                                        <li><span id="li-phone"><?=$orderAddress->phone?></li>
                                       </ul>
                                     <?php }else { ?>
                                         <ul>
@@ -320,7 +331,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                                           <span id="li-state"></span>
                                           <span id="li-country"></span>
                                         </li>
-                                        <li><span id="li-email"></li>
+                                        <li><span id="li-phone"></li>
                                       </ul>
                                     <?php } ?>
                                   </div>
@@ -499,6 +510,9 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
 $this->registerJs("
 
+calc();
+calcShipping();
+
 $('#btn-login').click(function(){
     var email = $('#login-email').val();
     var password = $('#login-password').val();
@@ -528,7 +542,14 @@ $('#btn-login').click(function(){
             $('#phone').val(data.phone);
 
             //summary
-
+            $('#li-name').text(data.fullname);
+            $('#li-email').text(data.email);
+            $('#li-address').text(data.address);
+            $('#li-city').text(data.city);
+            $('#li-state').text(data.state);
+            $('#li-country').text(data.country);
+            $('#li-zipcode').text(data.zipcode);
+            $('#li-phone').text(data.phone);
             
           
            $('#loginAction').modal('toggle');
@@ -539,6 +560,43 @@ $('#btn-login').click(function(){
     });
 });
 
+$('#state').change(function(){
+    calcShipping();
+});
+
+
+function calcShipping(){
+  var country = $('#country').val();
+    var quantity = $('#quantity').val();
+    var url = $('#show-ship-cost').attr('data-url');
+    $.ajax({
+    url: url, 
+    type: 'POST',  
+    data: { 
+        country: country,
+        state: $('#state').val(),
+        quantity : quantity,
+    },
+    success: function(result){
+        var cost = parseFloat(result);
+        $('#show-ship-cost').text(cost.toFixed(2));
+        $('#show-ship-cost').attr('data-cost', cost.toFixed(2));
+
+        var total = 0;
+        var totalCharge = 0;
+        price = parseFloat($('.item-price').text());
+
+        quantity = parseInt($('.quantity').val());
+        if(price && quantity){
+            total = (price * quantity);
+        }
+        totalCharge = total + cost;
+        $('#sum-total').text('RM'+totalCharge.toFixed(2));
+
+    }
+    });
+}
+
 
 function calc(){
 
@@ -547,26 +605,37 @@ function calc(){
     var total = 0;
     
         price = parseFloat($('.item-price').text());
+
         quantity = $('.quantity').val();
         if(price && quantity){
-            total = price * quantity;
+            total = (price * quantity);
         }
     
     $('#amount').text((parseFloat(total)).toFixed(2));
-    $('#sum-total').text('RM'+(parseFloat(total)).toFixed(2));
+    
     $('#sum-quantity').text(quantity);
     
 }
 
+function getQuantity(){
+  $('#hidden-quantity').val($('.quantity').val());
+}
+
 $('.add').click(function(){
   calc();
+  calcShipping();
+  getQuantity();
 });
 $('.sub').click(function(){
   calc();
+  calcShipping();
+  getQuantity();
 });
 
 $('.quantity').change(function(){
   calc();
+  calcShipping();
+  getQuantity();
 });
 
 
@@ -592,10 +661,20 @@ $('#city').on('input', function() {
   $('#li-city').text(this.value);
 });
 
-$('#state').on('input', function() {
-  $('#li-state').text(this.value);
+
+$('#state ').on('change', function() {
+  var state = $('#state option:selected ').text();
+  $('#li-state').text(state);
 });
 
+$('#country ').on('change', function() {
+  var country = $('#country option:selected ').text();
+  $('#li-country').text(country);
+});
+
+$('#phone').on('input', function() {
+  $('#li-phone').text(this.value);
+});
 
 
 ");

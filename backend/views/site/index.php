@@ -12,7 +12,7 @@ $this->title = 'Dashboard';
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?php echo User::countUser()?></h3>
+                <h3></h3>
 
                 <p> Total Users</p>
               </div>
@@ -27,7 +27,7 @@ $this->title = 'Dashboard';
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3><?= $product->getCountProduct()?></h3>
+                <h3></h3>
 
                 <p>Product</p>
               </div>
@@ -42,7 +42,7 @@ $this->title = 'Dashboard';
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3><?= $product->getCountProductActive()?></h3>
+                <h3></h3>
 
                 <p>Product Active</p>
               </div>
@@ -57,7 +57,7 @@ $this->title = 'Dashboard';
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><?= $product->getCountProductExpired()?></h3>
+                <h3></h3>
 
                 <p>Product Expired</p>
               </div>

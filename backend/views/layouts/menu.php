@@ -10,10 +10,15 @@ use common\widgets\MenuAdminLte;
 
     <?=MenuAdminLte::widget(
     [
-            
-            ['label' => 'Dashboard', 'level' => 1, 'url' => ['/site/index'], 'icon' => 'fas fa-tachometer-alt', 'children' => []],
+            ['label' => 'MENU UTAMA', 'level' => 0],
 
-            ['label' => 'Product', 'level' => 1, 'url' => ['/product/index'], 'icon' => 'fas fa-list', 'children' => []],
+            ['label' => 'Dashboard', 'level' => 1, 'url' => ['site/index'], 'icon' => 'fas fa-tachometer-alt', 'children' => []],
+
+            ['label' => 'Products', 'level' => 1, 'url' => ['/shop/product/'], 'icon' => 'fas fa-chart-pie', 'children' => []],
+
+            ['label' => 'Orders', 'level' => 1, 'url' => ['/shop/order/'], 'icon' => 'fa fa-list-alt', 'children' => []],
+
+            ['label' => 'Shipping Rate', 'level' => 1, 'url' => ['/shop/zone/'], 'icon' => 'fa fa-ship', 'children' => []],
             
             ['label' => 'Logout', 'level' => 1, 'url' => ['/site/logout'], ['data-method' => 'post'], 'icon' => 'fas fa-sign-out-alt', 'children' => []],
         ]

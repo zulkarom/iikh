@@ -129,7 +129,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@backend/assets/adminlte')
             <!-- <span class="brand-text font-weight-light">
             <img src="<?=$dirAsset?>/dist/img/logo-txt.png">
             </span> -->
-            <span class="brand-text font-weight-bold">Halal Scanner</span>
+            <span class="brand-text font-weight-bold">Ikhtiar</span>
         </a>
         </center>
 
@@ -218,7 +218,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@backend/assets/adminlte')
         <!-- To the right -->
   
         <!-- Default to the left -->
-        <strong>&copy; QR Halal <?= date('Y') ?></strong> All rights reserved.
+        <strong>&copy; Ikhtiar <?= date('Y') ?></strong> All rights reserved.
     </footer>
 
 </div>

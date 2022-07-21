@@ -7,7 +7,7 @@
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
 
-$this->title = 'Halal Scanner';
+$this->title = 'i`Ikhtiar';
 
 // $fieldOptions1 = [
 //     'options' => ['class' => 'input-group mb-3'],
@@ -35,7 +35,7 @@ $fieldOptions = [
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="" class="h1"><b>Halal Scanner</b></a>
+      <a href="" class="h1"><b>i'Ikhtiar</b></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>

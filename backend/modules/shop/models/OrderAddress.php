@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace backend\modules\shop\models;
 
 use backend\models\Countries;
 use backend\models\Negeri;
@@ -91,7 +91,7 @@ class OrderAddress extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \backend\models\query\OrderAddressQuery(get_called_class());
+        return new \backend\modules\shop\models\query\OrderAddressQuery(get_called_class());
     }
     
     public function flashError(){
