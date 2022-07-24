@@ -30,7 +30,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup', 'login'],
+                // 'only' => ['logout', 'signup', 'login'],
                 'rules' => [
                     [
                         'actions' => ['signup', 'index', 'login'],
@@ -44,12 +44,7 @@ class SiteController extends Controller
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+            
         ];
     }
 
@@ -139,5 +134,12 @@ class SiteController extends Controller
      *
      * @return mixed
      */
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->redirect(['/site/index']);
+    }
+
 
 }

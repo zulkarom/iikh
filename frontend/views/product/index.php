@@ -2,14 +2,12 @@
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use backend\models\Expert;
 use kartik\select2\Select2;
 use backend\models\Negeri;
 use backend\models\Fpx;
 use yii\helpers\Url;
 
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
-
 ?>
 
 <style type="text/css">
@@ -18,30 +16,26 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 }
 </style>
 
-<!-- Main Start -->
-    <main class="main">
-      <!-- Breadcrumb Start -->
-      <div class="breadcrumb-wrap">
-        <div class="banner">
-          <img class="bg-img bg-top" src="<?=$dirAsset?>/images/inner-page/banner-p.jpg" />
-
-          <div class="container-lg">
-            <div class="breadcrumb-box">
-              <div class="heading-box">
-                <h1>Product</h1>
-              </div>
-              <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li>
-                  <a href="javascript:void(0)"><i data-feather="chevron-right"></i></a>
-                </li>
-                <li class="current"><a href="product.html">Product</a></li>
-              </ol>
-            </div>
-          </div>
+<div class="breadcrumb-wrap">
+  <div class="banner">
+    <img class="bg-img bg-top" src="<?=$dirAsset?>/images/inner-page/banner-p.jpg" />
+    <div class="container-lg">
+      <div class="breadcrumb-box">
+        <div class="heading-box">
+          <h1>Product</h1>
         </div>
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li>
+            <a href="<?php echo Url::to(['/site/home'])?>"><i data-feather="chevron-right"></i></a>
+          </li>
+          <li class="current"><a href="javascript:void(0)">Product</a></li>
+        </ol>
       </div>
-      <!-- Breadcrumb End -->
+    </div>
+  </div>
+</div>
+    
    <!-- Product Section Start -->
       <section class="product-page">
         <div class="container-lg">
@@ -103,12 +97,124 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                     </div>
                   </div>
                 </div>
+
+                <!-- Tabs Start -->
+          <div class="description-box">
+            <div class="row gy-4">
+              <div class="col-12">
+                <!-- Tabs Filter Start -->
+                <ul class="nav nav-pills nav-tabs2 row-tab" id="pills-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="description-tab" data-bs-toggle="pill" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">
+                      Description
+                    </button>
+                  </li>
+                </ul>
+                <!-- Tabs Filter End -->
               </div>
+
+              <div class="col-12">
+                <br/>
+                <h2><?=$product->name?></h2>
+                <!-- Tab Content Start -->
+                <div class="tab-content" id="pills-tabContent">
+                  <!-- Description Tab Content Start -->
+                  <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                    <div class="details-product">
+                      
+
+                      <div class="title-box4 mb-3 mt-4">
+                        <h4 class="heading mt-0">Ada pantang larang tak? <span class="bg-theme-blue"></span></h4>
+                      </div>
+
+                  
+
+                      <div class="row g-3 g-lg-4 ratio_landscape mb-3">
+                      
+                        <div class="col-md-12">
+                          <div class="speciation-summery">
+                            <ul class="general-summery">
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span> Jarakkan 30minit selepas / sebelum pengambilan ubatan.</span>
+                              </li>
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>Tidak digalakkan untuk ibu mengandung</span>
+                              </li>
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>Elakkan daripada pengambilan dengan minuman berkaffein/ berkarbonat secara serentak.</span>
+                              </li>
+                              
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="title-box4 mb-3 mt-4">
+                        <h4 class="heading mt-0">Betul ke berkesan? <span class="bg-theme-blue"></span></h4>
+                      </div>
+
+                  
+
+                      <div class="row g-3 g-lg-4 ratio_landscape mb-3">
+                      
+                        <div class="col-md-12">
+                          <div class="speciation-summery">
+                            <ul class="general-summery">
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>Kesan adalah berbeza bagi setiap individu bergantung pada faktor kekerapan GUNA dan juga tahap kesihatan tubuh individu terbabit.</span>
+                              </li>
+                              
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      
+
+                      <div class="title-box4 mb-3 mt-4">
+                        <h4 class="heading mt-0">Cara guna macam mana? <span class="bg-theme-blue"></span></h4>
+                      </div>
+                      <div class="row row g-3 g-lg-4">
+                        <div class="col-md-8 order-2 order-md-1">
+                          <div class="speciation-summery">
+                            <ul class="general-summery">
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>Bagi yang sihat – Ambil satu (1) sachet sehari sebelum sarapan.</span>
+                              </li>
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>Bagi yang mempunyai masalah kesihatan – Ambil dua (2) sachet sehari pada waktu pagi dan malam.</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Description Tab Content End -->
+                  <br/>
+
+                </div>
+                <!-- Tab Content End -->
+              </div>
+            </div>
+          </div>
+          <!-- Tabs End -->
+              </div>
+
+
+
             </div>
 
             <div class="col-md-5">
               <div class="product-detail-box">
                 <div class="product-option">
+                  <?php $form = ActiveForm::begin(); ?>
                    
                   <h2><?=$product->name?></h2>
                   <div class="option rating-option">
@@ -150,7 +256,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                       <div class="plus-minus">
                         <i class="sub" data-feather="minus"></i>
 
-                        <input id="quantity" class="quantity form-control" type="number" value="1" min="1" max="1000" />
+                        <input id="quantity" name="quantity" class="quantity form-control" type="number" value="1" min="1" max="1000" />
                         <i class="add" data-feather="plus"></i>
                       </div>
                     </div>
@@ -163,26 +269,27 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   </div>
 
 
-                  <div class="option login-content">
-                    <!-- <a href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#loginAction">Jika anda telah mempunyai akaun, sila login</a> -->
-
-                    <?php if(Yii::$app->user->isGuest){?>
-                    <button id="login-link" class="nav-link"  data-bs-toggle="modal" data-bs-target="#loginAction" type="button" role="tab" aria-controls="description" aria-selected="true">
-                      Jika anda telah mempunyai akaun, sila login
-                    </button>
-                  <?php }?>
-
-                    
-                  </div>
+               
 
                   
-
+                  
                   <div class="option sale-details">
                     <div class="title-box4">
                       <h4 class="heading">Alamat Penghantaran<span class="bg-theme-blue"></span></h4>
                     </div>
-                    <?php $form = ActiveForm::begin(); ?>
-                    <?=$form->field($order, 'quantity')->hiddenInput(['id'=>'hidden-quantity', 'value' => 1])->label(false)?>
+                      <?php if(Yii::$app->user->isGuest){?>
+                        <div class="option login-content">
+                    <div class="alert alert-primary" role="alert">
+                      
+                    <a id="login-link"  data-bs-toggle="modal" data-bs-target="#loginAction" type="button" role="tab" aria-controls="description" aria-selected="true">
+                      Jika anda telah mempunyai akaun, sila klik di sini untuk log masuk.
+                    </a>
+                  
+                    </div>
+                  </div>
+                    <?php }?>
+
+                    
 
                    
               <div class="row g-3 g-md-4">
@@ -246,7 +353,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                     </div>
                     <div class="row g-3 g-md-4">
                       <div class="col-12">
-                        <img src="<?=$dirAsset?>/images/ikhtiar/payment/Billplz.png"  style="width:100%;">
+                        <img src="<?=$dirAsset?>/images/ikhtiar/payment/Billplz.png"  style="width:80%;">
                       </div>
                       <div class="col-12">
                         <br/>
@@ -346,7 +453,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   <br/>
 
                   <div class="btn-group">
-                      <?= Html::submitButton('Make Payment', ['class' => 'btn-solid btn-sm addtocart-btn']) ?>
+                      <?= Html::submitButton('BUAT BAYARAN', ['class' => 'btn-solid btn-sm addtocart-btn']) ?>
                   </div>
 
                   <?php ActiveForm::end(); ?>
@@ -355,110 +462,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
             </div>
           </div>
 
-          <!-- Tabs Start -->
-          <div class="description-box">
-            <div class="row gy-4">
-              <div class="col-12">
-                <!-- Tabs Filter Start -->
-                <ul class="nav nav-pills nav-tabs2 row-tab" id="pills-tab" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="description-tab" data-bs-toggle="pill" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">
-                      Description
-                    </button>
-                  </li>
-                </ul>
-                <!-- Tabs Filter End -->
-              </div>
-
-              <div class="col-12">
-                <!-- Tab Content Start -->
-                <div class="tab-content" id="pills-tabContent">
-                  <!-- Description Tab Content Start -->
-                  <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                    <div class="details-product">
-                      
-
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Ada pantang larang tak? <span class="bg-theme-blue"></span></h4>
-                      </div>
-
-                  
-
-                      <div class="row g-3 g-lg-4 ratio_landscape mb-3">
-                      
-                        <div class="col-md-12">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span> Jarakkan 30minit selepas / sebelum pengambilan ubatan.</span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Tidak digalakkan untuk ibu mengandung</span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Elakkan daripada pengambilan dengan minuman berkaffein/ berkarbonat secara serentak.</span>
-                              </li>
-                              
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Betul ke berkesan? <span class="bg-theme-blue"></span></h4>
-                      </div>
-
-                  
-
-                      <div class="row g-3 g-lg-4 ratio_landscape mb-3">
-                      
-                        <div class="col-md-12">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Kesan adalah berbeza bagi setiap individu bergantung pada faktor kekerapan GUNA dan juga tahap kesihatan tubuh individu terbabit.</span>
-                              </li>
-                              
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      
-
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Cara guna macam mana? <span class="bg-theme-blue"></span></h4>
-                      </div>
-                      <div class="row row g-3 g-lg-4">
-                        <div class="col-md-8 order-2 order-md-1">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Bagi yang sihat – Ambil satu (1) sachet sehari sebelum sarapan.</span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Bagi yang mempunyai masalah kesihatan – Ambil dua (2) sachet sehari pada waktu pagi dan malam.</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Description Tab Content End -->
-
-                </div>
-                <!-- Tab Content End -->
-              </div>
-            </div>
-          </div>
-          <!-- Tabs End -->
+        
         </div>
       </section>
       <!-- Product Section End -->
@@ -530,7 +534,7 @@ $('#btn-login').click(function(){
           // var data = result;
           
           var data = JSON.parse(result);
-          // console.log(data);
+          // console.log(result);
 
             $('#fullname').val(data.fullname);
             $('#email').val(data.email);
@@ -553,8 +557,14 @@ $('#btn-login').click(function(){
             
           
            $('#loginAction').modal('toggle');
-           $('.login-content').slideUp();
+           // $('.login-content').slideUp();
            $('.login-content').remove();
+
+           
+           // $('#guest-login').html('<a href='http://www.google.com'>Google</a>');
+
+          calc();
+          calcShipping();
         }
     }
     });
@@ -578,6 +588,7 @@ function calcShipping(){
         quantity : quantity,
     },
     success: function(result){
+      console.log(result);
         var cost = parseFloat(result);
         $('#show-ship-cost').text(cost.toFixed(2));
         $('#show-ship-cost').attr('data-cost', cost.toFixed(2));
@@ -617,25 +628,22 @@ function calc(){
     
 }
 
-function getQuantity(){
-  $('#hidden-quantity').val($('.quantity').val());
-}
 
 $('.add').click(function(){
   calc();
   calcShipping();
-  getQuantity();
+  
 });
 $('.sub').click(function(){
   calc();
   calcShipping();
-  getQuantity();
+ 
 });
 
 $('.quantity').change(function(){
   calc();
   calcShipping();
-  getQuantity();
+  
 });
 
 

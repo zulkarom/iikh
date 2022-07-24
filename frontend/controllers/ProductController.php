@@ -18,6 +18,16 @@ use backend\modules\shop\models\ShippingRate;
 class ProductController extends Controller
 {
     public $layout = '//main';
+
+
+    public function beforeAction($action)
+{            
+    if ($action->id == 'shipping-cost') {
+        $this->enableCsrfValidation = false;
+    }
+
+    return parent::beforeAction($action);
+}
        
 
     /**
@@ -32,7 +42,6 @@ class ProductController extends Controller
         $orderAddress = new OrderAddress();
     
         $order = new Order();
-        $orderItem = new OrderItem();
         $product = Product::findOne(1);
 
 
@@ -59,12 +68,16 @@ class ProductController extends Controller
             print_r(Yii::$app->request->post());
             die();*/
 
+        $quantity = Yii::$app->request->post('quantity');
+
+
         if ($order->load(Yii::$app->request->post()) && 
             $orderAddress->load(Yii::$app->request->post())) {
 
+            $ship_cost = ShippingRate::calcShippingCost($orderAddress, $quantity);
 
-            $totalPrice = ($order->quantity)*($product->price);
-            $total = $totalPrice + $product->ship_cost;
+            $totalPrice = ($quantity)*($product->price);
+            $total = $totalPrice + $ship_cost;
 
             $order->billTo = $order->fullname;
             $order->billPhone = $orderAddress->phone;
@@ -73,12 +86,12 @@ class ProductController extends Controller
             $order->pay_status = 'initiate';
             $order->product_price = $totalPrice ;
             $order->total_price = $total ; 
-            $order->ship_cost = $product->ship_cost;
+            $order->ship_cost = $ship_cost;
 
 
             $transaction_id = 'TRAN_'.time(). '-'.  $this->quickRandom(8);
             // get unique recharge transaction id
-            while( (Order::find()->where(['transaction_id' => $transaction_id])->count() ) > 0) {
+            while((Order::find()->where(['transaction_id' => $transaction_id])->count()) > 0) {
                 $transaction_id = 'TRAN_'.time().'-'.$this->quickRandom(8);
             }
             //$transaction_id = strtoupper($transaction_id);
@@ -90,7 +103,7 @@ class ProductController extends Controller
             try {
                 
                 if($flag = $order->save()){
-                    if($flag = $order->saveOrderItems($product, $order)){
+                    if($flag = $order->saveOrderItems($product, $order->id, $quantity)){
                         $orderAddress->order_id = $order->id;
                         if(!$orderAddress->save()){
                             $orderAddress->flashError();
@@ -109,7 +122,7 @@ class ProductController extends Controller
                     //$order->sendEmailToVendor();
                     // $billpage =  $this->createBill($order);
                     //echo $billpage;die();
-                    return $this->redirect('product/thanks');
+                    return $this->redirect(['product/thanks', 'order_id' => $order->id]);
                     //header($billpage);
                     exit;
                 }else{
@@ -141,19 +154,33 @@ class ProductController extends Controller
     }
 
     public function actionShippingCost(){
+       
         $state = Yii::$app->request->post('state');
         $country = Yii::$app->request->post('country');
         $quantity = Yii::$app->request->post('quantity');
         $orderAddress = new \stdClass();
         $orderAddress->state_id = $state;
         $orderAddress->country_code = $country;
-        $orderAddress->quantity = $quantity+0;
-        return ShippingRate::calcShippingCost($orderAddress);
+        $quantity = $quantity+0;
+        $orderAddress->quantity = $quantity;
+
+        return ShippingRate::calcShippingCost($orderAddress,$quantity);
         
     }
 
-    public function actionThanks(){
-        return $this->render('thanks');
+    public function actionThanks($order_id){
+
+        $order = Order::findOne($order_id);
+        $orderAddress = OrderAddress::findOne(['order_id' => $order_id]);
+        $orderItem = OrderItem::findOne(['order_id' => $order_id]);
+        $product = Product::findOne(1);
+
+        return $this->render('thanks', [
+            'order' => $order,
+            'orderAddress' => $orderAddress,
+            'orderItem' => $orderItem,
+            'product' => $product
+        ]);
     }
 
     private function quickRandom($length = 16)

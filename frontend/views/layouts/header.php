@@ -1,3 +1,7 @@
+<?php 
+use yii\helpers\Url;
+?>
+
 <header class="header-common">
       <!-- Top Header -->
       <div class="top-header">
@@ -13,7 +17,7 @@
                   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu" aria-controls="primaryMenu">
                     <span class="navbar-toggler-icon"></span>
                   </button>
-                  <a href="index.html" class="logo-link">
+                  <a href="<?php echo Url::to(['site/index'])?>" class="logo-link">
                     <img class="logo logo-dark" src="<?=$dirAsset?>/images/ikhtiar/logo/logo.png" alt="logo" />
                     <img class="logo logo-light" src="<?=$dirAsset?>/images/ikhtiar/logo/logo.png" alt="logo" />
                   </a>
@@ -153,10 +157,17 @@
               <li class="user">
                 <div class="dropdown user-dropdown">
                   <a href="javascript:void(0)"><i data-feather="user"></i></a>
+                  <?php if(Yii::$app->user->isGuest){?>
                   <ul class="onhover-show-div">
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
+                    <li id ="guest-login"><a href="<?php echo Url::to(['/login'])?>">Login</a></li>
+                    <li id ="guest-register"><a href="register.html">Register</a></li>
                   </ul>
+                <?php }else{ ?>
+                  <ul class="onhover-show-div">
+                    <li><a href="<?php echo Url::to(['/dashboard/index'])?>">Dashboard</a></li>
+                    <li><a href="<?=Url::to(['site/logout','data-method' => 'post'])?>">Logout</a></li>
+                  </ul>
+                <?php }?>
                 </div>
               </li>
 
@@ -178,9 +189,9 @@
               <!-- Cart Menu Start -->
               <li>
                 <div class="dropdown shopingbag">
-                  <a href="javascript:void(0)" class="cart-button"><i data-feather="shopping-bag"></i> <span class="notification-label">3</span></a>
+                  <a href="javascript:void(0)" class="cart-button"><i data-feather="shopping-bag"></i> <span class="notification-label">0</span></a>
                   <a href="javascript:void(0)" class="overlay-cart overlay-common"></a>
-                  <div class="onhover-cart-dropdown">
+                 <!--  <div class="onhover-cart-dropdown">
                     <div class="onhover-show-div">
                       <div class="dropdown-header">
                         <div class="control">
@@ -190,7 +201,7 @@
                       </div>
 
                       <div class="card-wrap custom-scroll">
-                        <!-- Cart Item Start -->
+                        <
                         <div class="cart-card media">
                           <a href="product.html"> <img src="<?=$dirAsset?>/images/fashion/product/front/8.jpg" class="img-fluid" alt="product" /> </a>
                           <div class="media-body">
@@ -204,7 +215,7 @@
                           </div>
                           <button class="remove-cart"><i data-feather="x"></i></button>
                         </div>
-                        <!-- Cart Item End -->
+                        
                       </div>
                       <div class="dropdown-footer">
                         <div class="freedelevery">
@@ -224,7 +235,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </li>
               <!-- Cart Menu End -->

@@ -34,7 +34,6 @@ class Order extends \yii\db\ActiveRecord
     const STATUS_COMPLETED = 50;
 
     public $payment;
-    public $quantity;
 
     public function listStatus(){
         return [0 => 'Draft', 1 => 'Failed', 10 => 'Ordered'
@@ -65,7 +64,7 @@ class Order extends \yii\db\ActiveRecord
             [['total_price', 'status', 'fullname', 'email', 'billPhone', 'bank_code'], 'required'],
             [['total_price'], 'number'],
             [['email'], 'email'],
-            [['created_at', 'created_by', 'status', 'ship_method', 'payment', 'quantity'], 'integer'],
+            [['created_at', 'created_by', 'status', 'ship_method', 'payment'], 'integer'],
             [['fullname', 'pay_status'], 'string', 'max' => 60],
             [['email', 'transaction_id', 'paypal_order_id', 'order_note'], 'string', 'max' => 255],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
@@ -82,12 +81,13 @@ class Order extends \yii\db\ActiveRecord
             'total_price' => 'Total Price',
             'status' => 'Status',
             'statusLabel' => 'Status',
-            'fullname' => 'Fullname',
+            'fullname' => 'Nama Penuh',
             'email' => 'Email',
             'transaction_id' => 'Transaction ID',
             'paypal_order_id' => 'Paypal Order ID',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
+            'bank_code' => 'Perbankan Atas Talian',
         ];
     }
     
@@ -142,7 +142,7 @@ class Order extends \yii\db\ActiveRecord
         return new \backend\models\query\OrderQuery(get_called_class());
     }    
 
-    public function saveOrderItems($product, $order)
+    public function saveOrderItems($product, $order_id, $quantity)
     {
         // $cartItems = CartItem::getItemsForUser(currUserId());
         //echo count($cartItems);
@@ -153,8 +153,8 @@ class Order extends \yii\db\ActiveRecord
                 // $orderItem->attr_mix = $cartItem['attr_mix'];
                 $orderItem->product_id = $product->id;
                 $orderItem->unit_price = $product->price;
-                $orderItem->order_id = $order->id;
-                $orderItem->quantity = $order->quantity;
+                $orderItem->order_id = $order_id;
+                $orderItem->quantity = $quantity;
                 if (!$orderItem->save()) {
                     $orderItem->flashError();
                     return false;

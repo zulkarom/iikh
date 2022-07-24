@@ -51,11 +51,11 @@ class OrderAddress extends \yii\db\ActiveRecord
     {
         return [
             'order_id' => 'Order ID',
-            'address' => 'Address',
-            'city' => 'City',
-            'state_id' => 'State',
-            'country_id' => 'Country',
-            'zipcode' => 'Postcode',
+            'address' => 'Alamat',
+            'city' => 'Bandar',
+            'state_id' => 'Negeri',
+            'country_id' => 'Negara',
+            'zipcode' => 'Poskod',
         ];
     }
     

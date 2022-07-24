@@ -49,7 +49,7 @@ class ShippingRate extends \yii\db\ActiveRecord
         ];
     }
     
-    public static function calcShippingCost($orderAddress){
+    public static function calcShippingCost($orderAddress,$quantity){
        
      
         
@@ -57,7 +57,7 @@ class ShippingRate extends \yii\db\ActiveRecord
         $product = Product::findOne(1);
         
         $w = $product->weight;
-        $total_weight = $w*$orderAddress->quantity;        
+        $total_weight = $w*$quantity;        
             
         
         $zone = ZoneItem::findOne(['state_id' => $orderAddress->state_id, 'country_code' => $orderAddress->country_code]);

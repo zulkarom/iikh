@@ -21,7 +21,7 @@ class IkhtiarAsset extends AssetBundle
     ];
 
     public $js = [
-        // 'js/bootstrap/bootstrap.bundle.min.js',
+        'js/bootstrap/bootstrap.bundle.min.js',
         'js/feather/feather.min.js',
         'js/swiper-slider/swiper-bundle.min.js',
         'js/swiper-slider/swiper-custom.min.js',
@@ -32,6 +32,7 @@ class IkhtiarAsset extends AssetBundle
         'js/wow-custom.js',
         'js/password-showhide.js',
         'js/script.js',
+        'js/user-dashboard-tab.js'
     ];
 
 

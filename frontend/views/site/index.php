@@ -2,8 +2,12 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Url;
+
 $this->title = 'Ikhtiar';
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
+
+$urlHome = Url::to(['/product/index']);
 ?>
 <style type="text/css">
 
@@ -31,7 +35,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                      <strong> <span> 2i+Honey <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
                   </h1>
                   <p>Adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.</p>
-                  <a href="shop-left-sidebar.html" class="btn-solid">SHOP <i class="arrow"></i></a>
+                  <a href="<?=$urlHome?>" class="btn-solid">SHOP <i class="arrow"></i></a>
                 </div>
 
                 <!-- Banner Image Right -->
@@ -84,7 +88,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                      <strong> <span> 2i+Honey <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
                   </h1>
                   <p>Adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.</p>
-                  <a href="shop-left-sidebar.html" class="btn-solid">SHOP <i class="arrow"></i></a>
+                  <a href="<?=$urlHome?>" class="btn-solid">SHOP <i class="arrow"></i></a>
                 </div>
 
                 <!-- Banner Image Right -->
@@ -137,7 +141,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                      <strong> <span> 2i+Honey <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
                   </h1>
                   <p>Adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.</p>
-                  <a href="shop-left-sidebar.html" class="btn-solid">SHOP <i class="arrow"></i></a>
+                  <a href="<?=$urlHome?>" class="btn-solid">SHOP <i class="arrow"></i></a>
                 </div>
 
                 <!-- Banner Image Right -->

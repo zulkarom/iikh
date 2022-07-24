@@ -1,9 +1,13 @@
+<?php
+  $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
+?>
+
  <!-- Top Section Start -->
       <section class="p-0">
         <div class="success-icon">
           <div class="img-wrap">
-            <img class="success-img img-fluid" src="../assets/svg/order-success.svg" alt="vector" />
-            <img class="check" src="../assets/svg/check.svg" alt="check" />
+            <img class="success-img img-fluid" src="<?=$dirAsset?>/svg/order-success.svg" alt="vector" />
+            <img class="check" src="<?=$dirAsset?>/svg/check.svg" alt="check" />
           </div>
 
           <div class="success-contain">
@@ -26,6 +30,7 @@
                     <thead>
                       <tr>
                         <th class="d-none d-sm-table-cell">PRODUK</th>
+                        <!-- <th class="d-none d-sm-table-cell">NAMA</th> -->
                         <th class="d-none d-sm-table-cell">HARGA</th>
                         <th class="d-none d-lg-table-cell">KUANTITI</th>
                         <th class="d-none d-xl-table-cell">JUMLAH</th>
@@ -36,20 +41,17 @@
                       <tr>
                         <td>
                           <div class="product-detail">
-                            <img class="pr-img" src="../assets/images/fashion/product/front/8.jpg" alt="image" />
+                            <img class="pr-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-3.jpg" alt="image" />
                             <div class="details">
-                              <h4 class="title-color font-default2">Concrete Jungle Pack</h4>
-                              <span class="sold-by">Sold By: <span>Roger Group</span> </span>
-                              <span class="size d-flex gap-2">Size : <span>M</span> </span>
-                              <span class="size d-inline-flex gap-2 d-lg-none">Quantity : <span>01</span> </span>
-                              <span class="size d-flex gap-2 d-sm-none">Price : <span>$120.00</span> </span>
+                              <h4 class="title-color font-default2"><?=$product->name?></h4>
+                              
                             </div>
                           </div>
                         </td>
 
-                        <td class="price d-none d-sm-table-cell">$120.00</td>
-                        <td class="price d-none d-lg-table-cell">01</td>
-                        <td class="total d-none d-xl-table-cell">$120.00</td>
+                        <td class="price d-none d-sm-table-cell">RM<?=$orderItem->unit_price?></td>
+                        <td class="price d-none d-lg-table-cell"><?=$orderItem->quantity?></td>
+                        <td class="total d-none d-xl-table-cell">RM<?=$order->product_price?></td>
                       </tr>
                     </tbody>
                   </table>
@@ -65,31 +67,21 @@
                       <div class="cart-wrap grand-total-wrap">
                         <div>
                           <div class="order-summery-box">
-                            <h5 class="cart-title">Price Details (3 Items)</h5>
+                            <h5 class="cart-title">Butiran Harga</h5>
                             <ul class="order-summery">
                               <li>
-                                <span>Bag total</span>
-                                <span>$220.00</span>
+                                <span>Jumlah Pembelian</span>
+                                <span><?=$order->product_price?></span>
                               </li>
 
                               <li>
-                                <span>Bag savings</span>
-                                <span class="theme-color">-$20.00</span>
-                              </li>
-
-                              <li>
-                                <span>Coupon Discount</span>
-                                <span class="font-danger">$100.00</span>
-                              </li>
-
-                              <li>
-                                <span>Delivery</span>
-                                <span>$50.00</span>
+                                <span>Kos Penghantaran</span>
+                                <span class="theme-color"><?=$order->ship_cost?></span>
                               </li>
 
                               <li class="pb-0">
-                                <span>Total Amount</span>
-                                <span>$270.00</span>
+                                <span>Jumlah Keseluruhan</span>
+                                <span><?=$order->total_price?></span>
                               </li>
                             </ul>
                           </div>
@@ -105,14 +97,20 @@
                             <h5 class="cart-title">Alamat Penghantaran</h5>
                           </div>
                           <ul>
-                            <li>Greg Harrell</li>
-                            <li>568, Suite Ave.</li>
-                            <li>Australia, 235153,brooklyn brigs</li>
-                            <li>Contact No. 48465465465</li>
+                            <li><span id="li-name"><?=$order->fullname?></span></li>
+                            <li><span id="li-email"><?=$order->email?></li>
+                            <li>
+                              <span id="li-address"><?=$orderAddress->address.', '?></span>
+                              <span id="li-zipcode"><?=$orderAddress->zipcode.', '?></span>
+                              <span id="li-city"><?=$orderAddress->city.', '?></span>
+                              <span id="li-state"><?=$orderAddress->state->negeri_name.', '?></span>
+                              <span id="li-country"><?=$orderAddress->state->negeri_name?></span>
+                            </li>
+                            <li><span id="li-phone"><?=$orderAddress->phone?></li>
                           </ul>
                         </div>
 
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                           <div class="delivery-box">
                             <p class="d-flex flex-column g-0 title-color font-md mb-0">
                               Expected Date Of Delivery:
@@ -120,7 +118,7 @@
                             </p>
                             <a href="user-dashboard.html" class="font-danger font-md fw-500">Track Order</a>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>

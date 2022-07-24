@@ -6,7 +6,7 @@
 use common\widgets\Alert;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap4\Breadcrumbs;
+use common\widgets\Breadcrumbs;
 use frontend\assets\IkhtiarAsset;
 use frontend\assets\AppAsset;
 
@@ -89,6 +89,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
     <!-- Content Start -->
     <main class="main">
+        
         <?= Alert::widget() ?>
         <?=$content?>
     </main>
