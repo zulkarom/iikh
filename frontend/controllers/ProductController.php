@@ -22,7 +22,7 @@ class ProductController extends Controller
 
     public function beforeAction($action)
 {            
-    if ($action->id == 'shipping-cost') {
+    if ($action->id == 'shipping-cost' or $action->id == 'index') {
         $this->enableCsrfValidation = false;
     }
 
@@ -63,6 +63,7 @@ class ProductController extends Controller
         // $order->total_price = $totalPrice;
         $order->status = Order::STATUS_ORDERED;
         $order->created_at = time();
+        $order->created_by = currUserId();
 
         /*echo "<pre>";
             print_r(Yii::$app->request->post());

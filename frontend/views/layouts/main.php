@@ -62,21 +62,6 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 <body>
 <?php $this->beginBody() ?>
 
-<!-- Loader Start -->
-    <!-- <div class="loader-wrapper">
-      <div class="loader animate">
-        <span>i’</span>
-        <span>I</span>
-        <span>K</span>
-        <span>H</span>
-        <span>T</span>
-        <span>I</span>
-        <span>A</span>
-        <span>R</span>
-      </div>
-    </div> -->
-    <!-- Loader End -->
-
     <!-- Overlay -->
     <a href="javascript:void(0)" class="overlay-general overlay-common"></a>
 

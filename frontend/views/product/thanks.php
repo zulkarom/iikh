@@ -13,7 +13,7 @@
           <div class="success-contain">
             <h1>Terima Kasih</h1>
             <h5 class="font-light">Pembayaran Anda Telah Berjaya</h5>
-            <h6 class="font-light">Transaction ID:267676GHERT105467</h6>
+            <h6 class="font-light">Transaction ID:<?=$order->transaction_id?></h6>
           </div>
         </div>
       </section>

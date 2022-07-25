@@ -9,6 +9,7 @@ use yii\filters\AccessControl;
 use yii\db\Expression;
 use common\models\User;
 use backend\models\UserAddress;
+use frontend\models\OrderSearch;
 /**
  * BizCanvasController implements the CRUD actions for BizCanvas model.
  */
@@ -24,6 +25,10 @@ class DashboardController extends Controller
         if(!$userAddress){
             $userAddress = new UserAddress();
         }
+
+        //Order
+        $searchModel = new OrderSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         if ($user->load(Yii::$app->request->post()) && 
             $userAddress->load(Yii::$app->request->post())) {
@@ -68,12 +73,14 @@ class DashboardController extends Controller
             }
 
         }
+
+
         
         return $this->render('index', [
             'user' => $user,
-            'userAddress' => $userAddress
+            'userAddress' => $userAddress,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider
         ]);
     }
-
-
 }

@@ -6,30 +6,63 @@
 
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\helpers\Url;
 
-$this->title = 'Signup';
-$this->params['breadcrumbs'][] = $this->title;
+$dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
 ?>
-<div class="site-signup">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to signup:</p>
+<div class="row g-0 ratio_asos">
+          <div class="order-2 order-lg-1 col-lg-6">
+            <div class="content-box">
+              <div>
+                <h5>PENDAFTARAN <span class="bg-theme-blue"></span></h5>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+                <?php $form = ActiveForm::begin(
+                    [
+                        /*'options' => [
+                            'class' => 'custom-form form-pill'
+                        ]*/
+                    ]
+                ); ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                  <div class="input-box">
+                    
+                    <?= $form->field($model, 'fullname')->textInput(['id' => 'fullname', 'class' => 'form-control'])->label('Nama Penuh') ?>
+                  </div>
 
-                <?= $form->field($model, 'email') ?>
+                  <div class="input-box">
+                    
+                    <?= $form->field($model, 'username')->textInput(['id' => 'username', 'class' => 'form-control'])->label('Email') ?>
+                  </div>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                  <div class="input-box">
+                    <div class="icon-input">
+                      
+                       <?= $form->field($model, 'password')->textInput(['id' => 'password', 'class' => 'form-control', 'type' => 'password'])->label('Kata Laluan') ?>
+                    </div>
+                  </div>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                </div>
+                  <div class="input-box">
+                    <div class="icon-input">
+                      
+                       <?= $form->field($model, 'password')->textInput(['id' => 'password', 'class' => 'form-control', 'type' => 'password'])->label('Ulang Kata Laluan') ?>
+                    </div>
+                  </div>
 
-            <?php ActiveForm::end(); ?>
+                  <a class="forgot-link" href="forgot-password.html">Lupa Kata Laluan?</a>
+                  <?= Html::submitButton('Daftar <i class="arrow"></i>', ['class' => 'btn-solid rounded-pill line-none']) ?>
+
+                  <a href="<?php echo Url::to(['site/index'])?>" class="btn-solid rounded-pill line-none btn-outline mt-3 d-flex justify-content-center">Home <i class="arrow"></i></a>
+                <?php ActiveForm::end(); ?>
+
+                <span class="backto-link font-default content-color text-decoration-none">Sudah mempunyai akaun? <a class="text-decoration-underline theme-color" href="register.html"> Log Masuk </a> </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-1 order-lg-2 col-lg-6">
+            <div class="img-box">
+              <img class="bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-3.jpg" alt="banner" />
+            </div>
+          </div>
         </div>
-    </div>
-</div>

@@ -159,8 +159,8 @@ use yii\helpers\Url;
                   <a href="javascript:void(0)"><i data-feather="user"></i></a>
                   <?php if(Yii::$app->user->isGuest){?>
                   <ul class="onhover-show-div">
-                    <li id ="guest-login"><a href="<?php echo Url::to(['/login'])?>">Login</a></li>
-                    <li id ="guest-register"><a href="register.html">Register</a></li>
+                    <li id ="guest-login"><a href="<?php echo Url::to(['site/login'])?>">Login</a></li>
+                    <li id ="guest-register"><a href="<?php echo Url::to(['site/signup'])?>">Register</a></li>
                   </ul>
                 <?php }else{ ?>
                   <ul class="onhover-show-div">

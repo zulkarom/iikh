@@ -3,6 +3,7 @@ use kartik\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Negeri;
 use yii\helpers\Html;
+use yii\widgets\ListView;
 
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
 ?>
@@ -84,7 +85,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   </div>
                 </div>
                 <!-- User Dashboard End -->
-
+  
                 <!-- Order Tabs Start -->
                 <div class="tab-pane" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                   <div class="cart-wrap order-content">
@@ -93,290 +94,43 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                       <p>H thanks for placing a delivery order with Oslo! Your order should be home with you in soon</p>
                     </div>
 
-                    <div class="order-wraper">
-                      <div class="order-box">
-                        <div class="order-header">
-                          <span><i data-feather="box"></i></span>
-                          <div class="order-content">
-                            <h5 class="order-status success">Delivered</h5>
-                            <p>Place July 15 2022 and Delivered on July 18 2022</p>
-                          </div>
+                    <div class="container">        
+                            <br />
+                    
+                    <div id="list-search" class="row">
+                        <div class="col-md-12">
+                        
+                        
+                        <!-- <div class="table-responsive"> -->
+                    <?php   
+
+
+                    echo $this->render('_list_order', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel]);
+
+
+
+
+                    ?>
+
+
+                    <!-- </div> -->
+
+
+
+
+
+                          
+                        
                         </div>
+                    </div>
 
-                        <div class="order-info">
-                          <div class="product-details" data-productDetail="product-detail">
-                            <div class="img-box"><img src="<?=$dirAsset?>/images/fashion/product/front/4.jpg" alt="product" /></div>
-                            <div class="product-content">
-                              <h5>Women’s long sleeve Jacket</h5>
-                              <p class="truncate-3">
-                                Versatile sporty slogans short sleeve quirky laid back orange lux hoodies vests pins badges. Versatile sporty slogans short sleeve quirky laid back orange lux hoodies
-                                vests pins badges. Cutting edge crops stone transparent.
-                              </p>
-                              <span>Prize : <span>$120.00</span></span>
-                              <span>Size : <span>M</span></span>
-                              <span>Order Id : <span>edf125qa1d35</span></span>
-                            </div>
-                          </div>
 
-                          <div class="rating-box">
-                            <span>Rate Product : </span>
-                            <ul class="rating p-0 mb">
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i data-feather="star"></i>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="order-box">
-                        <div class="order-header">
-                          <span><i data-feather="box"></i></span>
-                          <div class="order-content">
-                            <h5 class="order-status success">Delivered</h5>
-                            <p>Place July 15 2022 and Delivered on July 18 2022</p>
-                          </div>
-                        </div>
-
-                        <div class="order-info">
-                          <div class="product-details" data-productDetail="product-detail">
-                            <div class="img-box"><img src="<?=$dirAsset?>/images/fashion/product/front/5.jpg" alt="product" /></div>
-                            <div class="product-content">
-                              <h5>Women’s long sleeve Jacket</h5>
-                              <p class="truncate-3">
-                                Tunic knitted stretch leather spaghetti straps triangle top patterned panelled purple blush. Versatile sporty slogans short sleeve quirky laid back orange lux hoodies
-                                vests pins badges.
-                              </p>
-                              <span>Prize : <span>$120.00</span></span>
-                              <span>Size : <span>M</span></span>
-                              <span>Order Id : <span>edf125qa1d35</span></span>
-                            </div>
-                          </div>
-
-                          <div class="rating-box">
-                            <span>Rate Product : </span>
-                            <ul class="rating p-0 mb">
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i data-feather="star"></i>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="order-box">
-                        <div class="order-header">
-                          <span><i data-feather="box"></i></span>
-                          <div class="order-content">
-                            <h5 class="order-status success">Delivered</h5>
-                            <p>Place July 15 2022 and Delivered on July 18 2022</p>
-                          </div>
-                        </div>
-
-                        <div class="order-info">
-                          <div class="product-details" data-productDetail="product-detail">
-                            <div class="img-box"><img src="<?=$dirAsset?>/images/fashion/product/front/6.jpg" alt="product" /></div>
-                            <div class="product-content">
-                              <h5>Women’s long sleeve Jacket</h5>
-                              <p class="truncate-3">
-                                Pop top sporty stripe trims mesh inserts denim turtle neck casual white cotton button silver.Back print tattoo graphics printed expensive photos colors sun psychedelic
-                                super casual tag.
-                              </p>
-                              <span>Prize : <span>$120.00</span></span>
-                              <span>Size : <span>M</span></span>
-                              <span>Order Id : <span>edf125qa1d35</span></span>
-                            </div>
-                          </div>
-
-                          <div class="rating-box">
-                            <span>Rate Product : </span>
-                            <ul class="rating p-0 mb">
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i class="fill" data-feather="star"></i>
-                              </li>
-                              <li>
-                                <i data-feather="star"></i>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
                 <!-- Order Tabs End -->
 
-                <!-- Order Detail Tab Start -->
-                <div class="tab-pane" id="orders-details" role="tabpanel" aria-labelledby="orders-details">
-                  <div class="order-detail-wrap order-content">
-                    <div class="row g-3 g-md-4">
-                      <div class="col-12">
-                        <div class="order-summery-wrap mt-0 order-data">
-                          <div class="banner-box">
-                            <div class="media">
-                              <div class="img">
-                                <i data-feather="package"></i>
-                              </div>
-                              <div class="media-body">
-                                <h2>Order Delivered</h2>
-                                <span class="font-sm">Delivered On July 15 2022</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12">
-                        <div class="product-details">
-                          <div class="img-box"><img src="<?=$dirAsset?>/images/fashion/product/front/4.jpg" alt="product" /></div>
-                          <div class="product-content">
-                            <h5>Women’s long sleeve Jacket</h5>
-                            <p class="truncate-3">
-                              Versatile sporty slogans short sleeve quirky laid back orange lux hoodies vests pins badges. Versatile sporty slogans short sleeve quirky laid back orange lux hoodies
-                              vests pins badges. Cutting edge crops stone transparent.
-                            </p>
-                            <span>Prize : <span>$120.00</span></span>
-                            <span>Size : <span>M</span></span>
-                            <span>Order Id : <span>edf125qa1d35</span></span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12">
-                        <div class="order-data summery-wrap">
-                          <div class="order-summery-box">
-                            <h5 class="cart-title">Price Details (1 Quantity)</h5>
-                            <ul class="order-summery">
-                              <li>
-                                <span>Bag total</span>
-                                <span>$220.00</span>
-                              </li>
-
-                              <li>
-                                <span>Bag savings</span>
-                                <span class="theme-color">-$20.00</span>
-                              </li>
-
-                              <li>
-                                <span>Coupon Discount</span>
-                                <a href="offer.html" class="font-danger">$120.00</a>
-                              </li>
-
-                              <li>
-                                <span>Delivery</span>
-                                <span>$50.00</span>
-                              </li>
-
-                              <li class="pb-0">
-                                <span>Total Amount</span>
-                                <span>$270.00</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12">
-                        <div class="row gy-3 gy-sm-0 g-3 g-md-4">
-                          <div class="col-sm-6">
-                            <div class="order-data general-details">
-                              <!-- Payment Method Start -->
-                              <div class="payment-method mt-0">
-                                <h5 class="cart-title">Payment Method</h5>
-                                <div class="payment-box">
-                                  <img src="<?=$dirAsset?>/icons/png/1.png" alt="card" />
-                                  <span class="font-sm title-color"> **** **** **** 6502</span>
-                                </div>
-                              </div>
-                              <!-- Payment Method End -->
-
-                              <button class="btn-solid mb-line btn-sm mt-4">Get Invoice <i class="arrow"></i></button>
-                            </div>
-                          </div>
-
-                          <div class="col-sm-6">
-                            <div class="order-data general-details">
-                              <!-- Contact Start -->
-                              <div class="payment-method mt-0">
-                                <h5 class="cart-title">Contact Us</h5>
-
-                                <div class="payment-box">
-                                  <i data-feather="phone"></i>
-                                  <span class="font-sm title-color">
-                                    <a class="content-color fw-500" href="tel:2554-4454-5646">2554-4454-5646</a>
-                                  </span>
-                                </div>
-
-                                <div class="payment-box mt-3">
-                                  <i data-feather="phone"></i>
-                                  <span class="font-sm title-color">
-                                    <a class="content-color fw-500" href="tel:5452-2545-2154">5452-2545-2154</a>
-                                  </span>
-                                </div>
-
-                                <div class="payment-box mt-3">
-                                  <i data-feather="mail"></i>
-                                  <span class="font-sm title-color">
-                                    <a class="content-color fw-500" href="mailto:someone@example.com">someone@example.com</a>
-                                  </span>
-                                </div>
-                              </div>
-                              <!-- Contact End -->
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12">
-                        <div class="order-data general-details">
-                          <!-- Address Section Start -->
-                          <div class="address-ordered p-0">
-                            <h5 class="cart-title">Order Address</h5>
-                            <div class="address">
-                              <h5 class="font-default title-color">Nadine Vogt <span class="badges badges-pill badges-theme">Home</span></h5>
-                              <p class="font-default content-color"><i data-feather="map-pin"></i> 1418 Riverwood Drive, Suite 3245 Cottonwood, CA 96052, United States</p>
-                            </div>
-                          </div>
-                          <!-- Address Section End -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Order Detail Tab End -->       
+                  
 
                 <!-- Profile Tabs Start -->
                 <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">

@@ -33,12 +33,12 @@ class SiteController extends Controller
                 // 'only' => ['logout', 'signup', 'login'],
                 'rules' => [
                     [
-                        'actions' => ['signup', 'index', 'login'],
+                        'actions' => ['signup', 'index', 'login-ajax', 'login'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'index', 'login'],
+                        'actions' => ['signup', 'logout', 'index', 'login-ajax', 'login'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -77,7 +77,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionLogin()
+    public function actionLoginAjax()
     {
         $email = Yii::$app->request->post('email');
         $password = Yii::$app->request->post('password');
@@ -128,6 +128,52 @@ class SiteController extends Controller
         }
        
     }
+
+    /**
+     * Login action.
+     *
+     * @return string
+     */
+    public function actionLogin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            Yii::$app->session->addFlash('success', "Anda telah berjaya log masuk.");
+            return $this->goHome();
+        } else {
+            $this->layout = "//main-login";
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                Yii::$app->session->addFlash('success', "Pendaftaran Anda Berjaya");
+               return $this->redirect(['site/login']);
+            }
+        }
+        
+        $this->layout = "//main-login";
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+
 
     /**
      * Logs out the current user.

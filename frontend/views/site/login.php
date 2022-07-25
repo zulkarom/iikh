@@ -6,125 +6,51 @@
 
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
-use frontend\assets\FrontendAsset;
+use yii\helpers\Url;
 
-FrontendAsset::register($this);
+$dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
 
-$dirAssets = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/frontendAssets');
-
-$this->title = 'UJIAN PSIKOMETRIK / PSYCHOMETRIC TEST';
 ?>
-<div class="site-login">
+<div class="row g-0 ratio_asos">
+          <div class="order-2 order-lg-1 col-lg-6">
+            <div class="content-box">
+              <div>
+                <h5>LOGIN <span class="bg-theme-blue"></span></h5>
 
-    
-        <div class="container">
+                <?php $form = ActiveForm::begin(
+                    [
+                        /*'options' => [
+                            'class' => 'custom-form form-pill'
+                        ]*/
+                    ]
+                ); ?>
 
-    <div>
-        <div style="margin: 0 auto; width:90%">
+                  <div class="input-box">
+                    
+                    <?= $form->field($model, 'username')->textInput(['id' => 'username', 'class' => 'form-control'])->label('Email') ?>
+                  </div>
 
-            <!-- login box on left side -->
-            <div>
-            
-<img src="<?=$dirAssets?>/images/Psychometric-Tests.png" width="80%" />
+                  <div class="input-box">
+                    <div class="icon-input">
+                      
+                       <?= $form->field($model, 'password')->textInput(['id' => 'password', 'class' => 'form-control', 'type' => 'password'])->label('Password') ?>
+                    </div>
+                  </div>
 
-<?php $form = ActiveForm::begin([
-    'validateOnSubmit' => false
-]); ?>
-<div class="row">
-                
-                <div class="col-md-12">
-                
-                
-                
-                
+                  <a class="forgot-link" href="forgot-password.html">Forgot Password?</a>
+                  <?= Html::submitButton('Log Masuk <i class="arrow"></i>', ['class' => 'btn-solid rounded-pill line-none']) ?>
 
-                <div class="row">
+                  <a href="<?php echo Url::to(['site/index'])?>" class="btn-solid rounded-pill line-none btn-outline mt-3 d-flex justify-content-center">Home <i class="arrow"></i></a>
+                <?php ActiveForm::end(); ?>
 
-                <div class="col-md-6">
-                
-                <?php 
-                
-                // if($this->open == 1){
-                ?>
-                <h4> MULA MENJAWAB / <i>START ANSWERING</i>  </h4><br />
-               
-                
-                <div class="form-group">
-
-                <?= $form
-                    ->field($model, 'username')
-                    ->label('NRIC/PASSPORT NO.:')
-                    ->textInput(['class' => 'form-control input-lg']) 
-                 ?>
-                </div>
-                <?= Html::submitButton('LOG IN', ['class' => 'btn btn-primary', 'name' => 'submit', 'value' => '1']) ?>
-                <br /><br />
-                <?php 
-                // } else { 
-                
-                // echo '<h3>TUTUP / CLOSED</h3>';
-                // }
-                ?>
-                </div>
-                
-                
-                
-                <div class="col-md-6">
-                
-                    <?php 
-                
-                // if($this->open == 1){
-                ?>
-                    <h4> DAFTAR / <i>REGISTER</i>  </h4><br />
-                
-                <div class="form-group">
-                <?= $form
-                    ->field($model2, 'fullname')
-                    ->label('NAMA / NAME.:')
-                    ->textInput(['class' => 'form-control input-lg']) 
-                ?>
-                </div>
-
-                
-                <div class="form-group">
-                <?= $form
-                    ->field($model2, 'username')
-                    ->label('NRIC/PASSPORT NO.:')
-                    ->textInput(['class' => 'form-control input-lg']) 
-                 ?>
-                </div>                
-                    <?= Html::submitButton('REGISTER', ['class' => 'btn btn-primary', 'name' => 'submit', 'value' => '2']) ?>
-                <?php 
-                // } else { 
-                
-                // echo '<h3>TUTUP / CLOSED</h3>';
-                // }
-                ?>
-                
-                
-                
-                
-                
-                </div>
-                </div>
-        
-                </div>
-                <div class="col-md-1"></div>
+                <span class="backto-link font-default content-color text-decoration-none">Jika anda baru, <a class="text-decoration-underline theme-color" href="<?php echo Url::to(['site/signup'])?>"> Buat Akaun </a> </span>
+              </div>
             </div>
+          </div>
 
-            <?php ActiveForm::end(); ?>
-
-            
-            
-                
-                
-
+          <div class="order-1 order-lg-2 col-lg-6">
+            <div class="img-box">
+              <img class="bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-3.jpg" alt="banner" />
             </div>
-
-
-
+          </div>
         </div>
-    </div>
-</div>
-
-</div>

@@ -497,7 +497,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
                                   <div align="right"><a class="forgot-link" href="forgot-password.html">Forgot Password?</a></div>
 
-                                  <center><button id="btn-login" type="submit" class="btn-solid rounded-pill line-none" data-url="<?php echo Url::to(['/site/login'])?>">Login <i class="arrow"></i></button></center>
+                                  <center><button id="btn-login" type="submit" class="btn-solid rounded-pill line-none" data-url="<?php echo Url::to(['/site/login-ajax'])?>">Login <i class="arrow"></i></button></center>
                                   
                                 </div>
 

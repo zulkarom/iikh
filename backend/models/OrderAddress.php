@@ -71,8 +71,37 @@ class OrderAddress extends \yii\db\ActiveRecord
         return $this->hasOne(Countries::className(), ['country_code' => 'country_code']);
     }
     
+    public function country(){
+        return ['MY' => 'Malaysia'];
+    }
+    
+
     public function getCountryName(){
-        return $this->country->country_name;
+        $label = $this->country();
+        if(array_key_exists($this->country_code, $label)){
+            return $label[$this->country_code];
+        }
+        
+    }
+   
+    public function fullAddressText(){
+        $zipcode = '';
+        if($this->zipcode){
+            $zipcode = ', '.$this->zipcode;
+        }
+        $city = '';
+        if($this->city){
+            $city = ', '.$this->city;
+        }
+        $state = '';
+        if($this->state){
+            $state = ', '.$this->stateName;
+        }
+        $country = '';
+        if($this->country){
+            $country = ', ' . $this->countryName;
+        }
+        return $this->address.$zipcode.$city.$state.$country;
     }
 
     /**
