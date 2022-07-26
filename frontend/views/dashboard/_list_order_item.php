@@ -1,17 +1,17 @@
 <?php 
 use yii\helpers\Url;
-use backend\models\Order;
+use backend\models\OrderItem;
 
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
-$order = Order::findOne($model->id);
+$orderItem = OrderItem::findOne(['order_id' => $model->id]);
 ?>
 
 <div class="order-box">
   <div class="order-header">
     <span><i data-feather="box"></i></span>
     <div class="order-content">
-      <h5 class="order-status success">Delivered</h5>
-      <p>Place July 15 2022 and Delivered on July 18 2022</p>
+      <h5 class="order-status success">Dihantar</h5>
+      <p>Pesanan <?=date('F m Y', $model->created_at)?> dan Dihantar pada July 18 2022</p>
     </div>
   </div>
 
@@ -26,7 +26,7 @@ $order = Order::findOne($model->id);
         <p class="truncate-3">
           <?=$item->product->description?>
         </p>
-        <span>Harga : <span>RM<?=$model->product_price?></span></span>
+        <span>Harga : <span>RM<?=$item->unit_price?></span></span>
         <span>Order Id : <span><?=$model->id?></span></span>
       </div>
     </div>
@@ -41,27 +41,27 @@ $order = Order::findOne($model->id);
             <ul class="order-summery">
               <li>
                 <span>Produk</span>
-                <span></span>
+                <span><?=$orderItem->product_name?></span>
               </li>
 
               <li>
                 <span>Harga</span>
-                <span class="theme-color"><?=$order->product_price?></span>
+                <span><?=$orderItem->unit_price?></span>
               </li>
 
               <li>
                 <span>Kuantiti</span>
-                <a href="offer.html" class="font-danger"></a>
+                <span><?=$orderItem->quantity?></span>
               </li>
 
               <li>
                 <span>Kos Penghantaran</span>
-                <span><?=$order->ship_cost?></span>
+                <span><?=$orderItem->order->ship_cost?></span>
               </li>
 
               <li class="pb-0">
                 <span>Jumlah Keseluruhan</span>
-                <span><?=$order->total_price?></span>
+                <span>RM<?=$orderItem->order->total_price?></span>
               </li>
             </ul>
           </div>

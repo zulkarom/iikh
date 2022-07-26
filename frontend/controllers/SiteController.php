@@ -33,7 +33,7 @@ class SiteController extends Controller
                 // 'only' => ['logout', 'signup', 'login'],
                 'rules' => [
                     [
-                        'actions' => ['signup', 'index', 'login-ajax', 'login'],
+                        'actions' => ['signup', 'index', 'login-ajax', 'login', 'verify-email', 'request-password-reset', 'reset-password'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -159,17 +159,73 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
+        $this->layout = "//main-login";
+
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                Yii::$app->session->addFlash('success', "Pendaftaran Anda Berjaya");
-               return $this->redirect(['site/login']);
+            $model->username = $model->email;
+            if($model->signup()){
+                Yii::$app->session->addFlash('success', "Pendaftaran Anda Berjaya. Sila semak email anda untuk pengesahan akaun.");
+                return $this->redirect(['site/login']);
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionVerifyEmail($token)
+    {
+        try {
+            $model = new VerifyEmailForm($token);
+        } catch (InvalidArgumentException $e) {
+            throw new BadRequestHttpException($e->getMessage());
+        }
+        if ($model->verifyEmail()) {
+                Yii::$app->session->setFlash('success', 'Thank you, your email has been confirmed. You can now login to submit your application');
+                return $this->redirect(['/site/login']);
+        }
+        
+        Yii::$app->session->setFlash('error', 'Sorry, we are unable to verify your account with provided token.');
+        return $this->redirect(['/site/login']);
+    }
+
+    public function actionRequestPasswordReset()
+    {
+        $this->layout = "//main-login";
+        $model = new PasswordResetRequestForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->sendEmail()) {
+                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                
+                return $this->redirect(['/site/login']);
+            } else {
+                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
             }
         }
         
+        return $this->render('requestPasswordResetToken', [
+            'model' => $model,
+        ]);
+    }
+    
+    public function actionResetPassword($token)
+    {
         $this->layout = "//main-login";
-
-        return $this->render('signup', [
+        try {
+            $model = new ResetPasswordForm($token);
+        } catch (InvalidArgumentException $e) {
+            throw new BadRequestHttpException($e->getMessage());
+        }
+        
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
+            Yii::$app->session->setFlash('success', 'Your new password has been successfully created.');
+            
+            return $this->redirect(['/site/login']);
+        }
+        
+        return $this->render('resetPassword', [
             'model' => $model,
         ]);
     }

@@ -418,6 +418,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                                       <ul>
                                         <li><span id="li-name"><?=$order->fullname?></span></li>
                                         <li><span id="li-email"><?=$order->email?></li>
+                                        <?php if($orderAddress){?>  
                                         <li>
                                           <span id="li-address"><?=$orderAddress->address.', '?></span>
                                           <span id="li-zipcode"><?=$orderAddress->zipcode.', '?></span>
@@ -426,6 +427,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                                           <span id="li-country"><?=$orderAddress->state->negeri_name?></span>
                                         </li>
                                         <li><span id="li-phone"><?=$orderAddress->phone?></li>
+                                        <?php }?>
                                       </ul>
                                     <?php }else { ?>
                                         <ul>

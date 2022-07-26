@@ -32,7 +32,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
                   <div class="input-box">
                     
-                    <?= $form->field($model, 'username')->textInput(['id' => 'username', 'class' => 'form-control'])->label('Email') ?>
+                    <?= $form->field($model, 'email')->textInput(['id' => 'email', 'class' => 'form-control'])->label('Email') ?>
                   </div>
 
                   <div class="input-box">
@@ -45,7 +45,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   <div class="input-box">
                     <div class="icon-input">
                       
-                       <?= $form->field($model, 'password')->textInput(['id' => 'password', 'class' => 'form-control', 'type' => 'password'])->label('Ulang Kata Laluan') ?>
+                       <?= $form->field($model, 'password_repeat')->textInput(['id' => 'password_repeat', 'class' => 'form-control', 'type' => 'password'])->label('Ulang Kata Laluan') ?>
                     </div>
                   </div>
 

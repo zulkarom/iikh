@@ -14,6 +14,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $password_repeat;
     public $fullname;
 
 
@@ -24,7 +25,7 @@ class SignupForm extends Model
     {
         return [
             ['username', 'trim'],
-            [['username', 'fullname'], 'required', 'on' => 'register'],
+            [['username', 'fullname', 'password', 'password_repeat'],'required'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
@@ -38,6 +39,11 @@ class SignupForm extends Model
 
             // ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+
+            ['password_repeat', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+
+            ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match" ],
+
         ];
     }
 
@@ -46,31 +52,23 @@ class SignupForm extends Model
      *
      * @return bool whether the creating new account was successful and email was sent
      */
-    public function signup($batch)
+    public function signup()
     {
         if (!$this->validate()) {
             return null;
         }
         
         $user = new User();
-        $user->username = $this->username;
-        $user->can_name = $this->fullname;
-        $user->status = 10;
+        $user->fullname = $this->fullname;
+        $user->username = $this->email;
+        $user->email = $this->email;
+        $user->setPassword($this->password);
         $user->generateAuthKey();
-
-        if($user->save()){
-            $modelAnswer = new Answer();
-            $modelAnswer->can_id = $user->id;
-            $modelAnswer->bat_id = $batch;
-            for($i=1;$i<=120;$i++){
-                $q = 'q'.$i;
-                $modelAnswer->$q = '-1';
-            }
-            $modelAnswer->save();
-        }
-        return true;
+        $user->generateEmailVerificationToken();
+        return $user->save() && $this->sendEmail($user);
+        
     }
-
+    
     /**
      * Sends confirmation email to user
      * @param User $user user model to with email should be send
@@ -79,12 +77,12 @@ class SignupForm extends Model
     protected function sendEmail($user)
     {
         return Yii::$app
-            ->mailer
-            ->compose(
-                ['html' => 'emailVerify-html', 'text' => 'emailVerify-text'],
-                ['user' => $user]
+        ->mailer
+        ->compose(
+            ['html' => 'emailVerify-html', 'text' => 'emailVerify-text'],
+            ['user' => $user]
             )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->params['senderName']])
             ->setTo($this->email)
             ->setSubject('Account registration at ' . Yii::$app->name)
             ->send();

@@ -39,13 +39,13 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab" aria-controls="orders" aria-selected="false">
-                      Orders
+                      Pesanan
                       <span><i data-feather="chevron-right"></i></span>
                     </button>
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
-                      Profile
+                      Profil
                       <span><i data-feather="chevron-right"></i></span>
                     </button>
                   </li>
@@ -61,8 +61,9 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                     <div class="title-box3">
                       <h3>Selamat Kembali <?=Yii::$app->user->identity->fullname?></h3>
                       <p>
-                        Welcome back <?=Yii::$app->user->identity->fullname?>, here you can customize your profile and also track your order also, you can access your saved address and card. if you want change setting you can
-                        do it from here
+                        Disini anda boleh kemaskini profil dan juga menjejaki pesanan anda. Anda juga boleh mengakses alamat anda yang disimpan. Jika anda mahu menukar tetapan anda boleh melakukannya disini.
+
+
                       </p>
                     </div>
 
@@ -70,15 +71,15 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                       <div class="col-sm-6 col-xl-4">
                         <a href="javascript:void(0)" data-class="orders" class="tab-box">
                           <img src="<?=$dirAsset?>/icons/svg/1.svg" alt="shopping bag" />
-                          <h5>Orders</h5>
-                          <p>See order history of previous orders</p>
+                          <h5>Pesanan</h5>
+                          <p>Lihat sejarah pesanan anda.</p>
                         </a>
                       </div>
                       <div class="col-sm-6 col-xl-4">
                         <a href="javascript:void(0)" data-class="profile" class="tab-box">
                           <img src="<?=$dirAsset?>/icons/svg/5.svg" alt="profile" />
-                          <h5>Profile</h5>
-                          <p>Complete your profile details there are some Information missing</p>
+                          <h5>Profil</h5>
+                          <p>Lengkapkan butiran profil anda.</p>
                         </a>
                       </div>
                     </div>
@@ -90,8 +91,8 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                 <div class="tab-pane" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                   <div class="cart-wrap order-content">
                     <div class="title-box3">
-                      <h3>My Orders</h3>
-                      <p>H thanks for placing a delivery order with Oslo! Your order should be home with you in soon</p>
+                      <h3>Pesanan Saya</h3>
+                      <p>Terima kasih kerana membuat pesanan penghantaran dengan Ikhtiar! Pesanan anda akan sampai ke rumah anda tidak lama lagi</p>
                     </div>
 
                     <div class="container">        

@@ -32,31 +32,31 @@ use yii\helpers\Url;
                       <ul class="navbar-nav">
                         <!-- Home -->
                         <li class="nav-item dropdown dropdown-mega">
-                          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Home</a>
+                          <a class="nav-link" href="<?php echo Url::to(['site/index'])?>">Home</a>
                           
                         </li>
 
                         <!-- Shop -->
                         <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About</a>
+                          <a class="nav-link" href="<?=Url::to(['/page/about'])?>">About</a>
                           
                         </li>
 
                         <!-- Product -->
                         <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Catalog</a>
+                          <a class="nav-link" href="<?=Url::to(['/page/catalog'])?>">Catalog</a>
                           
                         </li>
 
                         <!-- Oslo Plus -->
                         <li class="nav-item dropdown dropdown-mega">
-                          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Be our partner</a>
+                          <a class="nav-link" href="<?=Url::to(['/page/be-our-partner'])?>">Be our partner</a>
                           
                         </li>
 
                         <!-- Pages -->
                         <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Contact Us</a>
+                          <a class="nav-link" href="<?=Url::to(['/page/contact-us'])?>">Contact Us</a>
                           
                         </li>
 

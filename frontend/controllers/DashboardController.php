@@ -16,6 +16,24 @@ use frontend\models\OrderSearch;
 class DashboardController extends Controller
 {
     public $layout = '//main';
+
+     /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
        
     public function actionIndex()
     {
@@ -35,7 +53,7 @@ class DashboardController extends Controller
 
             $transaction = Yii::$app->db->beginTransaction();
             try {
-                
+                $user->username = $user->email;
                 if($flag = $user->save()){
                         $userAddress->user_id = $user_id;
                         if(!$userAddress->save()){
@@ -51,15 +69,11 @@ class DashboardController extends Controller
                 if($flag){
                     $transaction->commit();
                     
-                    // $order->sendEmailToCustomer();
-                    //$order->sendEmailToVendor();
-                    // $billpage =  $this->createBill($order);
-                    //echo $billpage;die();
-                    return $this->redirect(['product/thanks', 'order_id' => $order->id]);
-                    //header($billpage);
+                    Yii::$app->session->addFlash('success', "Kemaskini profil berjaya");
+                    return $this->redirect('index');
                     exit;
                 }else{
-                    Yii::$app->session->addFlash('error', "Sorry, failed to create order!");
+                    Yii::$app->session->addFlash('error', "Harap Maaf, kemaskini profil tidak berjaya");
                     
                 }
                 

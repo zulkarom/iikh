@@ -385,9 +385,9 @@ $urlHome = Url::to(['/product/index']);
       <section class="pb-0 ratio_asos">
         <div class="container-lg">
           <div class="title-box">
-            <h2 class="unique-heading">PRODUCTS</h2>
+            <h2 class="unique-heading">PRODUK</h2>
             <span class="title-divider1"><span class="squre"></span><span class="squre"></span></span>
-            <p>The best ways to change your summer wardrobe into autumn wardrobe.</p>
+            <p>2i+Honey terdiri daripada campuran bahan asli madu tualang, pati delima, minyak habbatus’sauda dan minyak zaitun</p>
           </div>
 
           <div class="swiper product-slider">
@@ -397,47 +397,13 @@ $urlHome = Url::to(['/product/index']);
                   <div class="img-box">
                     <!-- Thumbnail -->
                     <ul class="thumbnail-img">
-                      <li class=""><h4>Quick Buy</h4></li>
+                      <li class=""><a href="<?=$urlHome?>"><h4>Quick Buy</h4></a></li>
                     </ul>
 
-                    <a href="product.html" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-1.jpg" alt="product" /> </a>
+                    <a href="<?=$urlHome?>" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-1.jpg" alt="product" /> </a>
 
-                    <!-- Rating -->
-                    <div class="rating">
-                      <span>4.5 <i data-feather="star"></i> </span>
-                      <span>185</span>
-                    </div>
-
-                    <!-- Option -->
-                    <ul class="option-wrap">
-                      <li>
-                        <a href="javascript:void(0)" class="wishlist-btn">
-                          <i data-feather="heart"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="compare.html"><i data-feather="repeat"></i></a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#viewModal">
-                          <i data-feather="eye"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" class="addtocart-btn"> <i data-feather="shopping-bag"></i> </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <!-- Content Box -->
-                  <!-- <div class="content-box">
-                    <a href="product.html">
-                      <p>2i+Honey</p>
-                      <h5>2i+Honey</h5>
-                      <span>RM100.00</span> 
-                      <del>RM150.00</del>
-                    </a>
-                  </div> -->
+                  
+                  </div>                  
                 </div>
               </div>
 
@@ -446,47 +412,12 @@ $urlHome = Url::to(['/product/index']);
                   <div class="img-box">
                     <!-- Thumbnail -->
                     <ul class="thumbnail-img">
-                      <li class=""><h4>Quick Buy</h4></li>
+                      <li class=""><a href="<?=$urlHome?>"><h4>Quick Buy</h4></a></li>
                     </ul>
 
-                    <a href="product.html" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-2.jpg" alt="product" /> </a>
+                    <a href="<?=$urlHome?>" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-2.jpg" alt="product" /> </a>
 
-                    <!-- Rating -->
-                    <div class="rating">
-                      <span>4.5 <i data-feather="star"></i> </span>
-                      <span>185</span>
-                    </div>
-
-                    <!-- Option -->
-                    <ul class="option-wrap">
-                      <li>
-                        <a href="javascript:void(0)" class="wishlist-btn">
-                          <i data-feather="heart"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="compare.html"><i data-feather="repeat"></i></a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#viewModal">
-                          <i data-feather="eye"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" class="addtocart-btn"> <i data-feather="shopping-bag"></i> </a>
-                      </li>
-                    </ul>
                   </div>
-
-                  <!-- Content Box -->
-                  <!-- <div class="content-box">
-                    <a href="product.html">
-                      <p>2i+Honey</p>
-                      <h5>2i+Honey</h5>
-                      <span>RM100.00</span> 
-                      <del>RM150.00</del>
-                    </a>
-                  </div> -->
                 </div>
               </div>
 
@@ -495,47 +426,13 @@ $urlHome = Url::to(['/product/index']);
                   <div class="img-box">
                     <!-- Thumbnail -->
                     <ul class="thumbnail-img">
-                      <li class=""><h4>Quick Buy</h4></li>
+                      <li class=""><a href="<?=$urlHome?>"><h4>Quick Buy</h4></a></li>
                     </ul>
 
-                    <a href="product.html" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-3.jpg" alt="product" /> </a>
+                    <a href="<?=$urlHome?>" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-3.jpg" alt="product" /> </a>
 
-                    <!-- Rating -->
-                    <div class="rating">
-                      <span>4.5 <i data-feather="star"></i> </span>
-                      <span>185</span>
-                    </div>
-
-                    <!-- Option -->
-                    <ul class="option-wrap">
-                      <li>
-                        <a href="javascript:void(0)" class="wishlist-btn">
-                          <i data-feather="heart"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="compare.html"><i data-feather="repeat"></i></a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#viewModal">
-                          <i data-feather="eye"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" class="addtocart-btn"> <i data-feather="shopping-bag"></i> </a>
-                      </li>
-                    </ul>
                   </div>
 
-                  <!-- Content Box -->
-                  <!-- <div class="content-box">
-                    <a href="product.html">
-                      <p>2i+Honey</p>
-                      <h5>2i+Honey</h5>
-                      <span>RM100.00</span> 
-                      <del>RM150.00</del>
-                    </a>
-                  </div> -->
                 </div>
               </div>
 
@@ -544,47 +441,12 @@ $urlHome = Url::to(['/product/index']);
                   <div class="img-box">
                     <!-- Thumbnail -->
                     <ul class="thumbnail-img">
-                      <li class=""><h4>Quick Buy</h4></li>
+                      <li class=""><a href="<?=$urlHome?>"><h4>Quick Buy</h4></a></li>
                     </ul>
 
-                    <a href="product.html" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-4.jpg" alt="product" /> </a>
+                    <a href="<?=$urlHome?>" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-4.jpg" alt="product" /> </a>
 
-                    <!-- Rating -->
-                    <div class="rating">
-                      <span>4.5 <i data-feather="star"></i> </span>
-                      <span>185</span>
-                    </div>
-
-                    <!-- Option -->
-                    <ul class="option-wrap">
-                      <li>
-                        <a href="javascript:void(0)" class="wishlist-btn">
-                          <i data-feather="heart"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="compare.html"><i data-feather="repeat"></i></a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#viewModal">
-                          <i data-feather="eye"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" class="addtocart-btn"> <i data-feather="shopping-bag"></i> </a>
-                      </li>
-                    </ul>
                   </div>
-
-                  <!-- Content Box -->
-                  <!-- <div class="content-box">
-                    <a href="product.html">
-                      <p>2i+Honey</p>
-                      <h5>2i+Honey</h5>
-                      <span>RM100.00</span> 
-                      <del>RM150.00</del>
-                    </a>
-                  </div> -->
                 </div>
               </div>
 
@@ -593,103 +455,16 @@ $urlHome = Url::to(['/product/index']);
                   <div class="img-box">
                     <!-- Thumbnail -->
                     <ul class="thumbnail-img">
-                      <li class=""><h4>Quick Buy</h4></li>
+                      <li class=""><a href="<?=$urlHome?>"><h4>Quick Buy</h4></a></li>
                     </ul>
 
-                    <a href="product.html" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-2.jpg" alt="product" /> </a>
+                    <a href="<?=$urlHome?>" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-2.jpg" alt="product" /> </a>
 
-                    <!-- Rating -->
-                    <div class="rating">
-                      <span>4.5 <i data-feather="star"></i> </span>
-                      <span>185</span>
-                    </div>
-
-                    <!-- Option -->
-                    <ul class="option-wrap">
-                      <li>
-                        <a href="javascript:void(0)" class="wishlist-btn">
-                          <i data-feather="heart"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="compare.html"><i data-feather="repeat"></i></a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#viewModal">
-                          <i data-feather="eye"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" class="addtocart-btn"> <i data-feather="shopping-bag"></i> </a>
-                      </li>
-                    </ul>
                   </div>
 
-                  <!-- Content Box -->
-                  <!-- <div class="content-box">
-                    <a href="product.html">
-                      <p>2i+Honey</p>
-                      <h5>2i+Honey</h5>
-                      <span>RM100.00</span> 
-                      <del>RM150.00</del>
-                    </a>
-                  </div> -->
                 </div>
               </div>
 
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="img-box">
-                    <!-- Thumbnail -->
-                    <ul class="thumbnail-img">
-                      <li class="active thumb"><img src="<?=$dirAsset?>/images/fashion/product/front/7.jpg" alt="thumbnail" /></li>
-                      <li class="thumb"><img src="<?=$dirAsset?>/images/fashion/product/front/7-1.jpg" alt="thumbnail" /></li>
-                      <li class="thumb"><img src="<?=$dirAsset?>/images/fashion/product/front/7-2.jpg" alt="thumbnail" /></li>
-                      <li class="thumb"><img src="<?=$dirAsset?>/images/fashion/product/front/7-3.jpg" alt="thumbnail" /></li>
-                    </ul>
-
-                    <a href="product.html" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/fashion/product/new-arrived/3.jpg" alt="product" /> </a>
-
-                    <!-- Arrow label -->
-                    <span class="arrow-label-wrap"> <span class="arrow-label bg-theme-sun"> NEW</span> </span>
-
-                    <!-- Rating -->
-                    <div class="rating">
-                      <span>4.5 <i data-feather="star"></i> </span>
-                      <span>152</span>
-                    </div>
-
-                    <!-- Option -->
-                    <ul class="option-wrap">
-                      <li>
-                        <a href="javascript:void(0)" class="wishlist-btn">
-                          <i data-feather="heart"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="compare.html"><i data-feather="repeat"></i></a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#viewModal">
-                          <i data-feather="eye"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" class="addtocart-btn"> <i data-feather="shopping-bag"></i> </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <!-- Content Box -->
-                  <div class="content-box">
-                    <a href="product.html">
-                      <p>FableStreet</p>
-                      <h5>Comfort Loose Fit Trousers</h5>
-                      <span>$120.00</span> <del>$140.00</del>
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -37,7 +37,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                     </div>
                   </div>
 
-                  <a class="forgot-link" href="forgot-password.html">Forgot Password?</a>
+                  <a class="forgot-link" href="<?php echo Url::to(['site/request-password-reset'])?>">Forgot Password?</a>
                   <?= Html::submitButton('Log Masuk <i class="arrow"></i>', ['class' => 'btn-solid rounded-pill line-none']) ?>
 
                   <a href="<?php echo Url::to(['site/index'])?>" class="btn-solid rounded-pill line-none btn-outline mt-3 d-flex justify-content-center">Home <i class="arrow"></i></a>
