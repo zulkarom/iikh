@@ -194,7 +194,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
               </div>
 
                       <div class="btn-box">
-                        <?= Html::submitButton('Simpan Maklumat <i class="arrow"></i>', ['class' => 'btn-solid btn-sm']) ?>
+                        <?= Html::submitButton('Simpan Maklumat <i class="arrow"></i>', ['id' => 'btn-submit', 'class' => 'btn-solid btn-sm']) ?>
                       </div>
                     <?php ActiveForm::end(); ?>
                   </div>
@@ -210,3 +210,19 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
       <!-- Dashboard End -->
     </main>
     <!-- Main End -->
+
+
+<?php
+
+$this->registerJs("
+
+$('#btn-submit').click(function(){
+  $('#dashboard-tab').removeClass('active');
+    $('#profile-tab').addClass('active');
+
+    // $('#profile').addClass('active');
+});
+
+");
+?>
+

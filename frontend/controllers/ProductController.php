@@ -48,10 +48,11 @@ class ProductController extends Controller
         //Check if user login
         if(!Yii::$app->user->isGuest){
             $user = Yii::$app->user->identity;
+            $order->fullname = $user->fullname;
+            $order->email = $user->email;
             if($user->defaultAddress){
                 $address = $user->defaultAddress;
-                $order->fullname = $user->fullname;
-                $order->email = $user->email;
+                
                 $orderAddress->address = $address->address;
                 $orderAddress->city = $address->city;
                 $orderAddress->zipcode = $address->zipcode;

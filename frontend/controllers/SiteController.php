@@ -117,6 +117,11 @@ class SiteController extends Controller
                     'zipcode' => $userAddress->zipcode,
                     'phone' => $userAddress->phone,
                 ];
+            }else{
+                $out=[
+                    'fullname' => Yii::$app->user->identity->fullname,
+                    'email' => Yii::$app->user->identity->username,
+                ];
             }
 
             

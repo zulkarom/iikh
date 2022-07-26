@@ -418,16 +418,16 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                                       <ul>
                                         <li><span id="li-name"><?=$order->fullname?></span></li>
                                         <li><span id="li-email"><?=$order->email?></li>
-                                        <?php if($orderAddress){?>  
+                                         
                                         <li>
-                                          <span id="li-address"><?=$orderAddress->address.', '?></span>
-                                          <span id="li-zipcode"><?=$orderAddress->zipcode.', '?></span>
-                                          <span id="li-city"><?=$orderAddress->city.', '?></span>
-                                          <span id="li-state"><?=$orderAddress->state->negeri_name.', '?></span>
-                                          <span id="li-country"><?=$orderAddress->state->negeri_name?></span>
+                                          <span id="li-address"><?=($orderAddress->address ? $orderAddress->address :'').', '?></span>
+                                          <span id="li-zipcode"><?=($orderAddress->zipcode ? $orderAddress->zipcode :'').', '?></span>
+                                          <span id="li-city"><?=($orderAddress->city ? $orderAddress->city :'').', '?></span>
+                                          <span id="li-state"><?=($orderAddress->state ? $orderAddress->stateName :'').', '?></span>
+                                          <span id="li-country"><?=($orderAddress->country ? $orderAddress->countryName :'')?></span>
                                         </li>
-                                        <li><span id="li-phone"><?=$orderAddress->phone?></li>
-                                        <?php }?>
+                                        <li><span id="li-phone"><?=($orderAddress->phone ? $orderAddress->phone :'')?></li>
+                                        
                                       </ul>
                                     <?php }else { ?>
                                         <ul>
