@@ -49,13 +49,6 @@ class Product extends \yii\db\ActiveRecord
         return 'ecm_products';
     }
 
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::class,
-            BlameableBehavior::class
-        ];
-    }
 
     /**
      * {@inheritdoc}
@@ -64,14 +57,14 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'price', 'status', 'stock', 'weight', 'category_id', 'seller_id'], 'required', 'on' => 'create'],
-            [['name', 'price', 'status', 'category_id', 'company_id'], 'required', 'on' => 'common_create'],
+            [['name', 'price', 'status', 'category_id'], 'required', 'on' => 'common_create'],
             [['description'], 'string'],
             [['price', 'ship_cost', 'weight'], 'number'],
             [['imageFile'], 'image', 'extensions' => 'png, jpg, jpeg, webp', 'maxSize' => 10 * 1024 * 1024],
             [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'item_order', 'stock', 'ship_free'], 'integer'],
             [['name'], 'string', 'max' => 255],
             [['image'], 'string', 'max' => 2000],
-            [['company_id', 'is_gshoppe', 'category_id'], 'integer'],
+            [['category_id'], 'integer'],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
             [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
         ];
@@ -86,7 +79,6 @@ class Product extends \yii\db\ActiveRecord
             'id' => 'Product ID',
             'name' => 'Product Name',
             'seller_id' => 'Seller',
-            'company_id' => 'Company',
             'weight' => 'Weight (kg)',
             'description' => 'Description',
             'image' => 'Product Image',
@@ -126,15 +118,11 @@ class Product extends \yii\db\ActiveRecord
         }
     }
 
-    /**
-     * Gets query for [[CartItem]].
-     *
-     * @return \yii\db\ActiveQuery|\backend\modules\shop\models\query\CartItemQuery
-     */
-    public function getCartItems()
+    public function getCategory()
     {
-        return $this->hasMany(CartItem::className(), ['product_id' => 'id']);
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
+
 
     /**
      * Gets query for [[OrderItem]].
@@ -146,11 +134,6 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasMany(OrderItem::className(), ['product_id' => 'id']);
     }
     
-    public function getImages()
-    {
-        return $this->hasMany(ProductImage::className(), ['product_id' => 'id']);
-    }
-
     /**
      * Gets query for [[CreatedBy]].
      *
@@ -160,22 +143,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
-    
-    public function getSeller()
-    {
-        return $this->hasOne(Seller::className(), ['id' => 'seller_id']);
-    }
-    
-    public function getCategory()
-    {
-        return $this->hasOne(Category::className(), ['id' => 'category_id']);
-    }
-
-    public function getCompany()
-    {
-        return $this->hasOne(Company::className(), ['id' => 'company_id']);
-    }
-
+   
     /**
      * Gets query for [[UpdatedBy]].
      *
@@ -184,53 +152,6 @@ class Product extends \yii\db\ActiveRecord
     public function getUpdatedBy()
     {
         return $this->hasOne(User::className(), ['id' => 'updated_by']);
-    }
-
-    /**
-     * {@inheritdoc}
-     * @return \backend\modules\shop\models\query\ProductQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \backend\modules\shop\models\query\ProductQuery(get_called_class());
-    }
-
-    public function save($runValidation = true, $attributeNames = null)
-    {
-        if ($this->imageFile) {
-            $this->image = '/products/' . Yii::$app->security->generateRandomString() . '/' . $this->imageFile->name;
-        }
-
-        $transaction = Yii::$app->db->beginTransaction();
-        $ok = parent::save($runValidation, $attributeNames);
-
-        if ($ok && $this->imageFile) {
-            $fullPath = Yii::getAlias('@website/web/storage' . $this->image);
-            $dir = dirname($fullPath);
-            if (!FileHelper::createDirectory($dir) | !$this->imageFile->saveAs($fullPath)) {
-                $transaction->rollBack();
-
-                return false;
-            }
-        }
-
-        $transaction->commit();
-
-        return $ok;
-    }
-
-    public function getImageUrl()
-    {
-        return self::formatImageUrl($this->image);
-    }
-
-    public static function formatImageUrl($imagePath)
-    {
-        if ($imagePath) {
-            return Yii::$app->params['frontendUrl'] . '/storage' . $imagePath;
-        }
-
-        return Yii::$app->params['frontendUrl'] . '/img/no_image_available.png';
     }
     
     public function getDefaultImageId(){
@@ -252,14 +173,7 @@ class Product extends \yii\db\ActiveRecord
         return \yii\helpers\StringHelper::truncateWords(strip_tags($this->description), 30);
     }
 
-    public function afterDelete()
-    {
-        parent::afterDelete();
-        if ($this->image) {
-            $dir = Yii::getAlias('@website/web/storage'). dirname($this->image);
-            FileHelper::removeDirectory($dir);
-        }
-    }
+   
     
     public function getProductAttributes(){
          return $this->hasMany(ProductAttribute::className(), ['product_id' => 'id']);
@@ -363,18 +277,8 @@ class Product extends \yii\db\ActiveRecord
     public function getShipping(){
         return $this->shippingOptions[$this->ship_free];
     }
-	
-	public static function getProductPriceAndStock($id, $attr = false){
-	    if($attr){
-	        $result = ProductPrice::findOne(['product_id' => $id, 'attr_mix' => $attr]);
-	        if(!$result){
-	            $result = self::find()->id($id)->published()->one();
-	        }
-	    }else{
-	        $result = self::find()->id($id)->published()->one();
-	    }
-	    return $result;
-	}
+    
+    
 
     public function flashError(){
         if($this->getErrors()){

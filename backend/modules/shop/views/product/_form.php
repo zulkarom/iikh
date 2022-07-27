@@ -14,19 +14,15 @@ use backend\modules\shop\models\Company;
 ?>
 
 
- <div class="box">
-<div class="box-header"></div>
-<div class="box-body">
+ <div class="card">
+
+<div class="card-body">
 
 
 <div class="product-form">
 
     <?php $form = ActiveForm::begin(); ?>
-    
-    <div class="row">
-	<div class="col-md-6"> <?= $form->field($model, 'company_id')->dropDownList(ArrayHelper::map(Company::find()->all(),'id', 'company_name'))?></div>
-	<div class="col-md-6"> <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->all(),'id', 'category_name'))?></div>
-</div>
+
     
     <div class="row">
 	<div class="col-md-6"><?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?></div>

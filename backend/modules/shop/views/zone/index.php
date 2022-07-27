@@ -15,9 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('New Shipping Zone', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
- <div class="box">
-<div class="box-header"></div>
-<div class="box-body">
+ <div class="card">
+
+<div class="card-body">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [

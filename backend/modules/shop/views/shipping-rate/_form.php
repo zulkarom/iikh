@@ -9,7 +9,7 @@ use kartik\widgets\ActiveForm;
 ?>
 
  <div class="card">
-<div class="card-header"></div>
+
 <div class="card-body">
 
 <div class="shipping-rate-form">

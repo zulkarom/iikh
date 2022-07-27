@@ -3,9 +3,12 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Url;
+use backend\modules\shop\models\Product;
 
 $this->title = 'Ikhtiar';
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
+
+$product = Product::findOne(1);
 
 $urlHome = Url::to(['/product/index']);
 ?>
@@ -32,7 +35,7 @@ $urlHome = Url::to(['/product/index']);
 
                 <div class="content-box">
                   <h1 class="heading">
-                     <strong> <span> 2i+Honey <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
+                     <strong> <span> <?=$product->name?> <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
                   </h1>
                   <p>Adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.</p>
                   <a href="<?=$urlHome?>" class="btn-solid">SHOP <i class="arrow"></i></a>
@@ -50,8 +53,8 @@ $urlHome = Url::to(['/product/index']);
                       </div>
                       <div class="content">
                         <a href="product.html">
-                          <h5>2i+Honey <span>Description</span></h5>
-                          <h6>RM100</h6>
+                          <h5><?=$product->name?> <span>Description</span></h5>
+                          <h6>RM<?=$product->price?></h6>
                         </a>
                       </div>
                     </div>
@@ -62,8 +65,8 @@ $urlHome = Url::to(['/product/index']);
                       </div>
                       <div class="content">
                         <a href="product.html">
-                          <h5>2i+Honey <span>Description</span></h5>
-                          <h6>RM100</h6>
+                          <h5><?=$product->name?> <span>Description</span></h5>
+                          <h6>RM<?=$product->price?></h6>
                         </a>
                       </div>
                     </div>
@@ -85,7 +88,7 @@ $urlHome = Url::to(['/product/index']);
 
                 <div class="content-box">
                   <h1 class="heading">
-                     <strong> <span> 2i+Honey <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
+                     <strong> <span> <?=$product->name?> <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
                   </h1>
                   <p>Adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.</p>
                   <a href="<?=$urlHome?>" class="btn-solid">SHOP <i class="arrow"></i></a>
@@ -103,8 +106,8 @@ $urlHome = Url::to(['/product/index']);
                       </div>
                       <div class="content">
                         <a href="product.html">
-                          <h5>2i+Honey <span>Description</span></h5>
-                          <h6>RM100</h6>
+                          <h5><?=$product->name?> <span>Description</span></h5>
+                          <h6>RM<?=$product->price?></h6>
                         </a>
                       </div>
                     </div>
@@ -115,8 +118,8 @@ $urlHome = Url::to(['/product/index']);
                       </div>
                       <div class="content">
                         <a href="product.html">
-                          <h5>2i+Honey <span>Description</span></h5>
-                          <h6>RM100</h6>
+                          <h5><?=$product->name?> <span>Description</span></h5>
+                          <h6>RM<?=$product->price?></h6>
                         </a>
                       </div>
                     </div>
@@ -138,7 +141,7 @@ $urlHome = Url::to(['/product/index']);
 
                 <div class="content-box">
                   <h1 class="heading">
-                     <strong> <span> 2i+Honey <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
+                     <strong> <span> <?=$product->name?> <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
                   </h1>
                   <p>Adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.</p>
                   <a href="<?=$urlHome?>" class="btn-solid">SHOP <i class="arrow"></i></a>
@@ -156,8 +159,8 @@ $urlHome = Url::to(['/product/index']);
                       </div>
                       <div class="content">
                         <a href="product.html">
-                          <h5>2i+Honey <span>Description</span></h5>
-                          <h6>RM100</h6>
+                          <h5><?=$product->name?> <span>Description</span></h5>
+                          <h6>RM<?=$product->price?></h6>
                         </a>
                       </div>
                     </div>
@@ -168,8 +171,8 @@ $urlHome = Url::to(['/product/index']);
                       </div>
                       <div class="content">
                         <a href="product.html">
-                          <h5>2i+Honey <span>Description</span></h5>
-                          <h6>RM100</h6>
+                          <h5><?=$product->name?> <span>Description</span></h5>
+                          <h6>RM<?=$product->price?></h6>
                         </a>
                       </div>
                     </div>
@@ -193,7 +196,7 @@ $urlHome = Url::to(['/product/index']);
       <section class="detail-card-section ratio_asos pb-0 wow-section-overflow">
         <div class="container-lg">
           <div class="top-heading">
-            <p><h4><strong>Amalkan 2i+Honey Untuk Hidup Sihat</strong></h4></p>
+            <p><h4><strong>Amalkan <?=$product->name?> Untuk Hidup Sihat</strong></h4></p>
             <!-- <span>Ralph Lauren</span> -->
           </div>
           <div class="row gy-4 g-2 g-sm-3 g-xl-4">
@@ -233,7 +236,7 @@ $urlHome = Url::to(['/product/index']);
                 <div class="content-box">
                   <a href="shop-left-sidebar.html">
                     <!-- <h3>Montes Loremous A Cosmopolite</h3> -->
-                    <p>Kini, beliau ingin berkongsi manfaat produk 2i+Honey ini bagi membantu orang ramai yang mempunyai masalah kesihatan untuk turut sama merasai nikmat hidup yang sihat.
+                    <p>Kini, beliau ingin berkongsi manfaat produk <?=$product->name?> ini bagi membantu orang ramai yang mempunyai masalah kesihatan untuk turut sama merasai nikmat hidup yang sihat.
 </p></a
                   >
                 </div>
@@ -387,7 +390,7 @@ $urlHome = Url::to(['/product/index']);
           <div class="title-box">
             <h2 class="unique-heading">PRODUK</h2>
             <span class="title-divider1"><span class="squre"></span><span class="squre"></span></span>
-            <p>2i+Honey terdiri daripada campuran bahan asli madu tualang, pati delima, minyak habbatus’sauda dan minyak zaitun</p>
+            <p><?=$product->name?> terdiri daripada campuran bahan asli madu tualang, pati delima, minyak habbatus’sauda dan minyak zaitun</p>
           </div>
 
           <div class="swiper product-slider">

@@ -35,7 +35,7 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => 'No. Kad Pengenalan',
+            'username' => 'Email',
         ];
     }
 

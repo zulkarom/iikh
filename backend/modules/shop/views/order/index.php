@@ -13,9 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
- <div class="box">
-<div class="box-header"></div>
-<div class="box-body">
+ <div class="card">
+<div class="card-body">
 
 
 

@@ -7,7 +7,7 @@
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 
-$this->title = 'Request password reset';
+$this->title = 'Tetapan semula kata laluan';
 $this->params['breadcrumbs'][] = $this->title;
 
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
@@ -18,7 +18,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
       <div>
         <h5><?= Html::encode($this->title) ?> <span class="bg-theme-blue"></span></h5>
 
-        <p>Please fill out your email. A link to reset password will be sent there.</p>
+        <p>Sila isi maklumat email anda. Pautan untuk set semula kata laluan akan dihantar ke sana.</p>
 
 
         <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
@@ -26,7 +26,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
         <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Send', ['class' => 'btn-solid rounded-pill line-none']) ?>
         </div>
 
     <?php ActiveForm::end(); ?>

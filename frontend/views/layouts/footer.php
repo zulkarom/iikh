@@ -1,3 +1,7 @@
+<?php 
+use yii\helpers\Url;
+?>
+
 <footer class="footer-document ratio_asos mb-xxl">
       <div class="bg-footer-l">
         <img src="<?=$dirAsset?>/images/fashion/banner/bg-footer-l.png" alt="banner" />
@@ -9,7 +13,7 @@
         <div class="container-lg">
           <div class="main-footer">
             <div class="row gy-3 gy-md-4 gy-xl-0">
-              <div class="col-xl-3 col-lg-4 col-md-6">
+              <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="content-box">
                   <img class="logo" src="<?=$dirAsset?>/images/ikhtiar/logo/logo.png" alt="logo-white" />
                   <ul>
@@ -38,20 +42,20 @@
                 </div>
               </div> -->
 
-              <div class="nav-footer col-xl-2 col-lg-3 col-md-4 order-md-4 order-lg-3">
+              <div class="nav-footer col-xl-3 col-lg-3 col-md-4 order-md-4 order-lg-3">
                 <div class="nav d-md-block content-box">
                   <h5 class="heading-footer">Information</h5>
                   <ul>
-                    <li><a class="nav" href="index.html">Home </a></li>
-                    <li><a class="nav" href="shop-left-sidebar.html">About </a></li>
-                    <li><a class="nav" href="about-us.html">Catalog</a></li>
-                    <li><a class="nav" href="blog-detail.html">Be Our Partner </a></li>
-                    <li><a class="nav" href="contact-us.html">Contact Us </a></li>
+                    <li><a class="nav" href="<?php echo Url::to(['site/index'])?>">Home </a></li>
+                    <li><a class="nav" href="<?php echo Url::to(['page/about'])?><?php echo Url::to(['site/index'])?>">About </a></li>
+                    <li><a class="nav" href="<?php echo Url::to(['page/catalog'])?>">Catalog</a></li>
+                    <li><a class="nav" href="<?php echo Url::to(['page/be-our-partner'])?>">Be Our Partner </a></li>
+                    <li><a class="nav" href="<?php echo Url::to(['page/contact-us'])?>">Contact Us </a></li>
                   </ul>
                 </div>
               </div>
 
-              <div class="nav-footer col-xl-2 col-lg-3 col-md-4 order-md-5 order-lg-4">
+              <!-- <div class="nav-footer col-xl-2 col-lg-3 col-md-4 order-md-5 order-lg-4">
                 <div class="nav d-md-block content-box">
                   <h5 class="heading-footer">Get Help</h5>
                   <ul>
@@ -63,7 +67,7 @@
                     <li><a class="nav" href="faqs.html">Faqs</a></li>
                   </ul>
                 </div>
-              </div>
+              </div> -->
 
               <div class="col-xl-3 col-md-6 col-lg-4 order-md-2 order-lg-5">
                 <div class="content-box">

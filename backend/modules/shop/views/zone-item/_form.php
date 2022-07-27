@@ -11,9 +11,8 @@ use backend\models\Negeri;
 /* @var $model backend\modules\shop\models\ZoneCost */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-	 <div class="box">
-<div class="box-header"></div>
-<div class="box-body">
+	 <div class="card">
+<div class="card-body">
 
 <div class="row">
 	<div class="col-md-6">

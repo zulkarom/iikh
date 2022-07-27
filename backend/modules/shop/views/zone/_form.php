@@ -8,9 +8,9 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
- <div class="box">
-<div class="box-header"></div>
-<div class="box-body">
+ <div class="card">
+
+<div class="card-body">
 
 <div class="zone-form">
 

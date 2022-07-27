@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
     
      <div class="card">
-<div class="card-header"></div>
+
 <div class="card-body">
 
     <?= GridView::widget([

@@ -16,9 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="product-index">
 
 
-    <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!-- <p> -->
+        <?php  // Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
+    <!-- </p> -->
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     
@@ -37,10 +37,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'columns' => [
-                ['class' => 'yii\grid\CheckboxColumn'],
+                /*['class' => 'yii\grid\CheckboxColumn'],*/
                 ['class' => 'yii\grid\SerialColumn'],
                 
-                [
+                /*[
                     'attribute' => 'category_id',
                     'filter' => Html::activeDropDownList($searchModel, 'category_id', ArrayHelper::map(Category::find()->all(),'id', 'category_name'), [
                         'class' => 'form-control',
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     
                     }
                     //'format' => ['orderStatus']
-                    ],
+                    ],*/
                 
                 [
                     'attribute' => 'name',
@@ -101,9 +101,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?=$form->field($searchModel, 'selected_json',['options' => ['tag' => false]])->hiddenInput(['value' => ''])->label(false)?>
 
-  <?= Html::button('<span class="glyphicon glyphicon-ok"></span> DISAPPROVE SELECTED', ['id' => 'btn-activate', 'name'=> 'actiontype', 'value' => 'approve', 'class' => 'btn btn-warning']) ?>
-
-     &nbsp;
  
 <?php ActiveForm::end(); ?>
 </div>

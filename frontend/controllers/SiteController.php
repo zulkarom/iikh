@@ -123,14 +123,19 @@ class SiteController extends Controller
                     'email' => Yii::$app->user->identity->username,
                 ];
             }
+         }else{
+            $out=[
+                'message' => 'Incorrect username or password.',
+            ];
+        }
 
             
-            // ksort($out);
+        // ksort($out);
 
-            // print_r($userAddress->user->fullname);
+        // print_r($userAddress->user->fullname);
 
-            return json_encode($out);
-        }
+        return json_encode($out);
+        
        
     }
 
@@ -148,7 +153,12 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             Yii::$app->session->addFlash('success', "Anda telah berjaya log masuk.");
-            return $this->goHome();
+            if(Yii::$app->user->identity->defaultAddress){
+                return $this->goHome();
+            }else{
+                return $this->redirect(['dashboard/index']);
+            }
+            
         } else {
             $this->layout = "//main-login";
             return $this->render('login', [
@@ -244,6 +254,7 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
+        Yii::$app->session->addFlash('success', "Anda telah berjaya log keluar.");
 
         return $this->redirect(['/site/index']);
     }

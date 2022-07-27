@@ -11,6 +11,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
+$web = Yii::getAlias('@web');
+
 $orderAddress = $model->orderAddress;
 ?>
 <style>
@@ -23,8 +25,8 @@ table.detail-view th {
 <div class="order-view">
 
 
- <div class="box box-solid">
-<div class="box-body">
+ <div class="card card-solid">
+<div class="card-body">
 
 
 
@@ -55,6 +57,7 @@ table.detail-view th {
             'statusLabel:html',
             'fullname',
             'email:email',
+            'tracking_no',
         ],
     ]) ?>
 	
@@ -77,7 +80,7 @@ table.detail-view th {
         <?php foreach ($model->orderItems as $item): ?>
             <tr>
                 <td>
-                    <img src="<?php echo $item->product ? $item->product->getImageUrl() : \backend\modules\shop\models\Product::formatImageUrl(null) ?>"
+                    <img src="<?= $web?>/images/product-3.jpg"
                          style="width: 50px;">
                 </td>
                 <td><?php echo $item->product_name ?>
@@ -120,7 +123,7 @@ table.detail-view th {
 
   
     <br />
-       <p> <?= Html::a('Update Status', ['update', 'id' => $model->id], [
+       <p> <?= Html::a('Update Status & Tracking', ['update', 'id' => $model->id], [
             'class' => 'btn btn-primary',
 
         ]) ?> </p>
@@ -135,8 +138,8 @@ table.detail-view th {
 	
 	    <h4>Shipping Address</h4>
     
-     <div class="box box-solid">
-<div class="box-body" style="padding:30px;">
+     <div class="card card-solid">
+<div class="card-body" style="padding:30px;">
 
 
   <b>Fullname:</b> <?=$model->fullname?> <br />
@@ -154,8 +157,8 @@ table.detail-view th {
 	
 	    <h4>Payment Information</h4>
     
-     <div class="box box-solid">
-<div class="box-body" style="padding:30px;">
+     <div class="card card-solid">
+<div class="card-body" style="padding:30px;">
 
 
   <b>Billcode:</b> <?=$model->billcode?> <br />

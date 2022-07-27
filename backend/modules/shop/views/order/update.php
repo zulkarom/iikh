@@ -12,15 +12,16 @@ $this->params['breadcrumbs'][] = ['label' => 'Order#' . $model->id, 'url' => ['v
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 
- <div class="box">
-<div class="box-header"></div>
-<div class="box-body">
+ <div class="card">
+<div class="card-body">
 
 
 
 <div class="order-update">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'tracking_no')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropdownList(\backend\modules\shop\models\Order::getStatusList()) ?>
 
