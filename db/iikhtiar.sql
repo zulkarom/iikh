@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2022 at 11:22 AM
+-- Generation Time: Jul 27, 2022 at 11:31 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.21
 
@@ -357,16 +357,16 @@ CREATE TABLE `ecm_orders` (
   `payment_created` int(11) DEFAULT NULL,
   `settlement` tinyint(1) DEFAULT 0,
   `order_note` varchar(255) DEFAULT NULL,
-  `bank_code` varchar(20) NOT NULL
+  `bank_code` varchar(20) NOT NULL,
+  `tracking_no` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ecm_orders`
 --
 
-INSERT INTO `ecm_orders` (`id`, `total_price`, `product_price`, `ship_method`, `ship_cost`, `status`, `pay_status`, `fullname`, `email`, `transaction_id`, `paypal_order_id`, `created_at`, `created_by`, `billcode`, `billName`, `return_status`, `billDescription`, `billAmount`, `billTo`, `billPhone`, `return_response`, `callback_response`, `group_name`, `toyyib_refno`, `toyyib_reason`, `payment_created`, `settlement`, `order_note`, `bank_code`) VALUES
-(11, '107.00', '100.00', 1, '7.00', 10, 'initiate', 'Iqram Rafien', 'iqramtest@gmail.com', 'TRAN_1658395252-0Wk9G2x6', NULL, 1658395252, NULL, NULL, NULL, NULL, '', '107.00', 'Iqram Rafien', '0176209665', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'PBBEMYKL'),
-(12, '307.00', '300.00', 1, '7.00', 10, 'initiate', 'Iqram Rafien', 'iqramtest@gmail.com', 'TRAN_1658395288-wWchxZAg', NULL, 1658395288, NULL, NULL, NULL, NULL, '', '307.00', 'Iqram Rafien', '0176209665', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'PBBEMYKL');
+INSERT INTO `ecm_orders` (`id`, `total_price`, `product_price`, `ship_method`, `ship_cost`, `status`, `pay_status`, `fullname`, `email`, `transaction_id`, `paypal_order_id`, `created_at`, `created_by`, `billcode`, `billName`, `return_status`, `billDescription`, `billAmount`, `billTo`, `billPhone`, `return_response`, `callback_response`, `group_name`, `toyyib_refno`, `toyyib_reason`, `payment_created`, `settlement`, `order_note`, `bank_code`, `tracking_no`) VALUES
+(37, '99.00', '89.00', 1, '10.00', 20, 'initiate', 'Iqram Rafien', 'iqramtest@gmail.com', 'TRAN_1658828496-lrHJf1j0', NULL, 1658828496, 3, NULL, NULL, NULL, '', '99.00', 'Iqram Rafien', '0176209665', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'BMMBMYKL', 'EF006144864MY');
 
 -- --------------------------------------------------------
 
@@ -389,8 +389,7 @@ CREATE TABLE `ecm_order_addresses` (
 --
 
 INSERT INTO `ecm_order_addresses` (`order_id`, `address`, `city`, `state_id`, `country_code`, `zipcode`, `phone`) VALUES
-(11, 'No 123 Jalan Meranti Chabang Empat', 'Tumpat', 3, 'MY', '16210', '0176209665'),
-(12, 'No 123 Jalan Meranti Chabang Empat', 'Tumpat', 3, 'MY', '16210', '0176209665');
+(37, 'No 123 Jalan Meranti Chabang Empat', 'Tumpat', 1, 'MY', '16210', '0176209665');
 
 -- --------------------------------------------------------
 
@@ -413,8 +412,7 @@ CREATE TABLE `ecm_order_items` (
 --
 
 INSERT INTO `ecm_order_items` (`id`, `product_name`, `attr_mix`, `product_id`, `unit_price`, `order_id`, `quantity`) VALUES
-(7, '2i+Honey', NULL, 1, '100.00', 11, 1),
-(8, '2i+Honey', NULL, 1, '100.00', 12, 3);
+(29, '2i+Honey', NULL, 1, '89.00', 37, 1);
 
 -- --------------------------------------------------------
 
@@ -447,7 +445,59 @@ CREATE TABLE `ecm_products` (
 --
 
 INSERT INTO `ecm_products` (`id`, `seller_id`, `category_id`, `name`, `description`, `image`, `weight`, `price`, `stock`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`, `item_order`, `ship_cost`, `ship_free`) VALUES
-(1, 0, NULL, '2i+Honey', NULL, NULL, '0.000', '100.00', 0, 0, NULL, NULL, NULL, NULL, 0, '7.00', 0);
+(1, 0, NULL, '2i+Honeyy', '<p>Pati Campuran Madu Tualang, Delima &amp; Habbatus\'sauda</p>', NULL, '0.225', '89.00', 10, 1, NULL, NULL, NULL, NULL, 0, '7.00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ecm_product_attr`
+--
+
+CREATE TABLE `ecm_product_attr` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `attr_id` int(11) DEFAULT 0,
+  `attr_value` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ecm_product_img`
+--
+
+CREATE TABLE `ecm_product_img` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_file` text DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ecm_product_img`
+--
+
+INSERT INTO `ecm_product_img` (`id`, `product_id`, `product_file`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, 1658894880, 1658894880),
+(2, 1, NULL, 1658894881, 1658894881),
+(3, 1, NULL, 1658894881, 1658894881),
+(4, 1, NULL, 1658894881, 1658894881);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ecm_product_price`
+--
+
+CREATE TABLE `ecm_product_price` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `attr_mix` varchar(30) NOT NULL,
+  `price` decimal(11,2) DEFAULT NULL,
+  `stock` int(11) NOT NULL DEFAULT 0,
+  `scheck` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -634,16 +684,18 @@ CREATE TABLE `user` (
   `flags` int(11) NOT NULL DEFAULT 0,
   `last_login_at` int(11) DEFAULT NULL,
   `status` tinyint(4) NOT NULL,
-  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `verification_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`) VALUES
-(1, 'admin', 'Admin', '', '$2y$10$G2CqfuUqiTshvYmzFbh/seDgLVXbHRvUrb8fu.8UxCHgyaF9vd3pG', '', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 10, ''),
-(3, 'iqramtest@gmail.com', 'Iqram Rafien', 'iqramtest@gmail.com', '$2y$10$G2CqfuUqiTshvYmzFbh/seDgLVXbHRvUrb8fu.8UxCHgyaF9vd3pG', '', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 10, '');
+INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`, `verification_token`) VALUES
+(1, 'admin', 'Admin', '', '$2y$10$G2CqfuUqiTshvYmzFbh/seDgLVXbHRvUrb8fu.8UxCHgyaF9vd3pG', '', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 10, '', NULL),
+(3, 'iqramtest@gmail.com', 'Iqram Rafien', 'iqramtest@gmail.com', '$2y$10$G2CqfuUqiTshvYmzFbh/seDgLVXbHRvUrb8fu.8UxCHgyaF9vd3pG', '', NULL, NULL, NULL, NULL, 0, 1658804475, 0, NULL, 10, '', NULL),
+(5, 'iqramrafien@gmail.com', 'Iqram Rafien', 'iqramrafien@gmail.com', '$2y$13$zxmemi69YzUvlcV9vS9EbeS31WJQxPKqRVXywL.XZ74G4i16IERxq', 'ns0EHoPH1lBxMRnor372qKcbS_6iuxkq', NULL, NULL, NULL, NULL, 1658809281, 1658910892, 0, NULL, 10, '', 'SGJNoPryKda4ymy92AWKUbRk_de9p_6t_1658809281');
 
 -- --------------------------------------------------------
 
@@ -667,7 +719,7 @@ CREATE TABLE `user_address` (
 --
 
 INSERT INTO `user_address` (`id`, `user_id`, `address`, `city`, `state`, `country`, `zipcode`, `phone`) VALUES
-(1, 3, 'No 123 Jalan Meranti Chabang Empat', 'Tumpat', 3, 'MY', '16210', '0176209665');
+(1, 3, 'No 123 Jalan Meranti Chabang Empat', 'Tumpat', 1, 'MY', '16210', '0176209665');
 
 --
 -- Indexes for dumped tables
@@ -716,6 +768,24 @@ ALTER TABLE `ecm_products`
   ADD KEY `idx-products-created_by` (`created_by`),
   ADD KEY `idx-products-updated_by` (`updated_by`),
   ADD KEY `category_id` (`category_id`);
+
+--
+-- Indexes for table `ecm_product_attr`
+--
+ALTER TABLE `ecm_product_attr`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ecm_product_img`
+--
+ALTER TABLE `ecm_product_img`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ecm_product_price`
+--
+ALTER TABLE `ecm_product_price`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `ecm_ship_rate`
@@ -782,19 +852,37 @@ ALTER TABLE `ecm_category`
 -- AUTO_INCREMENT for table `ecm_orders`
 --
 ALTER TABLE `ecm_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `ecm_order_items`
 --
 ALTER TABLE `ecm_order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `ecm_products`
 --
 ALTER TABLE `ecm_products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `ecm_product_attr`
+--
+ALTER TABLE `ecm_product_attr`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ecm_product_img`
+--
+ALTER TABLE `ecm_product_img`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `ecm_product_price`
+--
+ALTER TABLE `ecm_product_price`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ecm_ship_rate`
@@ -830,13 +918,13 @@ ALTER TABLE `negeri`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_address`
 --
 ALTER TABLE `user_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
