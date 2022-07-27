@@ -12,7 +12,7 @@ use common\widgets\MenuAdminLte;
     [
             ['label' => 'MENU UTAMA', 'level' => 0],
 
-            ['label' => 'Dashboard', 'level' => 1, 'url' => ['site/index'], 'icon' => 'fas fa-tachometer-alt', 'children' => []],
+            ['label' => 'Dashboard', 'level' => 1, 'url' => ['/site/index'], 'icon' => 'fas fa-tachometer-alt', 'children' => []],
 
             ['label' => 'Products', 'level' => 1, 'url' => ['/shop/product/'], 'icon' => 'fas fa-chart-pie', 'children' => []],
 

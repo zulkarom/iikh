@@ -72,16 +72,35 @@ $orderItem = OrderItem::findOne(['order_id' => $model->id]);
       <div class="col-12">
         <div class="row gy-3 gy-sm-0 g-3 g-md-4">
           <div class="col-sm-6">
-            <div class="order-data general-details">
-              <!-- Payment Method Start -->
-              <div class="payment-method mt-0">
-                <h5 class="cart-title">Payment Method</h5>
-                <div class="payment-box">
-                  <img src="<?=$dirAsset?>/images/ikhtiar/payment/Billplz_only.png" alt="card" />
-                  <span class="font-sm title-color"> FPX Online Banking Payment</span>
+            <div class="row">
+              <div class="col-12">
+                <div class="order-data general-details">
+                  <!-- Payment Method Start -->
+                  <div class="payment-method mt-0">
+                    <h5 class="cart-title">Kaedah Pembayaran</h5>
+                    <div class="payment-box">
+                      <img src="<?=$dirAsset?>/images/ikhtiar/payment/Billplz_only.png" alt="card" />
+                      <span class="font-sm title-color"> FPX Online Banking Payment</span>
+                    </div>
+                  </div>
+                  <!-- Payment Method End -->
                 </div>
               </div>
-              <!-- Payment Method End -->
+            </div>
+            <br/>
+             <div class="row">
+              <div class="col-12">
+                <div class="order-data general-details">
+                  <!-- Payment Method Start -->
+                  <div class="payment-method mt-0">
+                    <h5 class="cart-title">Tracking Nombor</h5>
+                    <div class="payment-box">
+                      <span class="font-sm title-color"><?=$model->tracking_no?></span>
+                    </div>
+                  </div>
+                  <!-- Payment Method End -->
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-sm-6">
