@@ -81,7 +81,7 @@ class SiteController extends Controller
     {
         $email = Yii::$app->request->post('email');
         $password = Yii::$app->request->post('password');
-
+   
         $model = new LoginForm();
         $model->username = $email;
         $model->password = $password;
@@ -125,7 +125,7 @@ class SiteController extends Controller
             }
          }else{
             $out=[
-                'message' => 'Incorrect username or password.',
+                'message' => 'error',
             ];
         }
 

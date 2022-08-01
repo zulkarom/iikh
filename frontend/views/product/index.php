@@ -194,6 +194,85 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                           </div>
                         </div>
                       </div>
+                      <div class="title-box4 mb-3 mt-4">
+                        <h4 class="heading mt-0">Kena guna berapa kotak? <span class="bg-theme-blue"></span></h4>
+                      </div>
+                      <div class="row row g-3 g-lg-4">
+                        <div class="col-md-8 order-2 order-md-1">
+                          <div class="speciation-summery">
+                            <ul class="general-summery">
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>Kami menyarankan penggunaan secara konsisten tiga (3) kotak 2i+Honey untuk hidup yang sihat.</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="title-box4 mb-3 mt-4">
+                        <h4 class="heading mt-0">Umur berapa sesuai amalkan? <span class="bg-theme-blue"></span></h4>
+                      </div>
+                      <div class="row row g-3 g-lg-4">
+                        <div class="col-md-8 order-2 order-md-1">
+                          <div class="speciation-summery">
+                            <ul class="general-summery">
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>4 – 12 tahun: Separuh sachet sahaja setiap kali pengambilan.</span>
+                              </li>
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>13 tahun keatas: Satu (1) sachet setiap kali pengambilan.</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="title-box4 mb-3 mt-4">
+                        <h4 class="heading mt-0">Sekotak tahan berapa lama? <span class="bg-theme-blue"></span></h4>
+                      </div>
+                      <div class="row row g-3 g-lg-4">
+                        <div class="col-md-8 order-2 order-md-1">
+                          <div class="speciation-summery">
+                            <ul class="general-summery">
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>15 hari pengambilan secara konsisten.</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="title-box4 mb-3 mt-4">
+                        <h4 class="heading mt-0">Ada kesan sampingan ke? <span class="bg-theme-blue"></span></h4>
+                      </div>
+                      <div class="row row g-3 g-lg-4">
+                        <div class="col-md-8 order-2 order-md-1">
+                          <div class="speciation-summery">
+                            <ul class="general-summery">
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>Jika individu mempunyai masalah tekanan darah tinggi / sistem saraf dalam badan yang tidak baik, kebiasaannya individu ini akan merasai kesan sampingan seperti sakit kepala / loya. Ini hanyalah kesan sementara dan menunjukkan tindak balas yang baik produk pada sistem badan individu. Individu disarankan melebihkan pengambilan air kosong bagi tindak balas yang berkesan.</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="title-box4 mb-3 mt-4">
+                        <h4 class="heading mt-0">Lepas order, bila barang akan sampai? <span class="bg-theme-blue"></span></h4>
+                      </div>
+                      <div class="row row g-3 g-lg-4">
+                        <div class="col-md-8 order-2 order-md-1">
+                          <div class="speciation-summery">
+                            <ul class="general-summery">
+                              <li>
+                                <i data-feather="check-circle"></i>
+                                <span>Proses postage mengambil masa 1-5 hari bekerja bergantung pada lokasi penerima. Walau bagaimanapun, biasanya 1-3 hari bekerja postage sudah selamat diterima. Sekiranya barang masih belum sampai selepas 5 hari, mohon WhatsApp Customer Service kami di +601116334296.</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <!-- Description Tab Content End -->
@@ -337,7 +416,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'country_code')->dropDownList(['MY' => 'Malaysia', 'IND' => 'Indonesia'], ['id' => 'country'])->label('Negara');?>
+                    <?= $form->field($orderAddress, 'country_code')->dropDownList(['MY' => 'Malaysia'], ['id' => 'country'])->label('Negara');?>
                   </div>
                 </div>
 
@@ -483,25 +562,29 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                                 <h3>LOGIN <span class="bg-theme-blue"></span></h3>
                                 <br/>
 
-                                <div class="custom-form form-pill">
+                                <form id="loginForm" class="custom-form form-pill">
                                   <div class="input-box">
                                     <label for="email">Email</label>
-                                    <input class="form-control" type="email" required="" name="email" id="login-email">
+                                    <input class="form-control" type="email" required name="email" id="login-email">
                                   </div>
 
                                   <div class="input-box">
                                     <label for="password">Password</label>
                                     <div class="icon-input">
-                                      <input class="form-control" type="password" required="" name="password" id="login-password">
+                                      <input class="form-control" type="password" required name="password" id="login-password">
                                       <img class="showHidePassword" src="<?=$dirAsset?>/icons/svg/eye-1.svg" alt="eye">
+
+                                      <span class="error"><p id="name_error"></p></span>
                                     </div>
                                   </div>
+
+                                  <span id="warning-msg"></span>
 
                                   <div align="right"><a class="forgot-link" href="forgot-password.html">Forgot Password?</a></div>
 
                                   <center><button id="btn-login" type="submit" class="btn-solid rounded-pill line-none" data-url="<?php echo Url::to(['/site/login-ajax'])?>">Login <i class="arrow"></i></button></center>
                                   
-                                </div>
+                                </form>
 
                                 <center><span class="backto-link font-default content-color text-decoration-none">If you are new, <a class="text-decoration-underline theme-color" href="register.html"> Create Now </a> </span></center>
                                 
@@ -519,11 +602,28 @@ $this->registerJs("
 calc();
 calcShipping();
 
+$(document).ready(function(){
+   $('#loginForm').validate({ // initialize the plugin
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                required: true,
+                minlength: 8
+            }
+        }
+    });
+});
+
+
 $('#btn-login').click(function(){
+   
     var email = $('#login-email').val();
     var password = $('#login-password').val();
     var url = $('#btn-login').attr('data-url');
-    // alert(password);
+    // alert(email);
     $.ajax({
     url: url, 
     type: 'POST',  
@@ -532,11 +632,15 @@ $('#btn-login').click(function(){
         password: password,
     },
     success: function(result){
+      document.getElementById('name_error').innerHTML = '';
+      // console.log(result);
         if(result){
           // var data = result;
           
           var data = JSON.parse(result);
-          // console.log(result);
+          // console.log(data);
+
+          if(data.message != 'error'){
 
             $('#fullname').val(data.fullname);
             $('#email').val(data.email);
@@ -560,14 +664,15 @@ $('#btn-login').click(function(){
           
            $('#loginAction').modal('toggle');
            // $('.login-content').slideUp();
-           $('.login-content').remove();
-
-           
-           // $('#guest-login').html('<a href='http://www.google.com'>Google</a>');
+           // $('.login-content').remove();
 
           calc();
           calcShipping();
+
+        }else{
+          document.getElementById('name_error').innerHTML = 'Incorrect email or password.';
         }
+      }
     }
     });
 });
@@ -590,7 +695,7 @@ function calcShipping(){
         quantity : quantity,
     },
     success: function(result){
-      console.log(result);
+      // console.log(result);
         var cost = parseFloat(result);
         $('#show-ship-cost').text(cost.toFixed(2));
         $('#show-ship-cost').attr('data-cost', cost.toFixed(2));

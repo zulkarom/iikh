@@ -43,6 +43,7 @@ class ProductController extends Controller
     
         $order = new Order();
         $product = Product::findOne(1);
+        
 
 
         //Check if user login

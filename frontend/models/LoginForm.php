@@ -69,6 +69,15 @@ class LoginForm extends Model
         
         return false;
     }
+
+    public function loginAjax()
+    {
+        if ($this->validate()) {
+            return Yii::$app->user->login($this->getUser());
+        }
+        
+        return false;
+    }
     
 
     /**
