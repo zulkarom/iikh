@@ -14,6 +14,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
   .plus-minus input {
      width: 100px; 
 }
+
 </style>
 
 <div class="breadcrumb-wrap">
