@@ -62,13 +62,13 @@ class ProductController extends Controller
                 $orderAddress->state_id = $address->state;
                 $orderAddress->phone = $address->phone;
             }
-            
+            $order->created_by = Yii::$app->user->identity->id;
         }
 
         // $order->total_price = $totalPrice;
         $order->status = Order::STATUS_ORDERED;
         $order->created_at = time();
-        $order->created_by = currUserId();
+        
 
         /*echo "<pre>";
             print_r(Yii::$app->request->post());
@@ -139,7 +139,7 @@ class ProductController extends Controller
                 
                 
             }
-            catch (Exception $e)
+            catch (\Exception $e)
             {
                 $transaction->rollBack();
                 echo $e->getMessage();

@@ -33,12 +33,12 @@ class SiteController extends Controller
                 // 'only' => ['logout', 'signup', 'login'],
                 'rules' => [
                     [
-                        'actions' => ['signup', 'index', 'login-ajax', 'login', 'verify-email', 'request-password-reset', 'reset-password'],
+                        'actions' => ['signup', 'index', 'login-ajax', 'login', 'verify-email', 'request-password-reset', 'reset-password', 'error'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['signup', 'logout', 'index', 'login-ajax', 'login'],
+                        'actions' => ['signup', 'logout', 'index', 'login-ajax', 'login','error'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

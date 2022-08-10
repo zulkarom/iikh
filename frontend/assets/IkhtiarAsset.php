@@ -13,7 +13,7 @@ class IkhtiarAsset extends AssetBundle
 {
     public $sourcePath = '@frontend/assets/ikhtiar';
     public $css = [
-        // 'css/vendors/bootstrap.css',
+       //'css/vendors/bootstrap.css',
         'css/vendors/wow-animate.css',
         'css/vendors/swiper-bundle.min.css',
         'css/style.css',
@@ -21,7 +21,7 @@ class IkhtiarAsset extends AssetBundle
     ];
 
     public $js = [
-        'js/bootstrap/bootstrap.bundle.min.js',
+       // 'js/bootstrap/bootstrap.bundle.min.js',
         'js/feather/feather.min.js',
         'js/swiper-slider/swiper-bundle.min.js',
         'js/swiper-slider/swiper-custom.min.js',
@@ -38,6 +38,6 @@ class IkhtiarAsset extends AssetBundle
 
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap4\BootstrapAsset',
+         'yii\bootstrap5\BootstrapAsset',
     ];
 }

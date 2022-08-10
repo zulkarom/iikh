@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use kartik\widgets\ActiveForm;
+use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use backend\models\Negeri;
@@ -13,25 +13,23 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 <style type="text/css">
   .plus-minus input {
      width: 100px; 
+  
 }
+
+.help-block{
+    color:red;
+  }
 
 </style>
 
 <div class="breadcrumb-wrap">
   <div class="banner">
-    <img class="bg-img bg-top" src="<?=$dirAsset?>/images/inner-page/banner-p.jpg" />
     <div class="container-lg">
       <div class="breadcrumb-box">
         <div class="heading-box">
-          <h1>Product</h1>
+          <h2>Pesan 2i+Honey Sekarang!</h2>
         </div>
-        <ol class="breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li>
-            <a href="<?php echo Url::to(['/site/home'])?>"><i data-feather="chevron-right"></i></a>
-          </li>
-          <li class="current"><a href="javascript:void(0)">Product</a></li>
-        </ol>
+
       </div>
     </div>
   </div>
@@ -344,7 +342,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
                   <div class="option total-price" style="">
                       <div class="title-box4">
-                        <h4 class="heading">Jumlah: RM <font id="amount">100.00</font><span class="bg-theme-blue"></span></h4>
+                        <h5>Jumlah: RM <font id="amount">100.00</font><span class="bg-theme-blue"></span></h5>
                       </div>
                   </div>
 
@@ -352,9 +350,10 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                
 
                   
-                  
+                  <br />
                   <div class="option sale-details">
                     <div class="title-box4">
+                      
                       <h4 class="heading">Alamat Penghantaran<span class="bg-theme-blue"></span></h4>
                     </div>
                       <?php if(Yii::$app->user->isGuest){?>
@@ -367,10 +366,28 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   
                     </div>
                   </div>
-                    <?php }?>
+                    <?php }else{
+                      ?>
+
+                    <div class="alert alert-primary" role="alert">
+                      
+                     
+                    Maklumat akaun log masuk anda: <?=Yii::$app->user->identity->fullname?> (<?=Yii::$app->user->identity->email?>) <br />
+                    Alamat penghantaran di bawah adalah mengikut maklumat profil anda. Sila masukkan maklumat lain jika sekiranya penghantaran ke alamat yang berbeza.
+              
+                    
+                      </div>
+
+                    <?php
+                    }
+                    ?>
+
+
 
                     
-
+                        <br />
+                    
+                    <div class="custom-form form-pill">
                    
               <div class="row g-3 g-md-4">
                 <div class="col-12">
@@ -379,50 +396,74 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   </div>
                 </div>
 
-                <div class="col-6">
-                  <div class="input-box">
-                    <?= $form->field($order, 'email')->textInput(['id' => 'email', 'class' => 'form-control'])->label('Email') ?>
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="input-box">
-                    <?= $form->field($orderAddress, 'phone')->textInput(['id' => 'phone', 'class' => 'form-control', 'type'=>'number'])->label('No Telefon') ?>
-                  </div>
-                </div>
+              
 
                 <div class="col-12">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'address')->textInput(['id' => 'address', 'class' => 'form-control'])->label('Alamat') ?>
+                    <?= $form->field($orderAddress, 'address')->textarea(['id' => 'address', 'class' => 'form-control']) ?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'city')->textInput(['id' => 'city', 'class' => 'form-control'])->label('Bandar') ?>
+                    <?= $form->field($orderAddress, 'city')->textInput(['id' => 'city', 'class' => 'form-control']) ?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'zipcode')->textInput(['id' => 'zipcode', 'class' => 'form-control', 'type'=>'number'])->label('Poskod') ?>
+                    <?= $form->field($orderAddress, 'zipcode')->textInput(['id' => 'zipcode', 'class' => 'form-control', 'type'=>'number']) ?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'state_id')->dropDownList( ArrayHelper::map(Negeri::find()->orderBy('negeri_name')->all(),'id', 'negeri_name'), ['id' => 'state', 'prompt' => 'Select State', 'class' => 'form-select form-control'])->label('Negeri');?>
+                    <?= $form->field($orderAddress, 'state_id')->dropDownList( ArrayHelper::map(Negeri::find()->orderBy('negeri_name')->all(),'id', 'negeri_name'), ['id' => 'state', 'prompt' => 'Select State', 'class' => 'form-select form-control']);?>
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="input-box">
-                    <?= $form->field($orderAddress, 'country_code')->dropDownList(['MY' => 'Malaysia'], ['id' => 'country'])->label('Negara');?>
+                    <?= $form->field($orderAddress, 'country_code')->dropDownList(['MY' => 'Malaysia'], ['id' => 'country']);?>
+                  </div>
+                </div>
+
+                <?php if(Yii::$app->user->isGuest){?>
+                <div class="col-6">
+                  <div class="input-box">
+                    <?= $form->field($order, 'email')->textInput(['id' => 'email', 'class' => 'form-control']) ?>
+                  </div>
+                </div>
+                <?php } ?>
+
+                <div class="col-6">
+                  <div class="input-box">
+                    <?= $form->field($orderAddress, 'phone')->textInput(['id' => 'phone', 'class' => 'form-control', 'type'=>'number']) ?>
                   </div>
                 </div>
 
                 
               </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
             
                   </div>
 
@@ -553,47 +594,62 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
     <div class="modal fade modal-md" id="loginAction" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
                       <div class=" modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                         <!--  <div class="modal-header">
-                            <h5 class="modal-title" id="loginLabel">Login</h5>
-                            
-                          </div> -->
+
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="addNewAddressLabel">LOG MASUK</h5>
                           <span class="close-modal" data-bs-dismiss="modal"><i data-feather="x"></i></span>
+                        </div>
+
+                        <form id="loginForm" class="custom-form form-pill">
+        
+              
                           <div class="modal-body full-grid-mobile">
-                            <div>
-                                <h3>LOGIN <span class="bg-theme-blue"></span></h3>
-                                <br/>
 
-                                <form id="loginForm" class="custom-form form-pill">
-                                  <div class="input-box">
-                                    <label for="email">Email</label>
-                                    <input class="form-control" type="email" required name="email" id="login-email">
-                                  </div>
+                          <div class="row g-3 g-md-4">
+                              <div class="col-12">
+                                <div class="input-box">
+                                  <label for="login-email">Alamat Emel</label>
+                                  <input class="form-control" type="email" required name="email" id="login-email" />
+                                </div>
+                              </div>
 
+                              <div class="col-12">
                                   <div class="input-box">
-                                    <label for="password">Password</label>
-                                    <div class="icon-input">
+                                    <label for="login-password">Password</label>
                                       <input class="form-control" type="password" required name="password" id="login-password">
-                                      <img class="showHidePassword" src="<?=$dirAsset?>/icons/svg/eye-1.svg" alt="eye">
 
                                       <span class="error"><p id="name_error"></p></span>
-                                    </div>
+                   
                                   </div>
-
                                   <span id="warning-msg"></span>
-
-                                  <div align="right"><a class="forgot-link" href="forgot-password.html">Forgot Password?</a></div>
-
-                                  <center><button id="btn-login" type="submit" class="btn-solid rounded-pill line-none" data-url="<?php echo Url::to(['/site/login-ajax'])?>">Login <i class="arrow"></i></button></center>
-                                  
-                                </form>
-
-                                <center><span class="backto-link font-default content-color text-decoration-none">If you are new, <a class="text-decoration-underline theme-color" href="register.html"> Create Now </a> </span></center>
-                                
-                              </div>
                           </div>
+
+                          </div>
+
+                          </div>
+
+                          <div class="modal-footer">
+                          <div class="btn-box">
+                            <button type="button" class="btn btn-outline rounded-pill" data-bs-dismiss="modal" aria-label="Close">Tutup</button>
+                            <button type="button" id="btn-login" class="btn btn-solid line-none rounded-pill" data-url="<?php echo Url::to(['/site/login-ajax'])?>">Log Masuk <i class="arrow"></i></button>
+                          </div>
+
+
+<div align="center"><a class="forgot-link" href="forgot-password.html">Forgot Password?</a></div>
+
+<div><span class="backto-link font-default content-color text-decoration-none">If you are new, <a class="text-decoration-underline theme-color" href="register.html"> Create Now </a> </span>
+</div>
+
+                        </div>
+
+
+                        </form>
+
+
                         </div>
                       </div>
                     </div>
+
 
 
 <?php 

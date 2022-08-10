@@ -5,7 +5,7 @@ use yii\helpers\Url;
 <header class="header-common">
       <!-- Top Header -->
       <div class="top-header">
-        <p class="marquee"><span> Summer sale for all swim suits - off 50%! Shop Now</span></p>
+        <p class="marquee"><span> Amalkan 2i+Honey Untuk Hidup Sihat </span></p>
       </div>
       <div class="container-lg">
         <div class="nav-wrap">
@@ -31,31 +31,31 @@ use yii\helpers\Url;
                       <!-- Menu-->
                       <ul class="navbar-nav">
                         <!-- Home -->
-                        <li class="nav-item dropdown dropdown-mega">
+                        <li class="nav-item">
                           <a class="nav-link" href="<?php echo Url::to(['site/index'])?>">Home</a>
                           
                         </li>
 
                         <!-- Shop -->
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
                           <a class="nav-link" href="<?=Url::to(['/page/about'])?>">About</a>
                           
                         </li>
 
                         <!-- Product -->
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
                           <a class="nav-link" href="<?=Url::to(['/page/catalog'])?>">Catalog</a>
                           
                         </li>
 
                         <!-- Oslo Plus -->
-                        <li class="nav-item dropdown dropdown-mega">
+                        <li class="nav-item">
                           <a class="nav-link" href="<?=Url::to(['/page/be-our-partner'])?>">Be our partner</a>
                           
                         </li>
 
                         <!-- Pages -->
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
                           <a class="nav-link" href="<?=Url::to(['/page/contact-us'])?>">Contact Us</a>
                           
                         </li>

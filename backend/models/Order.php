@@ -82,7 +82,7 @@ class Order extends \yii\db\ActiveRecord
             'status' => 'Status',
             'statusLabel' => 'Status',
             'fullname' => 'Nama Penuh',
-            'email' => 'Email',
+            'email' => 'Alamat Emel',
             'transaction_id' => 'Transaction ID',
             'paypal_order_id' => 'Paypal Order ID',
             'created_at' => 'Created At',

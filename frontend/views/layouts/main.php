@@ -11,7 +11,6 @@ use frontend\assets\IkhtiarAsset;
 use frontend\assets\AppAsset;
 
 IkhtiarAsset::register($this);
-AppAsset::register($this);
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
 
 ?>
@@ -42,7 +41,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
 
     <title>i’IKHTIAR | Home</title>
-    <?php $this->head() ?>
+ 
     
     <!-- Google Jost Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,6 +57,11 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet" />
+
+
+    <?php $this->head() ?>
+
+
 </head>
 <body>
 <?php $this->beginBody() ?>
