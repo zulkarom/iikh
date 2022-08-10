@@ -18,170 +18,69 @@ $urlHome = Url::to(['/product/index']);
      width: 100%; 
 }
 </style>
-
+<?php 
+$ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi mahal ketika sihat telah berubah menjadi sakit. Peliharalah kesihatan anda, kerana ia yang akan mewadahi umur panjang anda.';
+?>
 <main class="main">
       <!-- Home Banner Section Start -->
       <section class="home-slider-common ratio_40 p-0">
         <div class="swiper home-slider">
           <div class="swiper-wrapper">
             <!-- Slide Start -->
+
+   
             <div class="swiper-slide">
               <div class="banner">
                 <div>
                   <img class="bg-img img-fluid" src="<?=$dirAsset?>/images/fashion/banner/banner1.jpg" alt="banner" />
                 </div>
-                <!-- Banner Image Left -->
-                <!-- <img class="img-fluid banner-left-img" src="<?=$dirAsset?>/images/fashion/slider/banner1-1.png" alt="" /> -->
+
 
                 <div class="content-box">
-                  <h1 class="heading">
-                     <strong> <span> <?=$product->name?> <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
+             
+                  <h1 class="heading" style="text-transform:inherit">
+                    JOM <strong> AMALKAN</strong> <span> 2i+HONEY <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape"></span> UNTUK HIDUP <strong>SIHAT</strong>
                   </h1>
-                  <p>Adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.</p>
-                  <a href="<?=$urlHome?>" class="btn-solid">SHOP <i class="arrow"></i></a>
+       
+                  <p><?=$ayat?></p>
+                  <a href="<?=$urlHome?>" class="btn-style3">PESAN SEKARANG <i class="arrow"></i></a>
+ 
                 </div>
 
                 <!-- Banner Image Right -->
                 <!-- <img class="img-fluid banner-right-img" src="<?=$dirAsset?>/images/fashion/slider/banner1-2.png" alt="" /> -->
 
-                <!-- Card Box Start -->
-                <div class="card-box">
-                  <div class="card-wrap">
-                    <div class="card card1">
-                      <div class="img-wrap">
-                        <a href="product.html"> <img class="img-fluid" src="<?=$dirAsset?>/images/ikhtiar/DSC_7029.jpg" alt="card" /> </a>
-                      </div>
-                      <div class="content">
-                        <a href="product.html">
-                          <h5><?=$product->name?> <span>Description</span></h5>
-                          <h6>RM<?=$product->price?></h6>
-                        </a>
-                      </div>
-                    </div>
 
-                    <div class="card card2">
-                      <div class="img-wrap">
-                        <a href="product.html"> <img class="img-fluid" src="<?=$dirAsset?>/images/ikhtiar/DSC_7058.jpg" alt="card" /> </a>
-                      </div>
-                      <div class="content">
-                        <a href="product.html">
-                          <h5><?=$product->name?> <span>Description</span></h5>
-                          <h6>RM<?=$product->price?></h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <!-- Card Box Start -->
               </div>
             </div>
             <!-- Slide End -->
 
-            <!-- Slide Start -->
             <div class="swiper-slide">
               <div class="banner">
                 <div>
                   <img class="bg-img img-fluid" src="<?=$dirAsset?>/images/fashion/banner/banner1.jpg" alt="banner" />
                 </div>
-                <!-- Banner Image Left -->
-                <!-- <img class="img-fluid banner-left-img" src="<?=$dirAsset?>/images/fashion/slider/banner1-1.png" alt="" /> -->
+
 
                 <div class="content-box">
-                  <h1 class="heading">
-                     <strong> <span> <?=$product->name?> <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
+             
+                  <h1 class="heading" style="text-transform:inherit">
+                    JOM <strong> AMALKAN</strong> <span> 2i+HONEY <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape"></span> UNTUK HIDUP <strong>SIHAT</strong>
                   </h1>
-                  <p>Adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.</p>
-                  <a href="<?=$urlHome?>" class="btn-solid">SHOP <i class="arrow"></i></a>
+       
+                  <p><?=$ayat?></p>
+                  <a href="<?=$urlHome?>" class="btn-style3">PESAN SEKARANG <i class="arrow"></i></a>
+ 
                 </div>
 
                 <!-- Banner Image Right -->
                 <!-- <img class="img-fluid banner-right-img" src="<?=$dirAsset?>/images/fashion/slider/banner1-2.png" alt="" /> -->
 
-                <!-- Card Box Start -->
-                <div class="card-box">
-                  <div class="card-wrap">
-                    <div class="card card1">
-                      <div class="img-wrap">
-                        <a href="product.html"> <img class="img-fluid" src="<?=$dirAsset?>/images/ikhtiar/DSC_7029.jpg" alt="card" /> </a>
-                      </div>
-                      <div class="content">
-                        <a href="product.html">
-                          <h5><?=$product->name?> <span>Description</span></h5>
-                          <h6>RM<?=$product->price?></h6>
-                        </a>
-                      </div>
-                    </div>
 
-                    <div class="card card2">
-                      <div class="img-wrap">
-                        <a href="product.html"> <img class="img-fluid" src="<?=$dirAsset?>/images/ikhtiar/DSC_7058.jpg" alt="card" /> </a>
-                      </div>
-                      <div class="content">
-                        <a href="product.html">
-                          <h5><?=$product->name?> <span>Description</span></h5>
-                          <h6>RM<?=$product->price?></h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <!-- Card Box Start -->
               </div>
             </div>
-            <!-- Slide End -->
-
-            <!-- Slide Start -->
-            <div class="swiper-slide">
-              <div class="banner">
-                <div>
-                  <img class="bg-img img-fluid" src="<?=$dirAsset?>/images/fashion/banner/banner1.jpg" alt="banner" />
-                </div>
-                <!-- Banner Image Left -->
-                <!-- <img class="img-fluid banner-left-img" src="<?=$dirAsset?>/images/fashion/slider/banner1-1.png" alt="" /> -->
-
-                <div class="content-box">
-                  <h1 class="heading">
-                     <strong> <span> <?=$product->name?> <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape" /></span></strong>
-                  </h1>
-                  <p>Adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.</p>
-                  <a href="<?=$urlHome?>" class="btn-solid">SHOP <i class="arrow"></i></a>
-                </div>
-
-                <!-- Banner Image Right -->
-                <!-- <img class="img-fluid banner-right-img" src="<?=$dirAsset?>/images/fashion/slider/banner1-2.png" alt="" /> -->
-
-                <!-- Card Box Start -->
-                <div class="card-box">
-                  <div class="card-wrap">
-                    <div class="card card1">
-                      <div class="img-wrap">
-                        <a href="product.html"> <img class="img-fluid" src="<?=$dirAsset?>/images/ikhtiar/DSC_7029.jpg" alt="card" /> </a>
-                      </div>
-                      <div class="content">
-                        <a href="product.html">
-                          <h5><?=$product->name?> <span>Description</span></h5>
-                          <h6>RM<?=$product->price?></h6>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div class="card card2">
-                      <div class="img-wrap">
-                        <a href="product.html"> <img class="img-fluid" src="<?=$dirAsset?>/images/ikhtiar/DSC_7058.jpg" alt="card" /> </a>
-                      </div>
-                      <div class="content">
-                        <a href="product.html">
-                          <h5><?=$product->name?> <span>Description</span></h5>
-                          <h6>RM<?=$product->price?></h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Box Start -->
-              </div>
-            </div>
-            <!-- Slide End -->
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -251,9 +150,9 @@ $urlHome = Url::to(['/product/index']);
       <section class="pb-0">
         <div class="container-lg">
           <div class="title-box">
-            <h2 class="unique-heading">IKHTIAR UNTUK SIHAT</h2>
+            <h2 class="unique-heading">KANDUNGAN UTAMA 2i+HONEY</h2>
             <span class="title-divider1"><span class="squre"></span><span class="squre"></span></span>
-            <p>Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi mahal ketika sihat telah berubah menjadi sakit. Peliharalah kesihatan anda, kerana ia yang akan mewadahi umur panjang anda.</p>
+    
           </div>
 
           <!-- Tabs Start -->
