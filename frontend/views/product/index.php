@@ -119,159 +119,17 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                 <div class="tab-content" id="pills-tabContent">
                   <!-- Description Tab Content Start -->
                   <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                    <div class="details-product">
-                      
+                    <div class="details-product" style="padding-top:30px">
 
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Ada pantang larang tak? <span class="bg-theme-blue"></span></h4>
-                      </div>
+
+                    2i+Honey terdiri daripada campuran bahan asli madu tualang, pati delima, minyak habbatus’sauda dan minyak zaitun telah diamalkan oleh saudara Ikmalul Iktimam sebagai supplement hariannya sehingga beliau kini pulih sepenuhnya kembali, dengan izin Allah.<br /><br />
+
+Produk ini sesuai untuk mereka yang mengalami diabetes, masalah jantung, saraf, gastrik, lemah antibodi, sakit sendi, keletihan dan kelesuan, luka dalaman (ulser perut), masalah pencernaan, asthma, anemia dan masalah pada sistem urinari. <br /><br />
+
+Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang mempunyai masalah kesihatan pula, ambil dua (2) sachet sehari pada waktu pagi dan malam. <br /><br />
+                      
 
                   
-
-                      <div class="row g-3 g-lg-4 ratio_landscape mb-3">
-                      
-                        <div class="col-md-12">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span> Jarakkan 30minit selepas / sebelum pengambilan ubatan.</span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Tidak digalakkan untuk ibu mengandung</span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Elakkan daripada pengambilan dengan minuman berkaffein/ berkarbonat secara serentak.</span>
-                              </li>
-                              
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Betul ke berkesan? <span class="bg-theme-blue"></span></h4>
-                      </div>
-
-                  
-
-                      <div class="row g-3 g-lg-4 ratio_landscape mb-3">
-                      
-                        <div class="col-md-12">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Kesan adalah berbeza bagi setiap individu bergantung pada faktor kekerapan GUNA dan juga tahap kesihatan tubuh individu terbabit.</span>
-                              </li>
-                              
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      
-
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Cara guna macam mana? <span class="bg-theme-blue"></span></h4>
-                      </div>
-                      <div class="row row g-3 g-lg-4">
-                        <div class="col-md-8 order-2 order-md-1">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Bagi yang sihat – Ambil satu (1) sachet sehari sebelum sarapan.</span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Bagi yang mempunyai masalah kesihatan – Ambil dua (2) sachet sehari pada waktu pagi dan malam.</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Kena guna berapa kotak? <span class="bg-theme-blue"></span></h4>
-                      </div>
-                      <div class="row row g-3 g-lg-4">
-                        <div class="col-md-8 order-2 order-md-1">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Kami menyarankan penggunaan secara konsisten tiga (3) kotak 2i+Honey untuk hidup yang sihat.</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Umur berapa sesuai amalkan? <span class="bg-theme-blue"></span></h4>
-                      </div>
-                      <div class="row row g-3 g-lg-4">
-                        <div class="col-md-8 order-2 order-md-1">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>4 – 12 tahun: Separuh sachet sahaja setiap kali pengambilan.</span>
-                              </li>
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>13 tahun keatas: Satu (1) sachet setiap kali pengambilan.</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Sekotak tahan berapa lama? <span class="bg-theme-blue"></span></h4>
-                      </div>
-                      <div class="row row g-3 g-lg-4">
-                        <div class="col-md-8 order-2 order-md-1">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>15 hari pengambilan secara konsisten.</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Ada kesan sampingan ke? <span class="bg-theme-blue"></span></h4>
-                      </div>
-                      <div class="row row g-3 g-lg-4">
-                        <div class="col-md-8 order-2 order-md-1">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Jika individu mempunyai masalah tekanan darah tinggi / sistem saraf dalam badan yang tidak baik, kebiasaannya individu ini akan merasai kesan sampingan seperti sakit kepala / loya. Ini hanyalah kesan sementara dan menunjukkan tindak balas yang baik produk pada sistem badan individu. Individu disarankan melebihkan pengambilan air kosong bagi tindak balas yang berkesan.</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="title-box4 mb-3 mt-4">
-                        <h4 class="heading mt-0">Lepas order, bila barang akan sampai? <span class="bg-theme-blue"></span></h4>
-                      </div>
-                      <div class="row row g-3 g-lg-4">
-                        <div class="col-md-8 order-2 order-md-1">
-                          <div class="speciation-summery">
-                            <ul class="general-summery">
-                              <li>
-                                <i data-feather="check-circle"></i>
-                                <span>Proses postage mengambil masa 1-5 hari bekerja bergantung pada lokasi penerima. Walau bagaimanapun, biasanya 1-3 hari bekerja postage sudah selamat diterima. Sekiranya barang masih belum sampai selepas 5 hari, mohon WhatsApp Customer Service kami di +601116334296.</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                   <!-- Description Tab Content End -->
