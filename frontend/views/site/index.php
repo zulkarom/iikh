@@ -43,7 +43,7 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
                   </h1>
        
                   <p><?=$ayat?></p>
-                  <a href="<?=$urlHome?>" class="btn-style3">PESAN SEKARANG <i class="arrow"></i></a>
+                  <a href="<?=$urlHome?>" class="btn-style3">ORDER NOW <i class="arrow"></i></a>
  
                 </div>
 
@@ -94,10 +94,14 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
       <!-- Detail Card Section Start -->
       <section class="detail-card-section ratio_asos pb-0 wow-section-overflow">
         <div class="container-lg">
-          <div class="top-heading">
-            <p><h4><strong>Amalkan <?=$product->name?> Untuk Hidup Sihat</strong></h4></p>
-            <!-- <span>Ralph Lauren</span> -->
+
+        <div class="title-box">
+            <h2 class="unique-heading">KHASIAT 2i+HONEY</h2>
+            <span class="title-divider1"><span class="squre"></span><span class="squre"></span></span>
+    
           </div>
+
+
           <div class="row gy-4 g-2 g-sm-3 g-xl-4">
             <div class="col-6 col-md-4 col-lg-4 span3 wow fadeInUp" data-wow-delay="0.3s">
               <div class="detail-card">

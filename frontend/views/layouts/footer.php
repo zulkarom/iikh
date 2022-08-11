@@ -3,26 +3,21 @@ use yii\helpers\Url;
 ?>
 
 <footer class="footer-document ratio_asos mb-xxl">
-      <div class="bg-footer-l">
-        <img src="<?=$dirAsset?>/images/fashion/banner/bg-footer-l.png" alt="banner" />
-      </div>
-      <div class="bg-footer-r">
-        <img src="<?=$dirAsset?>/images/fashion/banner/bg-footer-r.png" alt="banner" />
-      </div>
+
       <div>
         <div class="container-lg">
           <div class="main-footer">
             <div class="row gy-3 gy-md-4 gy-xl-0">
               <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="content-box">
-                  <img class="logo" src="<?=$dirAsset?>/images/ikhtiar/logo/logo.png" alt="logo-white" />
+                  <img class="logo" src="<?=$dirAsset?>/images/ikhtiar/logo/logo_dark.png" alt="logo-white" />
                   <ul>
-                    <li><i data-feather="map-pin"></i> <span> 1418 Riverwood Drive, Suite 3245 Cottonwood, CA 96052, United States </span></li>
+                    <li><i data-feather="map-pin"></i> <span> Kota Bharu 16100 Kelantan </span></li>
                     <li>
-                      <i data-feather="phone"></i><a class="nav" href="tel:185659635"><span> + 185659635 </span></a>
+                      <i data-feather="phone"></i><a class="nav" href="tel:185659635"><span> +601116334296 </span></a>
                     </li>
                     <li>
-                      <i data-feather="mail"></i><a class="nav" href="mailto:fashion098@gmail.com"><span> fashion098@gmail.com </span></a>
+                      <i data-feather="mail"></i><a class="nav" href="mailto:fashion098@gmail.com"><span> i.ikhriarresources@gmail.com </span></a>
                     </li>
                   </ul>
                 </div>
@@ -55,19 +50,7 @@ use yii\helpers\Url;
                 </div>
               </div>
 
-              <!-- <div class="nav-footer col-xl-2 col-lg-3 col-md-4 order-md-5 order-lg-4">
-                <div class="nav d-md-block content-box">
-                  <h5 class="heading-footer">Get Help</h5>
-                  <ul>
-                    <li><a class="nav" href="user-dashboard.html">Your Orders </a></li>
-                    <li><a class="nav" href="user-dashboard.html">Your Account </a></li>
-                    <li><a class="nav" href="user-dashboard.html">Track Order</a></li>
-                    <li><a class="nav" href="wishlist.html">Your Wishlist</a></li>
-                    <li><a class="nav" href="search.html">Search</a></li>
-                    <li><a class="nav" href="faqs.html">Faqs</a></li>
-                  </ul>
-                </div>
-              </div> -->
+
 
               <div class="col-xl-3 col-md-6 col-lg-4 order-md-2 order-lg-5">
                 <div class="content-box">
@@ -75,13 +58,13 @@ use yii\helpers\Url;
                   <div class="follow-wrap">
                     <ul>
                       <li>
-                        <a href="https://www.facebook.com/"> <img src="<?=$dirAsset?>/icons/svg/social/fb.svg" alt="fb" /> </a>
+                        <a href="https://www.facebook.com"> <img src="<?=$dirAsset?>/icons/svg/social/fb.svg" alt="fb" /> </a>
                       </li>
                       <li>
-                        <a href="https://www.instagram.com/accounts/login/?source=auth_switcher"> <img src="<?=$dirAsset?>/icons/svg/social/inta.svg" alt="fb" /> </a>
+                        <a href="https://www.instagram.com"> <img src="<?=$dirAsset?>/icons/svg/social/inta.svg" alt="fb" /> </a>
                       </li>
                       <li>
-                        <a href="https://twitter.com/i/flow/login"> <img src="<?=$dirAsset?>/icons/svg/social/tw.svg" alt="fb" /> </a>
+                        <a href="https://twitter.com"> <img src="<?=$dirAsset?>/icons/svg/social/tw.svg" alt="fb" /> </a>
                       </li>
                       <li>
                         <a href="https://in.pinterest.com/"> <img src="<?=$dirAsset?>/icons/svg/social/pint.svg" alt="fb" /> </a>
@@ -106,23 +89,10 @@ use yii\helpers\Url;
           <div class="sub-footer">
             <div class="row gy-3">
               <div class="col-md-6">
-                <ul>
-                  <li>
-                    <a href="javascript:void(0)"> <img src="<?=$dirAsset?>/icons/png/1.png" class="img-fluid blur-up lazyload" alt="payment icon" /></a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)"> <img src="<?=$dirAsset?>/icons/png/2.png" class="img-fluid blur-up lazyload" alt="payment icon" /></a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)"> <img src="<?=$dirAsset?>/icons/png/3.png" class="img-fluid blur-up lazyload" alt="payment icon" /></a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)"> <img src="<?=$dirAsset?>/icons/png/4.png" class="img-fluid blur-up lazyload" alt="payment icon" /></a>
-                  </li>
-                </ul>
+            
               </div>
               <div class="col-md-6">
-                <p class="mb-0">© 2022, OSLO Template. Made with heart by Pixelstrap</p>
+                <p class="mb-0">© 2022 iikhtiar.com | 2i + Honey | All right reserved</p>
               </div>
             </div>
           </div>
