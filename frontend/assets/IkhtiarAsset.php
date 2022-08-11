@@ -26,7 +26,6 @@ class IkhtiarAsset extends AssetBundle
         'js/swiper-slider/swiper-bundle.min.js',
         'js/swiper-slider/swiper-custom.min.js',
         'js/timer.js',
-        'js/sticky-header.js',
         'js/active-class.js',
         'js/wow.js',
         'js/wow-custom.js',

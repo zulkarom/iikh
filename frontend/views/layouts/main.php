@@ -24,16 +24,14 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
     <meta name="description" content="oslo" />
     <meta name="keywords" content="oslo" />
     <meta name="author" content="oslo" />
-    <link rel="icon" href="<?=$dirAsset?>/images/ikhtiar/logo/logo.png" type="image/x-icon" />
-    <link rel="shortcut icon" href="<?=$dirAsset?>/images/ikhtiar/logo/logo.png" type="image/x-icon" />
-    <link rel="manifest" href="./manifest.json" />
-    <link rel="icon" href="<?=$dirAsset?>/images/ikhtiar/logo/logo.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="<?=$dirAsset?>/images/ikhtiar/logo/logo.png" />
+    <link rel="icon" href="<?=$dirAsset?>/images/ikhtiar/logo/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?=$dirAsset?>/images/ikhtiar/logo/favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="<?=$dirAsset?>/images/ikhtiar/logo/favicon.png" />
     <meta name="theme-color" content="#0f8fac" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Oslo" />
-    <meta name="msapplication-TileImage" content="<?=$dirAsset?>/images/favicon/favicon.png" />
+    <meta name="msapplication-TileImage" content="<?=$dirAsset?>/images/ikhtiar/logo/favicon.png" />
     <meta name="msapplication-TileColor" content="#FFFFFF" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <?= Html::csrfMetaTags() ?>
