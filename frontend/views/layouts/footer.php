@@ -2,6 +2,48 @@
 use yii\helpers\Url;
 ?>
 
+      <!-- Service Section start -->
+      <section class="service-section">
+        <div class="container-lg">
+          
+          <div class="row g-3 g-md-4 g-lg-0">
+          <div class="col-6 col-lg-3"></div>
+            <div class="col-6 col-lg-3">
+              <div class="service-box">
+                <div class="media">
+                  <svg>
+                    <use xlink:href="<?=$dirAsset?>/icons/svg/service/_sprite.svg#truck"></use>
+                  </svg>
+                  <div class="media-body">
+                    <h5>Seluruh Malaysia</h5>
+                    <span>Penghantaran ke seluruh Malaysia</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-6 col-lg-3">
+              <div class="service-box">
+                <div class="media">
+                  <svg>
+                    <use xlink:href="<?=$dirAsset?>/icons/svg/service/_sprite.svg#dollar"></use>
+                  </svg>
+                  <div class="media-body">
+                    <h5>SECURE SHOPPING</h5>
+                    <span>You're in safe hands</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </section>
+      <!-- Service Section End -->
+
 <footer class="footer-document ratio_asos mb-xxl">
 
       <div>

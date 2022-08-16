@@ -17,6 +17,8 @@ class IkhtiarAsset extends AssetBundle
         'css/vendors/wow-animate.css',
         'css/vendors/swiper-bundle.min.css',
         'css/style.css',
+        'css/khasiat.css',
+        
 
     ];
 

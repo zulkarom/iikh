@@ -47,7 +47,11 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                       <div class="swiper thumbnail-img-box thumbnailSlider2">
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
-                            <img src="<?=$dirAsset?>/images/ikhtiar/produk/product-1a.jpg" alt="img" />
+                            <img src="<?=$dirAsset?>/images/ikhtiar/produk/product-1.jpg" alt="img" />
+                          </div>
+
+                          <div class="swiper-slide">
+                            <img src="<?=$dirAsset?>/images/ikhtiar/produk/product-2.jpg" alt="img" />
                           </div>
 
                           <div class="swiper-slide">
@@ -58,13 +62,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                             <img src="<?=$dirAsset?>/images/ikhtiar/produk/product-4.jpg" alt="img" />
                           </div>
 
-                          <div class="swiper-slide">
-                            <img src="<?=$dirAsset?>/images/ikhtiar/produk/product-2.jpg" alt="img" />
-                          </div>
-
-                          <div class="swiper-slide">
-                            <img src="<?=$dirAsset?>/images/ikhtiar/produk/product-1.jpg" alt="img" />
-                          </div>
+                  
                         </div>
                       </div>
                     </div>
@@ -74,7 +72,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                     <div class="swiper mainslider2">
                       <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                          <img class="bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-1a.jpg" alt="img" />
+                          <img class="bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-1.jpg" alt="img" />
                         </div>
 
                         <div class="swiper-slide">
@@ -89,9 +87,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                           <img class="bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-4.jpg" alt="img" />
                         </div>
 
-                        <div class="swiper-slide">
-                          <img class="bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-1.jpg" alt="img" />
-                        </div>
+          
                       </div>
                     </div>
                   </div>
@@ -171,7 +167,7 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                         <i class="fill" data-feather="star"></i>
                       </li>
                     </ul>
-                    <span>120 Rating</span>
+           
                   </div>
 
                   <div class="option price"><span>RM</span><span class="item-price"><?=$product->price?> </span></div>

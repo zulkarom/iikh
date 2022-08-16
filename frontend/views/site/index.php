@@ -32,7 +32,7 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
             <div class="swiper-slide">
               <div class="banner">
                 <div>
-                  <img class="bg-img img-fluid" src="<?=$dirAsset?>/images/fashion/banner/banner1.jpg" alt="banner" />
+                  <img class="bg-img img-fluid" src="<?=$dirAsset?>/images/ikhtiar/banner1.png" alt="banner" />
                 </div>
 
 
@@ -59,7 +59,7 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
             <div class="swiper-slide">
               <div class="banner">
                 <div>
-                  <img class="bg-img img-fluid" src="<?=$dirAsset?>/images/fashion/banner/banner1.jpg" alt="banner" />
+                  <img class="bg-img img-fluid" src="<?=$dirAsset?>/images/ikhtiar/banner1.png" alt="banner" />
                 </div>
 
 
@@ -92,69 +92,120 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
    
 
       <!-- Detail Card Section Start -->
-      <section class="detail-card-section ratio_asos pb-0 wow-section-overflow">
-        <div class="container-lg">
+      
+<section id="supplement" class="services-area pt-110 pb-120">
+    <div class="container">
 
-        <div class="title-box">
-            <h2 class="unique-heading">KHASIAT 2i+HONEY</h2>
+
+
+          <div class="title-box">
+            <h2 class="unique-heading">KHASIAT</h2>
             <span class="title-divider1"><span class="squre"></span><span class="squre"></span></span>
+            <p>Amalkan 2i+HONEY untuk hidup yang sihat</p>
+          </div>
     
+
+        <div class="row align-items-center">
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="single-delivery-services mb-70 pr-40">
+                    <div class="ds-icon order-0 order-md-2">
+                    <img width="40" src="<?=$dirAsset?>/icons/svg/sugar.svg" alt="...">
+                    </div>
+                    <div class="ds-content text-center text-sm-left text-md-right">
+                        <h5>Mengawal kolestrol & gula</h5>
+                        <p>Mengawal kandungan kolestrol dan gula dalam darah</p>
+                    </div>
+                </div>
+                <div class="single-delivery-services mb-70 pr-40">
+                    <div class="ds-icon order-0 order-md-2">
+                    <img width="40" src="<?=$dirAsset?>/icons/svg/heart.svg" alt="...">
+                    </div>
+                    <div class="ds-content text-center text-sm-left text-md-right">
+                        <h5>Menjaga Jantung & Saraf</h5>
+                        <p>Menjaga Kesihatan jantung dan saraf</p>
+                        
+                    </div>
+                </div>
+                <div class="single-delivery-services mb-70 pr-40">
+                    <div class="ds-icon order-0 order-md-2">
+                    <img width="40" src="<?=$dirAsset?>/icons/svg/virus.svg" alt="...">
+                    </div>
+                    <div class="ds-content text-center text-sm-left text-md-right">
+                        <h5>Mencegah Bakteria & Virus</h5>
+                        <p>Mencegah jangkitan bakteria dan virus pada sistem tubuh</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 d-none d-xl-block">
+                <div class="d-services-img">
+                    <img src="<?=$dirAsset?>/images/ikhtiar/khasiat.png" alt="img">
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="single-delivery-services mb-70 pl-40">
+                    <div class="ds-icon">
+                    <img width="40" src="<?=$dirAsset?>/icons/svg/orange.svg" alt="...">
+                    </div>
+                    <div class="ds-content">
+                        <h5>Tinggi Antioksida</h5>
+                        <p>Tinggi antioksida bagi menjaga sistem tubuh </p>
+                    </div>
+                </div>
+                <div class="single-delivery-services mb-70 pl-40">
+                    <div class="ds-icon">
+                    <img width="40" src="<?=$dirAsset?>/icons/svg/lungs.svg" alt="...">
+                    </div>
+                    <div class="ds-content">
+                        <h5>Merawat Sistem Pernafasan</h5>
+                        <p>Merawat masalah sistem pernafasan (Asma), gastrik & luka dalaman</p>
+                    </div>
+                </div>
+                <div class="single-delivery-services mb-70 pl-40">
+                    <div class="ds-icon">
+                    <img width="40" src="<?=$dirAsset?>/icons/svg/stomach.svg" alt="...">
+                    </div>
+                    <div class="ds-content">
+                        <h5>Melancarkan Sistem Penghadaman</h5>
+                        <p>Melancarkan sistem penghadaman & pencernaan (sembelit)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+      <!-- Detail Card Section End -->
+
+
+      <div class="sub-banner section-t-space ratio_asos">
+        <div class="sub-banner bg-size" style="
+        background-image: url(<?=$dirAsset?>/images/ikhtiar/banner2.png);
+        background-size:cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: block;
+        ">
+          <img class="bg-img img-fluid" src="<?=$dirAsset?>/images/ikhtiar/banner2.png" alt="banner" style="display: none;">
+
+          <div class="content-box" style="left:65%">
+            <div class="heading-wrap">
+              <span class="span-1">2i+HONEY</span>
+              <span class="span-2">hidup </span>
+              <span class="span-3">sihat</span>
+
+            </div>
+            <a href="<?=Url::to(['product/index'])?>" style="margin-top:22px" class="site-button">Buy Now
+            </a>
           </div>
 
 
-          <div class="row gy-4 g-2 g-sm-3 g-xl-4">
-            <div class="col-6 col-md-4 col-lg-4 span3 wow fadeInUp" data-wow-delay="0.3s">
-              <div class="detail-card">
-                <div class="img-wrap">
-                  <a href="shop-left-sidebar.html"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/info/1.png" alt="product" /></a>
-                </div>
-                <div class="content-box">
-                  <a href="shop-left-sidebar.html">
-                    <!-- <h3>Standard-fit sleeveless midi dress</h3> -->
-                    <p>2i+Honey adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.</p></a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-4 span3 wow fadeInUp" data-wow-delay="0.4s">
-              <div class="detail-card">
-                <div class="img-wrap">
-                  <a href="shop-left-sidebar.html"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/info/2.png" alt="product" /></a>
-                </div>
-                <div class="content-box">
-                  <a href="shop-left-sidebar.html">
-                    <!-- <h3>Casual Indigo Blue Jeans Jacket</h3> -->
-                    <p>2i+Honey terdiri daripada campuran bahan asli madu tualang, pati delima, minyak habbatus’sauda dan minyak zaitun telah diamalkan oleh saudara Ikmalul Iktimam sebagai supplement hariannya sehingga beliau kini pulih sepenuhnya kembali, dengan izin Allah.</p></a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-4 span3 wow fadeInUp" data-wow-delay="0.5s">
-              <div class="detail-card">
-                <div class="img-wrap">
-                  <a href="shop-left-sidebar.html"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/info/3.png" alt="product" /></a>
-                </div>
-                <div class="content-box">
-                  <a href="shop-left-sidebar.html">
-                    <!-- <h3>Montes Loremous A Cosmopolite</h3> -->
-                    <p>Kini, beliau ingin berkongsi manfaat produk <?=$product->name?> ini bagi membantu orang ramai yang mempunyai masalah kesihatan untuk turut sama merasai nikmat hidup yang sihat.
-</p></a
-                  >
-                </div>
-              </div>
-            </div>
-
         </div>
-      </section>
-      <!-- Detail Card Section End -->
+      </div>
 
       <!-- Top Product Section Start -->
       <section class="pb-0">
         <div class="container-lg">
           <div class="title-box">
-            <h2 class="unique-heading">KANDUNGAN UTAMA 2i+HONEY</h2>
+            <h2 class="unique-heading">KANDUNGAN UTAMA</h2>
             <span class="title-divider1"><span class="squre"></span><span class="squre"></span></span>
     
           </div>
@@ -287,6 +338,9 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
       </section>
       <!-- Top Product Section End -->
 
+
+
+
       <!-- New Arrived Section Start -->
       <section class="pb-0 ratio_asos">
         <div class="container-lg">
@@ -303,7 +357,7 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
                   <div class="img-box">
                     <!-- Thumbnail -->
                     <ul class="thumbnail-img">
-                      <li class=""><a href="<?=$urlHome?>"><h4>Quick Buy</h4></a></li>
+                      <li class=""><a href="<?=$urlHome?>"><h4>Buy Now</h4></a></li>
                     </ul>
 
                     <a href="<?=$urlHome?>" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-1.jpg" alt="product" /> </a>
@@ -318,7 +372,7 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
                   <div class="img-box">
                     <!-- Thumbnail -->
                     <ul class="thumbnail-img">
-                      <li class=""><a href="<?=$urlHome?>"><h4>Quick Buy</h4></a></li>
+                      <li class=""><a href="<?=$urlHome?>"><h4>Buy Now</h4></a></li>
                     </ul>
 
                     <a href="<?=$urlHome?>" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-2.jpg" alt="product" /> </a>
@@ -332,7 +386,7 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
                   <div class="img-box">
                     <!-- Thumbnail -->
                     <ul class="thumbnail-img">
-                      <li class=""><a href="<?=$urlHome?>"><h4>Quick Buy</h4></a></li>
+                      <li class=""><a href="<?=$urlHome?>"><h4>Buy Now</h4></a></li>
                     </ul>
 
                     <a href="<?=$urlHome?>" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-3.jpg" alt="product" /> </a>
@@ -347,7 +401,7 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
                   <div class="img-box">
                     <!-- Thumbnail -->
                     <ul class="thumbnail-img">
-                      <li class=""><a href="<?=$urlHome?>"><h4>Quick Buy</h4></a></li>
+                      <li class=""><a href="<?=$urlHome?>"><h4>Buy Now</h4></a></li>
                     </ul>
 
                     <a href="<?=$urlHome?>" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-4.jpg" alt="product" /> </a>
@@ -361,7 +415,7 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
                   <div class="img-box">
                     <!-- Thumbnail -->
                     <ul class="thumbnail-img">
-                      <li class=""><a href="<?=$urlHome?>"><h4>Quick Buy</h4></a></li>
+                      <li class=""><a href="<?=$urlHome?>"><h4>Buy Now</h4></a></li>
                     </ul>
 
                     <a href="<?=$urlHome?>" class="primary-img"><img class="img-fluid bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-2.jpg" alt="product" /> </a>
@@ -377,67 +431,5 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
       </section>
       <!-- New Arrived Section End -->
 
-      <!-- Service Section start -->
-      <section class="service-section">
-        <div class="container-lg">
-          <div class="row g-3 g-md-4 g-lg-0">
-            <div class="col-6 col-lg-3">
-              <div class="service-box">
-                <div class="media">
-                  <svg>
-                    <use xlink:href="<?=$dirAsset?>/icons/svg/service/_sprite.svg#truck"></use>
-                  </svg>
-                  <div class="media-body">
-                    <h5>Free Shipping</h5>
-                    <span>From all orders over $200</span>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-6 col-lg-3">
-              <div class="service-box">
-                <div class="media">
-                  <svg>
-                    <use xlink:href="<?=$dirAsset?>/icons/svg/service/_sprite.svg#component"></use>
-                  </svg>
-                  <div class="media-body">
-                    <h5>FREE RETURNS</h5>
-                    <span>Return money within 30 days</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-6 col-lg-3">
-              <div class="service-box">
-                <div class="media">
-                  <svg>
-                    <use xlink:href="<?=$dirAsset?>/icons/svg/service/_sprite.svg#dollar"></use>
-                  </svg>
-                  <div class="media-body">
-                    <h5>SECURE SHOPPING</h5>
-                    <span>You're in safe hands</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-6 col-lg-3">
-              <div class="service-box">
-                <div class="media">
-                  <svg>
-                    <use xlink:href="<?=$dirAsset?>/icons/svg/service/_sprite.svg#thum"></use>
-                  </svg>
-                  <div class="media-body">
-                    <h5>OVER 10,000 STYLES</h5>
-                    <span>We have everything you need</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Service Section End -->
     </main>

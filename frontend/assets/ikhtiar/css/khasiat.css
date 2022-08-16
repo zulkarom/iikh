@@ -1,7 +1,12 @@
+
+
 .justify-content-center {
      -webkit-box-pack: center !important;
      justify-content: center !important;
 }
+
+
+
 .align-items-center {
      -webkit-box-align: center !important;
      align-items: center !important;
@@ -26,6 +31,8 @@
 .single-delivery-services.pr-40 .ds-icon {
      margin-left: 17px;
 }
+
+
 .single-delivery-services .ds-icon i {
      display: block;
      width: 80px;
@@ -41,6 +48,7 @@
 .single-delivery-services:hover .ds-icon i {
      border: 2px dashed rgb(42, 203, 53);
 }
+
 .ds-content h5 {
      font-size: 18px;
      text-transform: capitalize;
