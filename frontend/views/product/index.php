@@ -19,6 +19,9 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 .help-block{
     color:red;
   }
+#name_error{
+  color:red;
+}
 
 </style>
 
