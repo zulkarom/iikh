@@ -31,16 +31,16 @@ class Billplz
 	    }
 	}
 	
-	public function createBill($client, $payment){
+	public function createBill($order){
 		//Billplz Simulator
 		//BP-FKR01
 		//https://www.billplz.com/bills/abcdef?auto_submit=true
-		$email = $client->cl_email;
-		$phone = $client->cl_phone1;
-		$name = $client->cl_name;
-		$amount = $payment->amount * 100;
+		$email = $order->email;
+		$phone = $order->billplz_mobile;
+		$name = $order->fullname;
+		$amount = $order->billAmount * 100;
 		$websiteurl = Yii::$app->params['clientUrl'];
-		$description = $payment->description;
+		$description = $order->billplz_desc;
 		
 
 		$parameter = array(
@@ -53,8 +53,16 @@ class Billplz
 			'description'=> $description
 		);
 
+		if($this->is_sandbox){
+			$bank_code = 'BP-FKR01';
+		}else{
+			$bank_code = $order->bank_code;
+		}
+
 		$optional = array(
-			'redirect_url' => $websiteurl . 'site/redirect'
+			'redirect_url' => $websiteurl . 'site/redirect',
+			'reference_1_label' => 'Bank Code',
+			'reference_1' => $bank_code
 		);
 
 		if (empty($parameter['mobile']) && empty($parameter['email'])) {

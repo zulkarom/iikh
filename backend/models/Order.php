@@ -66,7 +66,7 @@ class Order extends \yii\db\ActiveRecord
             [['email'], 'email'],
             [['created_at', 'created_by', 'status', 'ship_method', 'payment'], 'integer'],
             [['fullname', 'pay_status'], 'string', 'max' => 60],
-            [['email', 'transaction_id', 'paypal_order_id', 'order_note'], 'string', 'max' => 255],
+            [['email', 'transaction_id', 'order_note'], 'string', 'max' => 255],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
         ];
     }

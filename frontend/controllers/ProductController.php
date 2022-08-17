@@ -111,13 +111,15 @@ class ProductController extends Controller
             
 
                 $billplz = new Billplz();
+                $order->billplz_mobile = $orderAddress->phone;
+                $order->billPhone = $orderAddress->phone;
+                $order->billplz_desc = $product->name;
                 $result = $billplz->createBill($order);
                 if($result){
                     $order->billplz_id = $result['id'];
                     $order->billplz_at = time();
                     $order->is_billplz = 1;
                     $order->billplz_name = $order->fullname;
-                    $order->billplz_mobile = $orderAddress->phone;
                     $order->billplz_email = $email;
                     
                 }
@@ -145,10 +147,9 @@ class ProductController extends Controller
 
                     // $order->sendEmailToCustomer();
                     //$order->sendEmailToVendor();
-                    // $billpage =  $this->createBill($order);
                     //echo $billpage;die();
-                    return $this->redirect(['product/thanks', 'order_id' => $order->id]);
-                    //header($billpage);
+                    //return $this->redirect(['product/thanks', 'order_id' => $order->id]);
+                    return $this->redirect($result['url'] . '?auto_submit=true');
                     exit;
                 }else{
                     Yii::$app->session->addFlash('error', "Sorry, failed to create order!");
