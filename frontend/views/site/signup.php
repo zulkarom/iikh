@@ -11,58 +11,48 @@ use yii\helpers\Url;
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
 ?>
 
-<div class="row g-0 ratio_asos">
-          <div class="order-2 order-lg-1 col-lg-6">
-            <div class="content-box">
-              <div>
-                <h5>PENDAFTARAN <span class="bg-theme-blue"></span></h5>
 
-                <?php $form = ActiveForm::begin(
-                    [
-                        /*'options' => [
-                            'class' => 'custom-form form-pill'
-                        ]*/
-                    ]
-                ); ?>
+<div>
+  <h5>PENDAFTARAN <span class="bg-theme-blue"></span></h5>
 
-                  <div class="input-box">
-                    
-                    <?= $form->field($model, 'fullname')->textInput(['id' => 'fullname', 'class' => 'form-control'])->label('Nama Penuh') ?>
-                  </div>
+  <?php $form = ActiveForm::begin(
+      [
+          /*'options' => [
+              'class' => 'custom-form form-pill'
+          ]*/
+      ]
+  ); ?>
 
-                  <div class="input-box">
-                    
-                    <?= $form->field($model, 'email')->textInput(['id' => 'email', 'class' => 'form-control'])->label('Email') ?>
-                  </div>
+    <div class="input-box">
+      
+      <?= $form->field($model, 'fullname')->textInput(['id' => 'fullname', 'class' => 'form-control'])->label('Nama Penuh') ?>
+    </div>
 
-                  <div class="input-box">
-                    <div class="icon-input">
-                      
-                       <?= $form->field($model, 'password')->textInput(['id' => 'password', 'class' => 'form-control', 'type' => 'password'])->label('Kata Laluan') ?>
-                    </div>
-                  </div>
+    <div class="input-box">
+      
+      <?= $form->field($model, 'email')->textInput(['id' => 'email', 'class' => 'form-control'])->label('Email') ?>
+    </div>
 
-                  <div class="input-box">
-                    <div class="icon-input">
-                      
-                       <?= $form->field($model, 'password_repeat')->textInput(['id' => 'password_repeat', 'class' => 'form-control', 'type' => 'password'])->label('Ulang Kata Laluan') ?>
-                    </div>
-                  </div>
+    <div class="input-box">
+      <div class="icon-input">
+        
+          <?= $form->field($model, 'password')->textInput(['id' => 'password', 'class' => 'form-control', 'type' => 'password'])->label('Kata Laluan') ?>
+      </div>
+    </div>
 
-                  <a class="forgot-link" href="forgot-password.html">Lupa Kata Laluan?</a>
-                  <?= Html::submitButton('Daftar <i class="arrow"></i>', ['class' => 'btn-solid rounded-pill line-none']) ?>
+    <div class="input-box">
+      <div class="icon-input">
+        
+          <?= $form->field($model, 'password_repeat')->textInput(['id' => 'password_repeat', 'class' => 'form-control', 'type' => 'password'])->label('Ulang Kata Laluan') ?>
+      </div>
+    </div>
 
-                  <a href="<?php echo Url::to(['site/index'])?>" class="btn-solid rounded-pill line-none btn-outline mt-3 d-flex justify-content-center">Home <i class="arrow"></i></a>
-                <?php ActiveForm::end(); ?>
 
-                <span class="backto-link font-default content-color text-decoration-none">Sudah mempunyai akaun? <a class="text-decoration-underline theme-color" href="register.html"> Log Masuk </a> </span>
-              </div>
-            </div>
-          </div>
+    <?= Html::submitButton('Daftar <i class="arrow"></i>', ['class' => 'btn-solid rounded-pill line-none']) ?>
 
-          <div class="order-1 order-lg-2 col-lg-6">
-            <div class="img-box">
-              <img class="bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-3.jpg" alt="banner" />
-            </div>
-          </div>
-        </div>
+    <a href="<?php echo Url::to(['site/index'])?>" class="btn-solid rounded-pill line-none btn-outline mt-3 d-flex justify-content-center">Home <i class="arrow"></i></a>
+  <?php ActiveForm::end(); ?>
+
+  <span class="backto-link font-default content-color text-decoration-none">Sudah mempunyai akaun? <a class="text-decoration-underline theme-color" href="<?=Url::to(['site/login'])?>"> Log Masuk </a> </span>
+</div>
+            

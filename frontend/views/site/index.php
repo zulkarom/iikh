@@ -71,7 +71,7 @@ $ayat = '';
                   </h1>
        
                   <p><?=$ayat?></p>
-                  <a href="<?=$urlHome?>" class="btn-style3">PESAN SEKARANG <i class="arrow"></i></a>
+                  <a href="<?=$urlHome?>" class="btn-style3">ORDER NOW <i class="arrow"></i></a>
  
                 </div>
 

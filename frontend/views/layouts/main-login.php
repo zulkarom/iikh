@@ -58,8 +58,29 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
 <div class="main">
     <section class="page-body p-0">
+
+
+    <div class="row g-0 ratio_asos">
+          <div class="order-2 order-lg-1 col-lg-6">
+            <div class="content-box">
+
         <?=Alert::widget()?>
         <?=$content?>
+
+        </div>
+          </div>
+
+          <div class="order-1 order-lg-2 col-lg-6">
+            <div class="img-box">
+              <img class="bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-3.jpg" alt="banner" />
+            </div>
+          </div>
+        </div>
+
+
+
+
+
     </section>
 </div>
 

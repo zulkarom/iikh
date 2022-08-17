@@ -34,6 +34,7 @@ class Billplz
 	public function createBill($client, $payment){
 		//Billplz Simulator
 		//BP-FKR01
+		//https://www.billplz.com/bills/abcdef?auto_submit=true
 		$email = $client->cl_email;
 		$phone = $client->cl_phone1;
 		$name = $client->cl_name;

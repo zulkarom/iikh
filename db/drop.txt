@@ -4,7 +4,6 @@ ALTER TABLE `ecm_orders`
   DROP `billName`,
   DROP `return_status`,
   DROP `billDescription`,
-  DROP `billAmount`,
   DROP `billTo`,
   DROP `return_response`,
   DROP `callback_response`,

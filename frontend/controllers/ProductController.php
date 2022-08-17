@@ -4,14 +4,12 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\AccessControl;
-use yii\db\Expression;
 use backend\models\Order;
 use backend\models\OrderItem;
 use backend\models\OrderAddress;
 use backend\models\Product;
 use backend\modules\shop\models\ShippingRate;
+use frontend\models\Billplz;
 /**
  * BizCanvasController implements the CRUD actions for BizCanvas model.
  */
@@ -51,6 +49,7 @@ class ProductController extends Controller
             $user = Yii::$app->user->identity;
             $order->fullname = $user->fullname;
             $order->email = $user->email;
+            
             if($user->defaultAddress){
                 $address = $user->defaultAddress;
                 
@@ -65,8 +64,11 @@ class ProductController extends Controller
             $order->created_by = Yii::$app->user->identity->id;
         }
 
+
+       
+
         // $order->total_price = $totalPrice;
-        $order->status = Order::STATUS_ORDERED;
+        $order->status = Order::STATUS_DRAFT;
         $order->created_at = time();
         
 
@@ -79,32 +81,49 @@ class ProductController extends Controller
 
         if ($order->load(Yii::$app->request->post()) && 
             $orderAddress->load(Yii::$app->request->post())) {
+            $email = $order->email;
+                if(!Yii::$app->user->isGuest){
+                    $user = Yii::$app->user->identity;
+                    $order->fullname = $user->fullname;
+                    $email = $user->email;
+                }
 
+            $order->email = $email;
             $ship_cost = ShippingRate::calcShippingCost($orderAddress, $quantity);
 
             $totalPrice = ($quantity)*($product->price);
             $total = $totalPrice + $ship_cost;
-
-            $order->billTo = $order->fullname;
-            $order->billPhone = $orderAddress->phone;
+            
             // $order->billName = $strBill;
             $order->billAmount = $total;
             $order->pay_status = 'initiate';
             $order->product_price = $totalPrice ;
             $order->total_price = $total ; 
             $order->ship_cost = $ship_cost;
-
-
             $transaction_id = 'TRAN_'.time(). '-'.  $this->quickRandom(8);
             // get unique recharge transaction id
             while((Order::find()->where(['transaction_id' => $transaction_id])->count()) > 0) {
                 $transaction_id = 'TRAN_'.time().'-'.$this->quickRandom(8);
             }
-            //$transaction_id = strtoupper($transaction_id);
-            
             $order->transaction_id = $transaction_id;
              
+            //billplz
             
+
+                $billplz = new Billplz();
+                $result = $billplz->createBill($order);
+                if($result){
+                    $order->billplz_id = $result['id'];
+                    $order->billplz_at = time();
+                    $order->is_billplz = 1;
+                    $order->billplz_name = $order->fullname;
+                    $order->billplz_mobile = $orderAddress->phone;
+                    $order->billplz_email = $email;
+                    
+                }
+
+
+
             $transaction = Yii::$app->db->beginTransaction();
             try {
                 
@@ -123,7 +142,7 @@ class ProductController extends Controller
                 
                 if($flag){
                     $transaction->commit();
-                    
+
                     // $order->sendEmailToCustomer();
                     //$order->sendEmailToVendor();
                     // $billpage =  $this->createBill($order);
