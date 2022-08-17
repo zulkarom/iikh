@@ -33,12 +33,12 @@ class SiteController extends Controller
                 // 'only' => ['logout', 'signup', 'login'],
                 'rules' => [
                     [
-                        'actions' => ['signup', 'index', 'login-ajax', 'login', 'verify-email', 'request-password-reset', 'reset-password', 'error'],
+                        'actions' => ['signup', 'index', 'login-ajax', 'login', 'verify-email', 'request-password-reset', 'reset-password', 'error', 'callback', 'redirect',],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['signup', 'logout', 'index', 'login-ajax', 'login','error'],
+                        'actions' => ['signup', 'logout', 'index', 'login-ajax', 'login','error', 'callback', 'redirect',],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -58,6 +58,20 @@ class SiteController extends Controller
                 'class' => 'yii\web\ErrorAction',
             ],
         ];
+    }
+
+    public function beforeAction($action) {
+        if ($action->id == 'callback' or $action->id == 'redirect') {
+            $this->enableCsrfValidation = false;
+            return parent::beforeAction($action);
+        }
+        
+        if (parent::beforeAction($action)) {
+            if ($action->id=='error') $this->layout ='error';
+            return parent::beforeAction($action);
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -258,6 +272,26 @@ class SiteController extends Controller
 
         return $this->redirect(['/site/index']);
     }
+
+    public function actionRedirect(){
+	    $billplz = new Billplz();
+	    if($payment = $billplz->processRedirect()){
+	        return $this->redirect(['/client-payment/view', 'id' => $payment->id, 'notify' => 1]);
+	    }else{
+	        return $this->redirect(['/client-payment/payment-failed']);
+	    }
+	}
+
+	
+	public function actionCallback(){
+	    $billplz = new Billplz();
+	    if($billplz->processCallback()){
+	        Yii::$app->response->statusCode = 200;
+	        Yii::$app->response->content = 'OK';
+			echo 'OK';
+	        exit;
+	    }
+	}
 
 
 }

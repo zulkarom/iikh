@@ -19,7 +19,7 @@ $urlHome = Url::to(['/product/index']);
 }
 </style>
 <?php 
-$ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi mahal ketika sihat telah berubah menjadi sakit. Peliharalah kesihatan anda, kerana ia yang akan mewadahi umur panjang anda.';
+$ayat = '';
 
 ?>
 <main class="main">
@@ -40,7 +40,7 @@ $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi maha
                 <div class="content-box">
              
                   <h1 class="heading" style="text-transform:inherit">
-                    JOM <strong> AMALKAN</strong> <span> 2i+HONEY <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape"></span> UNTUK HIDUP <strong>SIHAT</strong>
+                    JADIKAN <span> 2i+HONEY <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape"></span> <strong>PEMAKANAN TAMBAHAN</strong> HARIAN ANDA
                   </h1>
        
                   <p><?=$ayat?></p>

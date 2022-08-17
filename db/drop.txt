@@ -1,0 +1,13 @@
+ALTER TABLE `ecm_orders`
+  DROP `paypal_order_id`,
+  DROP `billcode`,
+  DROP `billName`,
+  DROP `return_status`,
+  DROP `billDescription`,
+  DROP `billAmount`,
+  DROP `billTo`,
+  DROP `return_response`,
+  DROP `callback_response`,
+  DROP `group_name`,
+  DROP `toyyib_refno`,
+  DROP `toyyib_reason`;
