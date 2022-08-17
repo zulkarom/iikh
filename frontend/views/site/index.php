@@ -20,6 +20,7 @@ $urlHome = Url::to(['/product/index']);
 </style>
 <?php 
 $ayat = 'Sihat itu bukanlah suatu kemewahan. Sihat itu murah, namun menjadi mahal ketika sihat telah berubah menjadi sakit. Peliharalah kesihatan anda, kerana ia yang akan mewadahi umur panjang anda.';
+
 ?>
 <main class="main">
       <!-- Home Banner Section Start -->
