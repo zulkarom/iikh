@@ -438,13 +438,5 @@ cartRemoveBtn?.forEach(el => {
     })
 })
 
-/*=========================
-  20.Pwa Service Worker Register
-  ==============================*/
-window.addEventListener("load", function () {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-            .register('sw.js');
-    }
-})
+
 
