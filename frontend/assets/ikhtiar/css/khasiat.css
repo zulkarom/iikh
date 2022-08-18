@@ -71,7 +71,6 @@
 .d-services-img::before {
      content: "";
      position: absolute;
-     background-image: url("../img/images/ellips_shape.png");
      width: 578px;
      height: 578px;
      background-repeat: no-repeat;
@@ -82,7 +81,6 @@
 .d-services-img::after {
      content: "";
      position: absolute;
-     background-image: url("services_shape.png");
      width: 709px;
      height: 585px;
      background-repeat: no-repeat;
