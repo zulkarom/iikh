@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
       <div>
         <h5><?= Html::encode($this->title) ?> <span class="bg-theme-blue"></span></h5>
+        <?=common\widgets\Alert::widget()?>
 
         <p>Sila isi maklumat email anda. Pautan untuk set semula kata laluan akan dihantar ke sana.</p>
 

@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 use common\models\User;
 use backend\modules\shop\models\Order;
 
@@ -19,7 +20,7 @@ $this->title = 'Dashboard';
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?=Url::to(['/user/index'])?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -34,7 +35,7 @@ $this->title = 'Dashboard';
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?=Url::to(['/shop/order', 'OrderSearch[status]' => Order::STATUS_PAID])?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -49,7 +50,7 @@ $this->title = 'Dashboard';
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?=Url::to(['/shop/order', 'OrderSearch[status]' => Order::STATUS_PROSESSING])?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -64,7 +65,7 @@ $this->title = 'Dashboard';
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?=Url::to(['/shop/order', 'OrderSearch[status]' => Order::STATUS_SHIPPED])?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

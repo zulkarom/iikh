@@ -275,7 +275,7 @@ class SiteController extends Controller
         Yii::$app->user->logout();
         Yii::$app->session->addFlash('success', "Anda telah berjaya log keluar.");
 
-        return $this->redirect(['/site/index']);
+        return $this->redirect(['/site/login']);
     }
 
     public function actionRedirect(){

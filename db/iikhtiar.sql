@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2022 at 11:31 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.3.21
+-- Generation Time: Aug 18, 2022 at 09:04 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -330,6 +330,7 @@ INSERT INTO `ecm_category` (`id`, `category_name`, `icon`, `is_gshoppe`, `image_
 
 CREATE TABLE `ecm_orders` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `total_price` decimal(10,2) NOT NULL,
   `product_price` decimal(11,2) NOT NULL DEFAULT 0.00,
   `ship_method` tinyint(1) NOT NULL DEFAULT 1,
@@ -339,34 +340,28 @@ CREATE TABLE `ecm_orders` (
   `fullname` varchar(60) NOT NULL,
   `email` varchar(255) NOT NULL,
   `transaction_id` varchar(255) DEFAULT NULL,
-  `paypal_order_id` varchar(255) DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
-  `billcode` varchar(255) DEFAULT NULL,
-  `billName` varchar(255) DEFAULT NULL,
-  `return_status` tinyint(1) DEFAULT NULL COMMENT 'Payment status. 1= success, 2=pending, 3=fail',
-  `billDescription` varchar(100) NOT NULL,
   `billAmount` decimal(11,2) NOT NULL,
-  `billTo` varchar(100) DEFAULT NULL,
   `billPhone` varchar(100) DEFAULT NULL,
-  `return_response` text DEFAULT NULL,
-  `callback_response` text DEFAULT NULL,
-  `group_name` varchar(100) DEFAULT NULL,
-  `toyyib_refno` varchar(255) DEFAULT NULL,
-  `toyyib_reason` varchar(255) DEFAULT NULL,
   `payment_created` int(11) DEFAULT NULL,
   `settlement` tinyint(1) DEFAULT 0,
   `order_note` varchar(255) DEFAULT NULL,
   `bank_code` varchar(20) NOT NULL,
-  `tracking_no` varchar(255) DEFAULT NULL
+  `tracking_no` varchar(255) DEFAULT NULL,
+  `is_billplz` tinyint(1) NOT NULL,
+  `billplz_id` varchar(255) NOT NULL,
+  `billplz_at` int(11) NOT NULL,
+  `billplz_state` varchar(10) NOT NULL,
+  `billplz_paid` varchar(10) NOT NULL,
+  `billplz_paid_at` varchar(100) NOT NULL,
+  `billplz_name` varchar(255) NOT NULL,
+  `billplz_email` varchar(200) NOT NULL,
+  `billplz_mobile` varchar(100) NOT NULL,
+  `billplz_desc` varchar(255) DEFAULT NULL,
+  `billplz_callback` text NOT NULL,
+  `billplz_redirect` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `ecm_orders`
---
-
-INSERT INTO `ecm_orders` (`id`, `total_price`, `product_price`, `ship_method`, `ship_cost`, `status`, `pay_status`, `fullname`, `email`, `transaction_id`, `paypal_order_id`, `created_at`, `created_by`, `billcode`, `billName`, `return_status`, `billDescription`, `billAmount`, `billTo`, `billPhone`, `return_response`, `callback_response`, `group_name`, `toyyib_refno`, `toyyib_reason`, `payment_created`, `settlement`, `order_note`, `bank_code`, `tracking_no`) VALUES
-(37, '99.00', '89.00', 1, '10.00', 20, 'initiate', 'Iqram Rafien', 'iqramtest@gmail.com', 'TRAN_1658828496-lrHJf1j0', NULL, 1658828496, 3, NULL, NULL, NULL, '', '99.00', 'Iqram Rafien', '0176209665', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 'BMMBMYKL', 'EF006144864MY');
 
 -- --------------------------------------------------------
 
@@ -384,13 +379,6 @@ CREATE TABLE `ecm_order_addresses` (
   `phone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `ecm_order_addresses`
---
-
-INSERT INTO `ecm_order_addresses` (`order_id`, `address`, `city`, `state_id`, `country_code`, `zipcode`, `phone`) VALUES
-(37, 'No 123 Jalan Meranti Chabang Empat', 'Tumpat', 1, 'MY', '16210', '0176209665');
-
 -- --------------------------------------------------------
 
 --
@@ -406,13 +394,6 @@ CREATE TABLE `ecm_order_items` (
   `order_id` int(11) NOT NULL,
   `quantity` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `ecm_order_items`
---
-
-INSERT INTO `ecm_order_items` (`id`, `product_name`, `attr_mix`, `product_id`, `unit_price`, `order_id`, `quantity`) VALUES
-(29, '2i+Honey', NULL, 1, '89.00', 37, 1);
 
 -- --------------------------------------------------------
 
@@ -445,7 +426,7 @@ CREATE TABLE `ecm_products` (
 --
 
 INSERT INTO `ecm_products` (`id`, `seller_id`, `category_id`, `name`, `description`, `image`, `weight`, `price`, `stock`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`, `item_order`, `ship_cost`, `ship_free`) VALUES
-(1, 0, NULL, '2i+Honeyy', '<p>Pati Campuran Madu Tualang, Delima &amp; Habbatus\'sauda</p>', NULL, '0.225', '89.00', 10, 1, NULL, NULL, NULL, NULL, 0, '7.00', 0);
+(1, 0, 4, '2i+Honey', '<p>Pati Campuran Madu Tualang, Delima &amp; Habbatus\'sauda</p>', NULL, '0.225', '89.00', 10, 1, NULL, NULL, NULL, NULL, 0, '7.00', 0);
 
 -- --------------------------------------------------------
 
@@ -685,17 +666,19 @@ CREATE TABLE `user` (
   `last_login_at` int(11) DEFAULT NULL,
   `status` tinyint(4) NOT NULL,
   `password_reset_token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `verification_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `verification_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_admin` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`, `verification_token`) VALUES
-(1, 'admin', 'Admin', '', '$2y$10$G2CqfuUqiTshvYmzFbh/seDgLVXbHRvUrb8fu.8UxCHgyaF9vd3pG', '', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 10, '', NULL),
-(3, 'iqramtest@gmail.com', 'Iqram Rafien', 'iqramtest@gmail.com', '$2y$10$G2CqfuUqiTshvYmzFbh/seDgLVXbHRvUrb8fu.8UxCHgyaF9vd3pG', '', NULL, NULL, NULL, NULL, 0, 1658804475, 0, NULL, 10, '', NULL),
-(5, 'iqramrafien@gmail.com', 'Iqram Rafien', 'iqramrafien@gmail.com', '$2y$13$zxmemi69YzUvlcV9vS9EbeS31WJQxPKqRVXywL.XZ74G4i16IERxq', 'ns0EHoPH1lBxMRnor372qKcbS_6iuxkq', NULL, NULL, NULL, NULL, 1658809281, 1658910892, 0, NULL, 10, '', 'SGJNoPryKda4ymy92AWKUbRk_de9p_6t_1658809281');
+INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `password_hash`, `auth_key`, `confirmed_at`, `unconfirmed_email`, `blocked_at`, `registration_ip`, `created_at`, `updated_at`, `flags`, `last_login_at`, `status`, `password_reset_token`, `verification_token`, `is_admin`) VALUES
+(1, 'admin', 'Admin', '', '$2y$13$D/UX5g2ZAneL8QfSH/mm/ef2A4PWqjbVAlX2R8vv5vKOmXTNszfnu', '', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 10, '', NULL, 1),
+(3, 'iqramtest@gmail.com', 'Iqram Rafien', 'iqramtest@gmail.com', '$2y$10$G2CqfuUqiTshvYmzFbh/seDgLVXbHRvUrb8fu.8UxCHgyaF9vd3pG', '', NULL, NULL, NULL, NULL, 0, 1658804475, 0, NULL, 10, '', NULL, 0),
+(5, 'iqramrafien@gmail.com', 'Iqram Rafien', 'iqramrafien@gmail.com', '$2y$13$zxmemi69YzUvlcV9vS9EbeS31WJQxPKqRVXywL.XZ74G4i16IERxq', 'ns0EHoPH1lBxMRnor372qKcbS_6iuxkq', NULL, NULL, NULL, NULL, 1658809281, 1658910892, 0, NULL, 10, '', 'SGJNoPryKda4ymy92AWKUbRk_de9p_6t_1658809281', 0),
+(7, 'skyhintdesign@gmail.com', 'Zul Karami Che Musa', 'skyhintdesign@gmail.com', '$2y$13$D/UX5g2ZAneL8QfSH/mm/ef2A4PWqjbVAlX2R8vv5vKOmXTNszfnu', 'rGXdvhnhhzaXOL7N4OluAwBeg-f27B4-', NULL, NULL, NULL, NULL, 1660797998, 1660799522, 0, NULL, 10, '', 'WsUnszg1ypsbV5LxgfvH07Ry36ktknfw_1660797998', 0);
 
 -- --------------------------------------------------------
 
@@ -719,7 +702,9 @@ CREATE TABLE `user_address` (
 --
 
 INSERT INTO `user_address` (`id`, `user_id`, `address`, `city`, `state`, `country`, `zipcode`, `phone`) VALUES
-(1, 3, 'No 123 Jalan Meranti Chabang Empat', 'Tumpat', 1, 'MY', '16210', '0176209665');
+(1, 3, 'No 123 Jalan Meranti Chabang Empat', 'Tumpat', 1, 'MY', '16210', '0176209665'),
+(4, 6, '1830 - C, Tingkat 1', 'Kota Bharu', 1, 'MY', '16020', '0189003080'),
+(5, 7, '1830 - C, Tingkat 1\r\nPengkalan Nangka', 'Kota Bharu', 1, 'MY', '16020', '0189003080');
 
 --
 -- Indexes for dumped tables
@@ -743,7 +728,8 @@ ALTER TABLE `ecm_category`
 --
 ALTER TABLE `ecm_orders`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idx-orders-created_by` (`created_by`);
+  ADD KEY `idx-orders-created_by` (`created_by`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `ecm_order_addresses`
@@ -852,13 +838,13 @@ ALTER TABLE `ecm_category`
 -- AUTO_INCREMENT for table `ecm_orders`
 --
 ALTER TABLE `ecm_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ecm_order_items`
 --
 ALTER TABLE `ecm_order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ecm_products`
@@ -918,13 +904,23 @@ ALTER TABLE `negeri`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_address`
 --
 ALTER TABLE `user_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `ecm_orders`
+--
+ALTER TABLE `ecm_orders`
+  ADD CONSTRAINT `ecm_orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

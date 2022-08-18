@@ -1,5 +1,5 @@
 <?php
-use common\widgets\Alert;
+
 use yii\helpers\Html;
 use frontend\assets\IkhtiarAsset;
 use frontend\assets\AppAsset;
@@ -64,7 +64,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
           <div class="order-2 order-lg-1 col-lg-6">
             <div class="content-box">
 
-        <?=Alert::widget()?>
+       
         <?=$content?>
 
         </div>

@@ -36,11 +36,7 @@ use yii\helpers\Url;
                           
                         </li>
 
-                        <!-- Shop -->
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="<?=Url::to(['/page/about'])?>">About</a>
-                          
-                        </li>
+            
 
                         <!-- Product -->
                         <li class="nav-item dropdown">
@@ -62,32 +58,45 @@ use yii\helpers\Url;
                       
 
 
-                        <?php  if (Yii::$app->user->isGuest) {?>
+                       
 
                           </li>
 
-                        <li class="nav-item ">
-                        <a class="nav-link" href="<?=Url::to(['/site/login'])?>">Log In</a>
-                          
-                          
-                        </li>
 
-                      <?php } else { ?>
 
+                        <?php
+                        $icon = '';
+                        if (!Yii::$app->user->isGuest) {
+                          $icon = '<i data-feather="user"></i> ';
+                        }
+                        
+                        ?>
   
 
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Dashboard</a>
+                          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><?=$icon?>MEMBER</a>
                           <div class="dropdown-menu">
                             <div class="dropdown-column">
-                              <a class="dropdown-item" href="<?=Url::to(['/dashboard/index'])?>">Dashboard</a>
-                              <a class="dropdown-item" href="<?=Url::to(['/dashboard/index'])?>">Log Out</a>
+
+                            <?php  if (!Yii::$app->user->isGuest) {?>
+
+                              <a class="dropdown-item" href="<?=Url::to(['/dashboard/index'])?>">DASHBOARD</a>
+                              <a class="dropdown-item" href="<?=Url::to(['/site/logout'])?>">LOG OUT</a>
+
+                              <?php } else { ?>
+
+                                <a class="dropdown-item" href="<?=Url::to(['/site/login'])?>">LOG IN</a>
+
+                                <a class="dropdown-item" href="<?=Url::to(['/site/signup'])?>">REGISTER</a>
+
+
+                                <?php }  ?>
                             </div>
                           </div>
                         </li>
 
 
-                      <?php }  ?>
+                     
 
                         <!-- Pages -->
                   
@@ -132,22 +141,7 @@ use yii\helpers\Url;
                 <!-- Search Input End -->
               </li>
 
-              <li class="user">
-                <div class="dropdown user-dropdown">
-                  <a href="javascript:void(0)"><i data-feather="user"></i></a>
-                  <?php if(Yii::$app->user->isGuest){?>
-                  <ul class="onhover-show-div">
-                    <li id ="guest-login"><a href="<?php echo Url::to(['site/login'])?>">Login</a></li>
-                    <li id ="guest-register"><a href="<?php echo Url::to(['site/signup'])?>">Register</a></li>
-                  </ul>
-                <?php }else{ ?>
-                  <ul class="onhover-show-div">
-                    <li><a href="<?php echo Url::to(['/dashboard/index'])?>">Dashboard</a></li>
-                    <li><a href="<?=Url::to(['site/logout','data-method' => 'post'])?>">Logout</a></li>
-                  </ul>
-                <?php }?>
-                </div>
-              </li>
+
 
 
 

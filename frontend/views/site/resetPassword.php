@@ -16,6 +16,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
       <div>
         <h5><?= Html::encode($this->title) ?> <span class="bg-theme-blue"></span></h5>
+        <?=common\widgets\Alert::widget()?>
 
         <?php $form = ActiveForm::begin(['id' => 'reset-password-form']); ?>
 

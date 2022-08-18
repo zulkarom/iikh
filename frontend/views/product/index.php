@@ -214,7 +214,7 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                       <h4 class="heading">Alamat Penghantaran<span class="bg-theme-blue"></span></h4>
                     </div>
                       <?php if(Yii::$app->user->isGuest){?>
-                        <div class="option login-content">
+                        <div class="option login-content" id="con-guest">
                     <div class="alert alert-primary" role="alert">
                       
                     <a id="login-link"  data-bs-toggle="modal" data-bs-target="#loginAction" type="button" role="tab" aria-controls="description" aria-selected="true">
@@ -286,7 +286,7 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                 </div>
 
                 <?php if(Yii::$app->user->isGuest){?>
-                <div class="col-6">
+                <div class="col-6" id="f-email">
                   <div class="input-box">
                     <?= $form->field($order, 'email')->textInput(['id' => 'email', 'class' => 'form-control']) ?>
                   </div>
@@ -579,7 +579,9 @@ $('#btn-login').click(function(){
            $('#loginAction').modal('toggle');
            // $('.login-content').slideUp();
            // $('.login-content').remove();
-
+          
+           $('#f-email').remove();
+           $('#con-guest').remove();
           calc();
           calcShipping();
 

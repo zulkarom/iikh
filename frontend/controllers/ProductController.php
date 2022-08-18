@@ -86,6 +86,7 @@ class ProductController extends Controller
                     $user = Yii::$app->user->identity;
                     $order->fullname = $user->fullname;
                     $email = $user->email;
+                    $order->user_id = $user->id;
                 }
 
             $order->email = $email;

@@ -142,19 +142,15 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
                     <?php $form = ActiveForm::begin(['class' => 'custom-form form-pill']); ?>
                       <div class="row g-3 g-xl-4">
-                <div class="col-12">
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($user, 'fullname')->textInput(['id' => 'fullname', 'class' => 'form-control'])->label('Nama Penuh') ?>
                   </div>
                 </div>
 
-                <div class="col-6">
-                  <div class="input-box">
-                    <?= $form->field($user, 'email')->textInput(['id' => 'email', 'class' => 'form-control'])->label('Email') ?>
-                  </div>
-                </div>
 
-                <div class="col-6">
+
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($userAddress, 'phone')->textInput(['id' => 'phone', 'class' => 'form-control', 'type'=>'number'])->label('No Telefon') ?>
                   </div>
@@ -162,29 +158,29 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
                 <div class="col-12">
                   <div class="input-box">
-                    <?= $form->field($userAddress, 'address')->textInput(['id' => 'address', 'class' => 'form-control'])->label('Alamat') ?>
+                    <?= $form->field($userAddress, 'address')->textarea(['id' => 'address', 'class' => 'form-control','rows' => 2])->label('Alamat') ?>
                   </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($userAddress, 'city')->textInput(['id' => 'city', 'class' => 'form-control'])->label('Bandar') ?>
                   </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($userAddress, 'zipcode')->textInput(['id' => 'zipcode', 'class' => 'form-control', 'type'=>'number'])->label('Poskod') ?>
                   </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($userAddress, 'state')->dropDownList( ArrayHelper::map(Negeri::find()->orderBy('negeri_name')->all(),'id', 'negeri_name'), ['id' => 'state', 'prompt' => 'Select State', 'class' => 'form-select form-control'])->label('Negeri');?>
                   </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($userAddress, 'country')->dropDownList(['MY' => 'Malaysia', 'IND' => 'Indonesia'], ['id' => 'country'])->label('Negara');?>
                   </div>

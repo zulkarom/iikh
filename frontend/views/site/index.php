@@ -219,7 +219,7 @@ $ayat = '';
 
             <!-- Tab Content Start -->
             <div class="row">
-              <div class="col-6">
+              <div class="col-md-6">
                 <div class="tab-content ratio_asos" id="pills-tabContent">
                   <div class="blog-box blog-list">
                       <a href="blog-detail.html" class="img-box bg-size" style="
@@ -246,7 +246,7 @@ $ayat = '';
                     </div>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-md-6">
                 <div class="tab-content ratio_asos" id="pills-tabContent">
                   <div class="blog-box blog-list">
                       <a href="blog-detail.html" class="img-box bg-size" style="
@@ -276,7 +276,7 @@ $ayat = '';
             </div>
             <br/>
             <div class="row">
-              <div class="col-6">
+              <div class="col-md-6">
                 <div class="tab-content ratio_asos" id="pills-tabContent">
                   <div class="blog-box blog-list">
                       <a href="blog-detail.html" class="img-box bg-size" style="
@@ -303,7 +303,7 @@ $ayat = '';
                     </div>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-md-6">
                 <div class="tab-content ratio_asos" id="pills-tabContent">
                   <div class="blog-box blog-list">
                       <a href="blog-detail.html" class="img-box bg-size" style="

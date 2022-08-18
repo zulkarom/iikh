@@ -14,6 +14,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
 <div>
   <h5>PENDAFTARAN <span class="bg-theme-blue"></span></h5>
+  <?=common\widgets\Alert::widget()?>
 
   <?php $form = ActiveForm::begin(
       [
