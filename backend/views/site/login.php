@@ -70,10 +70,6 @@ $fieldOptions = [
 
       <div class="social-auth-links text-center mt-2 mb-3">
       </div>
-
-      <p class="mb-1">
-        <a href="">I forgot my password</a>
-      </p>
     </div>
     <!-- /.card-body -->
   <!-- /.card -->

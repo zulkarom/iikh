@@ -5,7 +5,7 @@ namespace frontend\models;
 use backend\models\billplz\API;
 use backend\models\billplz\Connect;
 use Yii;
-use backend\models\Order;
+use backend\modules\shop\models\Order;
 
 class Billplz
 {

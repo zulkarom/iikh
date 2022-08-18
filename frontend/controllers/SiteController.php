@@ -172,11 +172,7 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             Yii::$app->session->addFlash('success', "Anda telah berjaya log masuk.");
-            if(Yii::$app->user->identity->defaultAddress){
-                return $this->goHome();
-            }else{
-                return $this->redirect(['dashboard/index']);
-            }
+            return $this->redirect(['dashboard/index']);
             
         } else {
             $this->layout = "//main-login";

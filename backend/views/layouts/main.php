@@ -16,12 +16,6 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@backend/assets/adminlte')
 
 ?>
 
-<style type="text/css">
-    .brand-link {
-    font-size: 2.5rem!important;
-}
-</style>
-
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -36,6 +30,12 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@backend/assets/adminlte')
     <?php $this->head() ?>
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
       <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+      <style type="text/css">
+    .brand-link {
+    font-size: 2.5rem!important;
+}
+</style>
 </head>
 <body class="hold-transition sidebar-mini">
 <?php $this->beginBody() ?>
