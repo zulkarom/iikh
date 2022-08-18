@@ -275,7 +275,6 @@ class SiteController extends Controller
     }
 
     public function actionRedirect(){
-        echo  'anda jutawan';die();
 	    $billplz = new Billplz();
 	    if($order = $billplz->processRedirect()){
 	        return $this->redirect(['/product/thanks', 'o' => $order->id]);
