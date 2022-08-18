@@ -87,9 +87,6 @@ class Billplz
 	}
 	
 	public function processRedirect(){
-		echo $this->x_signature;
-		die();
-
 	    $data = Connect::getXSignature($this->x_signature, 'bill_redirect');
 		
 	    if ($data['paid']) {

@@ -310,6 +310,7 @@ class Connect
         $data['paid'] = $data['paid'] === 'true' ? true : false;
 
         $signed = hash_hmac('sha256', $signing, $x_signature_key);
+        echo 'yoo===' .$signed;die();
 
         if (hash_equals($signed, $data['x_signature'])) {
             $data['type'] = $type;
