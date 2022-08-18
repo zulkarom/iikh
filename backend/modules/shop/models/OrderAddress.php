@@ -51,11 +51,13 @@ class OrderAddress extends \yii\db\ActiveRecord
     {
         return [
             'order_id' => 'Order ID',
-            'address' => 'Address',
-            'city' => 'City',
-            'state_id' => 'State',
-            'country_id' => 'Country',
-            'zipcode' => 'Postcode',
+            'address' => 'Alamat / Lot / Jalan',
+            'city' => 'Bandar',
+            'state_id' => 'Negeri',
+            'country_id' => 'Negara',
+            'country_code' => 'Negara',
+            'zipcode' => 'Poskod',
+            'phone' => 'No. Telefon',
         ];
     }
     
@@ -71,8 +73,37 @@ class OrderAddress extends \yii\db\ActiveRecord
         return $this->hasOne(Countries::className(), ['country_code' => 'country_code']);
     }
     
+    public function country(){
+        return ['MY' => 'Malaysia'];
+    }
+    
+
     public function getCountryName(){
-        return $this->country->country_name;
+        $label = $this->country();
+        if(array_key_exists($this->country_code, $label)){
+            return $label[$this->country_code];
+        }
+        
+    }
+   
+    public function fullAddressText(){
+        $zipcode = '';
+        if($this->zipcode){
+            $zipcode = ', '.$this->zipcode;
+        }
+        $city = '';
+        if($this->city){
+            $city = ', '.$this->city;
+        }
+        $state = '';
+        if($this->state){
+            $state = ', '.$this->stateName;
+        }
+        $country = '';
+        if($this->country){
+            $country = ', ' . $this->countryName;
+        }
+        return $this->address.$zipcode.$city.$state.$country;
     }
 
     /**
@@ -91,7 +122,7 @@ class OrderAddress extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \backend\modules\shop\models\query\OrderAddressQuery(get_called_class());
+        return new \backend\models\query\OrderAddressQuery(get_called_class());
     }
     
     public function flashError(){

@@ -5,7 +5,7 @@ namespace frontend\models;
 use backend\models\billplz\API;
 use backend\models\billplz\Connect;
 use Yii;
-use backend\modules\account\models\ClientPayment;
+use backend\models\Order;
 
 class Billplz
 {
@@ -89,10 +89,10 @@ class Billplz
 	public function processRedirect(){
 	    $data = Connect::getXSignature($this->x_signature, 'bill_redirect');
 	    if ($data['paid']) {
-	        $payment = ClientPayment::findOne(['billplz_id' => $data['id']]);
-	        if($payment){
-	            if($payment->confirmPayment($data, false)){
-	                return $payment;
+	        $order = Order::findOne(['billplz_id' => $data['id']]);
+	        if($order){
+	            if($order->confirmPayment($data, false)){
+	                return $order;
 	            }else{
 	                $msg = 'The payment failed to update';
 	                throw new \yii\web\HttpException(500, $msg );
@@ -111,9 +111,9 @@ class Billplz
 	    $data = Connect::getXSignature($this->x_signature, 'bill_callback');
 		if($data){
 			if ($data['paid']) {
-				$payment = ClientPayment::findOne(['billplz_id' => $data['id']]);
-				if($payment){
-					if($payment->confirmPayment($data)){
+				$order = Order::findOne(['billplz_id' => $data['id']]);
+				if($order){
+					if($order->confirmPayment($data)){
 						return true;
 					}else{
 						$msg = 'The payment failed to update';
@@ -128,6 +128,8 @@ class Billplz
 				}
 			} 
 		}else{
+			$order = Order::findOne(['billplz_id' => $data['id']]);
+			json_encode(Yii::$app->request->post());
 			$msg = 'x_signature problem';
 			throw new \yii\web\HttpException(500, $msg);
 		}

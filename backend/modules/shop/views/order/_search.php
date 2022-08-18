@@ -29,7 +29,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'transaction_id') ?>
 
-    <?php // echo $form->field($model, 'paypal_order_id') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 

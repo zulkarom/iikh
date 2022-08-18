@@ -1,6 +1,6 @@
 <?php
 use common\models\User;
-use backend\models\Product;
+use backend\modules\shop\models\Order;
 
 $this->title = 'Dashboard';
 ?>
@@ -12,9 +12,9 @@ $this->title = 'Dashboard';
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3></h3>
+                <h3><?=User::countMember()?></h3>
 
-                <p> Total Users</p>
+                <p>TOTAL MEMBERS</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person"></i>
@@ -25,11 +25,11 @@ $this->title = 'Dashboard';
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-danger">
               <div class="inner">
-                <h3></h3>
+                <h3><?=Order::countOrder(Order::STATUS_PAID)?></h3>
 
-                <p>Product</p>
+                <p>ORDER PAID</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -40,11 +40,11 @@ $this->title = 'Dashboard';
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-warning">
               <div class="inner">
-                <h3></h3>
+              <h3><?=Order::countOrder(Order::STATUS_PROSESSING)?></h3>
 
-                <p>Product Active</p>
+                <p>ORDER PROCESSED</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -55,11 +55,11 @@ $this->title = 'Dashboard';
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-success">
               <div class="inner">
-                <h3></h3>
+              <h3><?=Order::countOrder(Order::STATUS_SHIPPED)?></h3>
 
-                <p>Product Expired</p>
+                <p>ORDER SHIPPED</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>

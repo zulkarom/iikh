@@ -16,7 +16,6 @@ use yii\db\Exception;
  * @property string       $lastname
  * @property string       $email
  * @property string|null  $transaction_id
- * @property string|null  $paypal_order_id
  * @property int|null     $created_at
  * @property int|null     $created_by
  *
@@ -26,23 +25,99 @@ use yii\db\Exception;
  */
 class Order extends \yii\db\ActiveRecord
 {
-    const STATUS_DRAFT = 0;
+    const STATUS_INITIATE = 0;
     const STATUS_FAILED = 1;
     const STATUS_ORDERED = 10;
     const STATUS_PAID = 20;
-    const STATUS_SHIPPED = 30;
+    const STATUS_PROSESSING = 30;
+    const STATUS_SHIPPED = 40;
     const STATUS_COMPLETED = 50;
 
-    public $quantity;
-    
-    public function listStatus(){
-        return [0 => 'Draft', 1 => 'Failed', 10 => 'Ordered'
-            , 20 => 'Processing', 30 => 'Shipped', 50 => 'Completed'
+    public $payment;
+
+
+    public static function getStatusList()
+    {
+        return [
+            self::STATUS_INITIATE => 'Initiate',
+            self::STATUS_FAILED => 'Failed',
+            self::STATUS_ORDERED => 'Ordered',
+            self::STATUS_PAID => 'Paid',
+            self::STATUS_PROSESSING => 'Processing',
+            self::STATUS_SHIPPED => 'Shipped',
+            self::STATUS_COMPLETED => 'Completed',
         ];
     }
     
+    public static function getStatusColor()
+    {
+        return [
+            self::STATUS_INITIATE => 'default',
+            self::STATUS_FAILED => 'danger',
+            self::STATUS_ORDERED => 'warning',
+            self::STATUS_PAID => 'success',
+            self::STATUS_PROSESSING => 'info',
+            self::STATUS_SHIPPED => 'primary',
+            self::STATUS_COMPLETED => 'success',
+        ];
+    }
+
+    public static function countOrder($status_no){
+        return self::find()
+        ->where(['status' => $status_no])
+        ->count();
+    }
+
+    public function confirmPayment($bill, $callback = true){
+        $transaction = Yii::$app->db->beginTransaction();
+        try{
+            $arr= array();
+            $arr['ip_address'] = $_SERVER['REMOTE_ADDR'];
+            $arr['datetime'] = date('y-m-d h:m:s');
+            
+            if($callback){
+                $this->billplz_state = $bill['state'];
+                $arr['post_data'] = json_encode(Yii::$app->request->post());
+                $this->billplz_callback = json_encode($arr);
+            }else{
+                $arr['post_data'] = json_encode(Yii::$app->request->get());
+                $this->billplz_redirect = json_encode($arr);
+            }
+            $this->status = self::STATUS_PAID;
+            $this->pay_status = 'Paid';
+            $this->payment_created = time();
+            $this->billplz_paid_at = $bill['paid_at'];
+            
+                if($this->save()){
+                    $transaction->commit();
+                    return true;
+                    
+                }else{
+					echo 'error saving payment model';
+                    if($this->getErrors()){
+						foreach($this->getErrors() as $error){
+							if($error){
+								foreach($error as $e){
+									echo $e;
+								}
+							}
+						}
+					}
+
+					
+                    $transaction->rollBack();
+                }
+        }catch(\Exception $e) {
+            echo $e->getMessage();
+            $transaction->rollBack();
+        }
+        //echo 'false' ; die();
+        return false;
+
+    }
+    
     public function getStatusText(){
-        if(array_key_exists($this->status, $this->listStatus())){
+        if(array_key_exists($this->status, $this->statusList)){
             return $this->listStatus()[$this->status];
         }
     }
@@ -61,12 +136,12 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['total_price', 'status', 'fullname', 'email', 'billPhone'], 'required'],
+            [['total_price', 'status', 'fullname', 'email', 'billPhone', 'bank_code'], 'required'],
             [['total_price'], 'number'],
             [['email'], 'email'],
-            [['created_at', 'created_by', 'status', 'ship_method'], 'integer'],
+            [['created_at', 'created_by', 'status', 'ship_method', 'payment'], 'integer'],
             [['fullname', 'pay_status'], 'string', 'max' => 60],
-            [['email', 'transaction_id', 'paypal_order_id', 'order_note', 'tracking_no'], 'string', 'max' => 255],
+            [['email', 'transaction_id', 'order_note'], 'string', 'max' => 255],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
@@ -81,13 +156,12 @@ class Order extends \yii\db\ActiveRecord
             'total_price' => 'Total Price',
             'status' => 'Status',
             'statusLabel' => 'Status',
-            'fullname' => 'Fullname',
-            'email' => 'Email',
+            'fullname' => 'Nama Penuh',
+            'email' => 'Alamat Emel',
             'transaction_id' => 'Transaction ID',
-            'paypal_order_id' => 'Paypal Order ID',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
-            'tracking_no' => 'Tracking No',
+            'bank_code' => 'Perbankan Atas Talian',
         ];
     }
     
@@ -139,31 +213,26 @@ class Order extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \backend\modules\shop\models\query\OrderQuery(get_called_class());
-    }
+        return new \backend\models\query\OrderQuery(get_called_class());
+    }    
 
-    
-
-    public function saveOrderItems()
+    public function saveOrderItems($product, $order_id, $quantity)
     {
-        $cartItems = CartItem::getItemsForUser(currUserId());
+        // $cartItems = CartItem::getItemsForUser(currUserId());
         //echo count($cartItems);
-        if($cartItems){
-            foreach ($cartItems as $cartItem) {
+        if($product){
                 $orderItem = new OrderItem();
                 //echo $cartItem['name']. 'xxxxxxxxxxxxxxxxxxxxx';die();
-                $orderItem->product_name = $cartItem['name'];
-                $orderItem->attr_mix = $cartItem['attr_mix'];
-                $orderItem->product_id = $cartItem['id'];
-                $orderItem->unit_price = $cartItem['price'];
-                $orderItem->order_id = $this->id;
-                $orderItem->quantity = $cartItem['quantity'];
+                $orderItem->product_name = $product->name;
+                // $orderItem->attr_mix = $cartItem['attr_mix'];
+                $orderItem->product_id = $product->id;
+                $orderItem->unit_price = $product->price;
+                $orderItem->order_id = $order_id;
+                $orderItem->quantity = $quantity;
                 if (!$orderItem->save()) {
                     $orderItem->flashError();
                     return false;
                     
-                    break;
-                }
             }
         }else{
             Yii::$app->session->addFlash('error', "No items");
@@ -218,29 +287,9 @@ class Order extends \yii\db\ActiveRecord
 
 
     
-    public static function getStatusList()
-    {
-        return [
-            self::STATUS_DRAFT => 'Draft',
-            self::STATUS_FAILED => 'Failed',
-            self::STATUS_ORDERED => 'Ordered',
-            self::STATUS_PAID => 'Paid',
-            self::STATUS_SHIPPED => 'Shipped',
-            self::STATUS_COMPLETED => 'Completed',
-        ];
-    }
     
-    public static function getStatusColor()
-    {
-        return [
-            self::STATUS_DRAFT => 'default',
-            self::STATUS_FAILED => 'danger',
-            self::STATUS_ORDERED => 'warning',
-            self::STATUS_PAID => 'success',
-            self::STATUS_SHIPPED => 'primary',
-            self::STATUS_COMPLETED => 'info',
-        ];
-    }
+
+    
     
     
     

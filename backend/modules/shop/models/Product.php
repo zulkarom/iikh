@@ -118,11 +118,6 @@ class Product extends \yii\db\ActiveRecord
         }
     }
 
-    public function getCategory()
-    {
-        return $this->hasOne(Category::className(), ['id' => 'category_id']);
-    }
-
 
     /**
      * Gets query for [[OrderItem]].
@@ -274,11 +269,7 @@ class Product extends \yii\db\ActiveRecord
         return [0=>'Default (Shipping Rate Setting)', 1 => 'Free Shipping'];
     }
     
-    public function getShipping(){
-        return $this->shippingOptions[$this->ship_free];
-    }
-    
-    
+	
 
     public function flashError(){
         if($this->getErrors()){

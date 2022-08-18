@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace backend\modules\shop\models;
 
 use common\models\User;
 use Yii;
@@ -116,6 +116,11 @@ class Product extends \yii\db\ActiveRecord
         }else if($this->status == 0){
             return '<span class="label label-danger">'.$this->statusText.'</span>';
         }
+    }
+
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
 
@@ -269,7 +274,11 @@ class Product extends \yii\db\ActiveRecord
         return [0=>'Default (Shipping Rate Setting)', 1 => 'Free Shipping'];
     }
     
-	
+    public function getShipping(){
+        return $this->shippingOptions[$this->ship_free];
+    }
+    
+
 
     public function flashError(){
         if($this->getErrors()){

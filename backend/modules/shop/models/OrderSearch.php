@@ -19,7 +19,7 @@ class OrderSearch extends Order
         return [
             [['id', 'status', 'created_at', 'created_by'], 'integer'],
             [['total_price'], 'number'],
-            [['fullname', 'email', 'transaction_id', 'paypal_order_id'], 'safe'],
+            [['fullname', 'email', 'transaction_id'], 'safe'],
         ];
     }
 
@@ -85,8 +85,7 @@ class OrderSearch extends Order
 
         $query->andFilterWhere(['like', 'fullname', $this->fullname])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'transaction_id', $this->transaction_id])
-            ->andFilterWhere(['like', 'paypal_order_id', $this->paypal_order_id]);
+            ->andFilterWhere(['like', 'transaction_id', $this->transaction_id]);
 
         return $dataProvider;
     }

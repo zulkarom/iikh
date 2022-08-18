@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace backend\modules\shop\models;
 
 use common\models\User;
 use Yii;
@@ -16,7 +16,6 @@ use yii\db\Exception;
  * @property string       $lastname
  * @property string       $email
  * @property string|null  $transaction_id
- * @property string|null  $paypal_order_id
  * @property int|null     $created_at
  * @property int|null     $created_by
  *
@@ -33,8 +32,8 @@ class Order extends \yii\db\ActiveRecord
     const STATUS_SHIPPED = 30;
     const STATUS_COMPLETED = 50;
 
-    public $payment;
-
+    public $quantity;
+    
     public function listStatus(){
         return [0 => 'Draft', 1 => 'Failed', 10 => 'Ordered'
             , 20 => 'Processing', 30 => 'Shipped', 50 => 'Completed'
@@ -61,12 +60,12 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['total_price', 'status', 'fullname', 'email', 'billPhone', 'bank_code'], 'required'],
+            [['total_price', 'status', 'fullname', 'email', 'billPhone'], 'required'],
             [['total_price'], 'number'],
             [['email'], 'email'],
-            [['created_at', 'created_by', 'status', 'ship_method', 'payment'], 'integer'],
+            [['created_at', 'created_by', 'status', 'ship_method'], 'integer'],
             [['fullname', 'pay_status'], 'string', 'max' => 60],
-            [['email', 'transaction_id', 'order_note'], 'string', 'max' => 255],
+            [['email', 'transaction_id', 'order_note', 'tracking_no'], 'string', 'max' => 255],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
@@ -81,13 +80,12 @@ class Order extends \yii\db\ActiveRecord
             'total_price' => 'Total Price',
             'status' => 'Status',
             'statusLabel' => 'Status',
-            'fullname' => 'Nama Penuh',
-            'email' => 'Alamat Emel',
+            'fullname' => 'Fullname',
+            'email' => 'Email',
             'transaction_id' => 'Transaction ID',
-            'paypal_order_id' => 'Paypal Order ID',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
-            'bank_code' => 'Perbankan Atas Talian',
+            'tracking_no' => 'Tracking No',
         ];
     }
     
@@ -139,26 +137,31 @@ class Order extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \backend\models\query\OrderQuery(get_called_class());
-    }    
+        return new \backend\modules\shop\models\query\OrderQuery(get_called_class());
+    }
 
-    public function saveOrderItems($product, $order_id, $quantity)
+    
+
+    public function saveOrderItems()
     {
-        // $cartItems = CartItem::getItemsForUser(currUserId());
+        $cartItems = CartItem::getItemsForUser(currUserId());
         //echo count($cartItems);
-        if($product){
+        if($cartItems){
+            foreach ($cartItems as $cartItem) {
                 $orderItem = new OrderItem();
                 //echo $cartItem['name']. 'xxxxxxxxxxxxxxxxxxxxx';die();
-                $orderItem->product_name = $product->name;
-                // $orderItem->attr_mix = $cartItem['attr_mix'];
-                $orderItem->product_id = $product->id;
-                $orderItem->unit_price = $product->price;
-                $orderItem->order_id = $order_id;
-                $orderItem->quantity = $quantity;
+                $orderItem->product_name = $cartItem['name'];
+                $orderItem->attr_mix = $cartItem['attr_mix'];
+                $orderItem->product_id = $cartItem['id'];
+                $orderItem->unit_price = $cartItem['price'];
+                $orderItem->order_id = $this->id;
+                $orderItem->quantity = $cartItem['quantity'];
                 if (!$orderItem->save()) {
                     $orderItem->flashError();
                     return false;
                     
+                    break;
+                }
             }
         }else{
             Yii::$app->session->addFlash('error', "No items");

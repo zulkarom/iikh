@@ -8,7 +8,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use common\models\LoginForm;
-use backend\models\Product;
+use backend\modules\shop\models\Product;
 
 /**
  * Site controller

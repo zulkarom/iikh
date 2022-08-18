@@ -217,6 +217,12 @@ class User extends ActiveRecord implements IdentityInterface
         ->count();
     }
 
+    public static function countMember(){
+        return self::find()
+        ->where(['is_admin' => 0])
+        ->count();
+    }
+
     public function getDefaultAddress(){
         $userAddress = UserAddress::findOne(['user_id' => $this->id]);
         return $userAddress;

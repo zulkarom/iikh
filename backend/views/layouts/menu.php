@@ -14,7 +14,7 @@ use common\widgets\MenuAdminLte;
 
             ['label' => 'Dashboard', 'level' => 1, 'url' => ['/site/index'], 'icon' => 'fas fa-tachometer-alt', 'children' => []],
 
-            ['label' => 'Products', 'level' => 1, 'url' => ['/shop/product/'], 'icon' => 'fas fa-chart-pie', 'children' => []],
+            ['label' => 'Products', 'level' => 1, 'url' => ['/shop/product/view?id=1'], 'icon' => 'fas fa-chart-pie', 'children' => []],
 
             ['label' => 'Orders', 'level' => 1, 'url' => ['/shop/order/'], 'icon' => 'fa fa-list-alt', 'children' => []],
 

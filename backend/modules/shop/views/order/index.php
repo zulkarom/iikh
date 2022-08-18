@@ -48,7 +48,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'total_price',
             //'email:email',
             //'transaction_id',
-            //'paypal_order_id',
             [
                 'attribute' => 'status',
                 'filter' => Html::activeDropDownList($searchModel, 'status', Order::getStatusList(), [

@@ -136,7 +136,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@backend/assets/adminlte')
             <!-- <span class="brand-text font-weight-light">
             <img src="<?=$dirAsset?>/dist/img/logo-txt.png">
             </span> -->
-            <span class="brand-text font-weight-bold">Ikhtiar</span>
+            <span class="brand-text font-weight-bold">I'Ikhtiar</span>
         </a>
         </center>
 

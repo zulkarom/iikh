@@ -89,7 +89,7 @@ class OrderController extends Controller
             $tracking = Yii::$app->request->post('Order')['tracking_no'];
             $model->status = $status;
             $model->tracking_no = $tracking;
-            if (!in_array($status, [\backend\modules\shop\models\Order::STATUS_COMPLETED, Order::STATUS_PAID])) {
+            if (!in_array($status, [Order::STATUS_COMPLETED, Order::STATUS_PAID, Order::STATUS_PROSESSING, Order::STATUS_SHIPPED])) {
                 $model->addError('status', 'Invalid Status');
             } else if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);

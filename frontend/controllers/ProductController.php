@@ -4,10 +4,10 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\web\Controller;
-use backend\models\Order;
-use backend\models\OrderItem;
-use backend\models\OrderAddress;
-use backend\models\Product;
+use backend\modules\shop\models\Order;
+use backend\modules\shop\models\OrderItem;
+use backend\modules\shop\models\OrderAddress;
+use backend\modules\shop\models\Product;
 use backend\modules\shop\models\ShippingRate;
 use frontend\models\Billplz;
 /**
@@ -68,7 +68,7 @@ class ProductController extends Controller
        
 
         // $order->total_price = $totalPrice;
-        $order->status = Order::STATUS_DRAFT;
+        $order->status = Order::STATUS_INITIATE;
         $order->created_at = time();
         
 
@@ -194,11 +194,11 @@ class ProductController extends Controller
         
     }
 
-    public function actionThanks($order_id){
+    public function actionThanks($o){
 
-        $order = Order::findOne($order_id);
-        $orderAddress = OrderAddress::findOne(['order_id' => $order_id]);
-        $orderItem = OrderItem::findOne(['order_id' => $order_id]);
+        $order = Order::findOne($o);
+        $orderAddress = OrderAddress::findOne(['order_id' => $o]);
+        $orderItem = OrderItem::findOne(['order_id' => $o]);
         $product = Product::findOne(1);
 
         return $this->render('thanks', [
@@ -206,6 +206,12 @@ class ProductController extends Controller
             'orderAddress' => $orderAddress,
             'orderItem' => $orderItem,
             'product' => $product
+        ]);
+    }
+
+    public function actionFailed(){
+
+        return $this->render('failed', [
         ]);
     }
 

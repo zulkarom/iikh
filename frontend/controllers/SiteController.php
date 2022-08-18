@@ -2,14 +2,12 @@
 
 namespace frontend\controllers;
 
-use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
-use yii\web\Session;
-use yii\filters\VerbFilter;
+use frontend\models\Billplz;
 use yii\filters\AccessControl;
 use frontend\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -66,7 +64,7 @@ class SiteController extends Controller
             return parent::beforeAction($action);
         }
         
-        if (parent::beforeAction($action)) {
+      if (parent::beforeAction($action)) {
             if ($action->id=='error') $this->layout ='error';
             return parent::beforeAction($action);
         } else {
@@ -83,6 +81,13 @@ class SiteController extends Controller
     {
       
         return $this->render('index');
+       
+    }
+
+    public function actionError()
+    {
+      
+        return $this->render('error');
        
     }
 
@@ -274,16 +279,18 @@ class SiteController extends Controller
     }
 
     public function actionRedirect(){
+        
 	    $billplz = new Billplz();
-	    if($payment = $billplz->processRedirect()){
-	        return $this->redirect(['/client-payment/view', 'id' => $payment->id, 'notify' => 1]);
+	    if($order = $billplz->processRedirect()){
+	        return $this->redirect(['/product/thanks', 'o' => $order->id]);
 	    }else{
-	        return $this->redirect(['/client-payment/payment-failed']);
+	        return $this->redirect(['/product/failed']);
 	    }
 	}
 
 	
 	public function actionCallback(){
+        
 	    $billplz = new Billplz();
 	    if($billplz->processCallback()){
 	        Yii::$app->response->statusCode = 200;

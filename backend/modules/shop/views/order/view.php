@@ -161,9 +161,8 @@ table.detail-view th {
 <div class="card-body" style="padding:30px;">
 
 
-  <b>Billcode:</b> <?=$model->billcode?> <br />
+  <b>Billcode:</b> <?=$model->billplz_id?> <br />
            <b> Payment Status:</b> <?=$model->pay_status?> <br />
-           <b> Reference:</b> <?=$model->toyyib_refno?> <br />
            <b> Transaction ID:</b> <?=$model->transaction_id?> <br />
 
 
