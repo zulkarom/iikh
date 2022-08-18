@@ -88,6 +88,8 @@ class Billplz
 	
 	public function processRedirect(){
 	    $data = Connect::getXSignature($this->x_signature, 'bill_redirect');
+		echo $this->x_signature;
+		die();
 	    if ($data['paid']) {
 	        $order = Order::findOne(['billplz_id' => $data['id']]);
 	        if($order){
