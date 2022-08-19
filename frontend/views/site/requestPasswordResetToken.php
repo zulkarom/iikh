@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap4\ActiveForm;
 
-$this->title = 'Tetapan semula kata laluan';
+$this->title = 'Forgot Password';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -20,7 +20,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <p>Sila isi maklumat email anda. Pautan untuk set semula kata laluan akan dihantar ke sana.</p>
 
 
-        <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
+        <?php $form = ActiveForm::begin( [
+          'options' => [
+              'class' => 'custom-form form-pill'
+          ]
+      ]); ?>
 
         <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 

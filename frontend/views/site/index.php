@@ -19,7 +19,7 @@ $urlHome = Url::to(['/product/index']);
 }
 </style>
 <?php 
-$ayat = '';
+$ayat = '2i+Honey adalah produk pemakanan kesihatan yang diasaskan oleh saudara Ikmalul Iktimam hasil daripada pengalaman beliau sendiri yang mengalami masalah kesihatan yang menyebabkan beliau terpaksa berkerusi roda selama hampir 7 tahun.';
 
 ?>
 <main class="main">
@@ -42,8 +42,9 @@ $ayat = '';
                   <h1 class="heading" style="text-transform:inherit">
                     JADIKAN <span> 2i+HONEY <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape"></span> <strong>PEMAKANAN TAMBAHAN</strong> HARIAN ANDA
                   </h1>
+
        
-                  <p><?=$ayat?></p>
+                  <p style="padding:20px"><?=$ayat?></p>
                   <a href="<?=$urlHome?>" class="btn-style3">ORDER NOW <i class="arrow"></i></a>
  
                 </div>
@@ -70,7 +71,7 @@ $ayat = '';
                     JOM <strong> AMALKAN</strong> <span> 2i+HONEY <img class="shape" src="<?=$dirAsset?>/svg/shape.svg" alt="shape"></span> UNTUK HIDUP <strong>SIHAT</strong>
                   </h1>
        
-                  <p><?=$ayat?></p>
+                  <p style="padding:20px"><?=$ayat?></p>
                   <a href="<?=$urlHome?>" class="btn-style3">ORDER NOW <i class="arrow"></i></a>
  
                 </div>
@@ -83,7 +84,8 @@ $ayat = '';
               </div>
             </div>
           </div>
-          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
         </div>
       </section>
       <!-- Home Banner Section End -->

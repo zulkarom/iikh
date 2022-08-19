@@ -149,7 +149,9 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
             <div class="col-md-5">
               <div class="product-detail-box">
                 <div class="product-option">
-                  <?php $form = ActiveForm::begin(); ?>
+                  <?php $form = ActiveForm::begin(['options' => [
+              'class' => 'custom-form form-pill'
+          ]]); ?>
                    
                   <h2><?=$product->name?></h2>
                   <div class="option rating-option">
@@ -244,7 +246,7 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                     
                         <br />
                     
-                    <div class="custom-form form-pill">
+          
                    
               <div class="row g-3 g-md-4">
                 <div class="col-12">
@@ -261,39 +263,39 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                   </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($orderAddress, 'city')->textInput(['id' => 'city', 'class' => 'form-control']) ?>
                   </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($orderAddress, 'zipcode')->textInput(['id' => 'zipcode', 'class' => 'form-control', 'type'=>'number']) ?>
                   </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($orderAddress, 'state_id')->dropDownList( ArrayHelper::map(Negeri::find()->orderBy('negeri_name')->all(),'id', 'negeri_name'), ['id' => 'state', 'prompt' => 'Select State', 'class' => 'form-select form-control']);?>
                   </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($orderAddress, 'country_code')->dropDownList(['MY' => 'Malaysia'], ['id' => 'country']);?>
                   </div>
                 </div>
 
                 <?php if(Yii::$app->user->isGuest){?>
-                <div class="col-6" id="f-email">
+                <div class="col-md-6" id="f-email">
                   <div class="input-box">
                     <?= $form->field($order, 'email')->textInput(['id' => 'email', 'class' => 'form-control']) ?>
                   </div>
                 </div>
                 <?php } ?>
 
-                <div class="col-6">
+                <div class="col-md-6">
                   <div class="input-box">
                     <?= $form->field($orderAddress, 'phone')->textInput(['id' => 'phone', 'class' => 'form-control', 'type'=>'number']) ?>
                   </div>
@@ -301,7 +303,7 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
 
                 
               </div>
-                    </div>
+              
 
 
 
@@ -335,7 +337,9 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                       </div>
                       <div class="col-12">
                         <br/>
+                        <div class="input-box">
                         <?= $form->field($order, 'bank_code')->dropDownList( ArrayHelper::map(Fpx::find()->orderBy('bank_name')->all(),'bank_code', 'bank_name'), ['prompt' => 'Sila Pilih', 'class' => 'form-select form-control'])->label('Perbankan Atas Talian');?>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -432,8 +436,9 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                   </div>
                   <br/>
 
-                  <div class="btn-group">
-                      <?= Html::submitButton('BUAT BAYARAN', ['class' => 'btn-solid btn-sm addtocart-btn']) ?>
+                  <div class="btn-group" >
+          
+                      <?= Html::submitButton('BUAT BAYARAN', ['class' => 'btn-style3', 'style' => 'margin: 0 auto']) ?>
                   </div>
 
                   <?php ActiveForm::end(); ?>
@@ -479,6 +484,7 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                    
                                   </div>
                                   <span id="warning-msg"></span>
+                                  <a class="forgot-link" href="<?php echo Url::to(['site/request-password-reset'])?>">Lupa Kata Laluan?</a>
                           </div>
 
                           </div>
@@ -492,9 +498,8 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                           </div>
 
 
-<div align="center"><a class="forgot-link" href="forgot-password.html">Forgot Password?</a></div>
 
-<div><span class="backto-link font-default content-color text-decoration-none">If you are new, <a class="text-decoration-underline theme-color" href="register.html"> Create Now </a> </span>
+<div style="margin:20px">  <span class="backto-link font-default content-color text-decoration-none">Tiada akaun? <a class="text-decoration-underline theme-color" href="<?php echo Url::to(['site/signup'])?>"> Daftar Sekarang </a> </span>
 </div>
 
                         </div>

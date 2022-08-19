@@ -72,7 +72,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
           <div class="order-1 order-lg-2 col-lg-7">
             <div class="img-box">
-              <img class="bg-img" src="<?=$dirAsset?>/images/ikhtiar/produk/product-3.jpg" alt="banner">
+              <img class="bg-img" src="<?=$dirAsset?>/images/ikhtiar/banner_login.png" alt="banner">
             </div>
           </div>
         </div>

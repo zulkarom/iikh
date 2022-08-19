@@ -13,14 +13,18 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
 
 
 <div>
-  <h5>PENDAFTARAN <span class="bg-theme-blue"></span></h5>
+  <h5>REGISRATION <span class="bg-theme-blue"></span></h5>
+
+  <p class="font-md content-color">Create your account today</p>
+
+
   <?=common\widgets\Alert::widget()?>
 
   <?php $form = ActiveForm::begin(
       [
-          /*'options' => [
+          'options' => [
               'class' => 'custom-form form-pill'
-          ]*/
+          ]
       ]
   ); ?>
 
