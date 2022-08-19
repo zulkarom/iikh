@@ -279,8 +279,9 @@ class Connect
 
         if ($type != 'bill_redirect') {
             foreach ($keys as $key){
-                if (isset($_POST[$key])){
-                    $post = \Yii::$app->request->post();
+                $post = \Yii::$app->request->post();
+                if ($post){
+                    
                     $data[$key] = $post[$key];
                 }
             }
