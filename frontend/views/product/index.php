@@ -120,14 +120,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                     <div class="details-product" style="padding-top:30px">
 
-
-                    2i+Honey terdiri daripada campuran bahan asli madu tualang, pati delima, minyak habbatus’sauda dan minyak zaitun telah diamalkan oleh saudara Ikmalul Iktimam sebagai supplement hariannya sehingga beliau kini pulih sepenuhnya kembali, dengan izin Allah.<br /><br />
-
-Produk ini sesuai untuk mereka yang mengalami diabetes, masalah jantung, saraf, gastrik, lemah antibodi, sakit sendi, keletihan dan kelesuan, luka dalaman (ulser perut), masalah pencernaan, asthma, anemia dan masalah pada sistem urinari. <br /><br />
-
-Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang mempunyai masalah kesihatan pula, ambil dua (2) sachet sehari pada waktu pagi dan malam. <br /><br />
-                      
-
+                    <?=$product->description?>
                   
                     </div>
                   </div>

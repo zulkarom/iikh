@@ -42,9 +42,7 @@ use backend\modules\shop\models\Company;
 	<div class="col-md-4"><?= $form->field($model, 'weight')->textInput([
         'maxlength' => true,
     ]) ?></div>
-	<div class="col-md-4"><?= $form->field($model, 'stock')->textInput([
-        'type' => 'number',
-    ]) ?></div>
+
 	<div class="col-md-4"> <?= $form->field($model, 'ship_free')->dropDownList($model->shippingOptions)?></div>
 </div>
     

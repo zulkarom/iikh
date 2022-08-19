@@ -154,6 +154,7 @@ class ProductController extends Controller
        /* $model->imageFile = UploadedFile::getInstance($model, 'imageFile');*/
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->addFlash('success', "Data Updated");
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
