@@ -285,7 +285,7 @@ class SiteController extends Controller
 
 	
 	public function actionCallback(){
-        print_r(Yii::$app->request->post());
+        //print_r($_POST);
 	    $billplz = new Billplz();
 	    if($billplz->processCallback()){
 	        Yii::$app->response->statusCode = 200;
