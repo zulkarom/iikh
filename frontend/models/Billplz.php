@@ -128,10 +128,6 @@ class Billplz
 					throw new \yii\web\HttpException(500, $msg);
 				}
 			} 
-		}else{
-			
-			$msg = 'x_signature problem';
-			throw new \yii\web\HttpException(500, $msg);
 		}
 		
 

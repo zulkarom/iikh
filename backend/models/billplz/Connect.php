@@ -270,7 +270,8 @@ class Connect
                 }
             }
         } elseif ($type == 'bill_callback') {
-            $keys = array('amount', 'collection_id', 'due_at', 'email', 'id', 'mobile', 'name', 'paid_amount', 'transaction_id', 'transaction_status', 'paid_at', 'paid', 'state', 'url', 'x_signature');
+            //$keys = array('amount', 'collection_id', 'due_at', 'email', 'id', 'mobile', 'name', 'paid_amount', 'transaction_id', 'transaction_status', 'paid_at', 'paid', 'state', 'url', 'x_signature');
+            $keys = array('amount', 'collection_id', 'due_at', 'email', 'id', 'mobile', 'name', 'paid_amount', 'paid_at', 'paid', 'state', 'url', 'x_signature');
         } elseif ($type == 'payout_callback') {
             $keys = array('id','mass_payment_instruction_collection_id','bank_code','bank_account_number','identity_number','name','description','email','status','notification','recipient_notification','reference_id','total','paid_at', 'x_signature');
         } else {
@@ -324,6 +325,7 @@ class Connect
         $p = [];
         $p['message'] = 'X Signature Calculation Mismatch!';
         $p['data'] = $data;
+        $p['signing'] = $signing;
         $p['signed'] = $signed;
         $order->billplz_callback = json_encode($p);
         $order->save();
