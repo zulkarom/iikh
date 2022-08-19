@@ -42,6 +42,6 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar')
                   <a href="<?php echo Url::to(['site/index'])?>" class="btn-solid rounded-pill line-none btn-outline mt-3 d-flex justify-content-center">Home <i class="arrow"></i></a>
                 <?php ActiveForm::end(); ?>
 
-                <span class="backto-link font-default content-color text-decoration-none">Jika anda baru, <a class="text-decoration-underline theme-color" href="<?php echo Url::to(['site/signup'])?>"> Buat Akaun </a> </span>
+                <span class="backto-link font-default content-color text-decoration-none">Tiada akaun? <a class="text-decoration-underline theme-color" href="<?php echo Url::to(['site/signup'])?>"> Daftar Sekarang </a> </span>
               </div>
      

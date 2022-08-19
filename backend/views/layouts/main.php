@@ -225,7 +225,7 @@ $dirAsset = Yii::$app->assetManager->getPublishedUrl('@backend/assets/adminlte')
         <!-- To the right -->
   
         <!-- Default to the left -->
-        <strong>&copy; Ikhtiar <?= date('Y') ?></strong> All rights reserved.
+        <strong>&copy; I'Ikhtiar.com <?= date('Y') ?></strong> All rights reserved.
     </footer>
 
 </div>

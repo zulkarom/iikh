@@ -1,6 +1,6 @@
 <?php 
 use yii\helpers\Url;
-use backend\models\OrderItem;
+use backend\modules\shop\models\OrderItem;
 
 $dirAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/assets/ikhtiar');
 $orderItem = OrderItem::findOne(['order_id' => $model->id]);
