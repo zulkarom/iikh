@@ -129,8 +129,7 @@ class Billplz
 				}
 			} 
 		}else{
-			$order = Order::findOne(['billplz_id' => $data['id']]);
-			json_encode(Yii::$app->request->post());
+			
 			$msg = 'x_signature problem';
 			throw new \yii\web\HttpException(500, $msg);
 		}

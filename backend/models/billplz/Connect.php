@@ -320,6 +320,14 @@ class Connect
             return $data;
         }
 
+        $order = \backend\modules\shop\models\Order::findOne(['billplz_id' => $data['id']]);
+        $p = [];
+        $p['message'] = 'X Signature Calculation Mismatch!';
+        $p['data'] = $data;
+        $p['signed'] = $signed;
+        $order->billplz_callback = json_encode($p);
+        $order->save();
+
         throw new \Exception('X Signature Calculation Mismatch!');
     }
 
