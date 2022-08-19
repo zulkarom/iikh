@@ -87,26 +87,72 @@ class Order extends \yii\db\ActiveRecord
             $this->pay_status = 'Paid';
             $this->payment_created = time();
             $this->billplz_paid_at = $bill['paid_at'];
-            
-                if($this->save()){
-                    $transaction->commit();
-                    return true;
-                    
-                }else{
-					echo 'error saving payment model';
-                    if($this->getErrors()){
-						foreach($this->getErrors() as $error){
-							if($error){
-								foreach($error as $e){
-									echo $e;
-								}
-							}
-						}
-					}
 
-					
-                    $transaction->rollBack();
+            $this->sendEmailToVendor();
+            $this->sendEmailToCustomer();
+            $this->notify_vendor = 1;
+            $this->notify_customer = 1;
+            
+            if($this->save()){
+                
+                $transaction->commit();
+                return true;
+                
+            }else{
+                echo 'error saving payment model';
+                if($this->getErrors()){
+                    foreach($this->getErrors() as $error){
+                        if($error){
+                            foreach($error as $e){
+                                echo $e;
+                            }
+                        }
+                    }
                 }
+
+                $transaction->rollBack();
+            }
+        }catch(\Exception $e) {
+            echo $e->getMessage();
+            $transaction->rollBack();
+        }
+        //echo 'false' ; die();
+        return false;
+
+    }
+
+    public function confirmPaymentLocal(){
+        $transaction = Yii::$app->db->beginTransaction();
+        try{
+ 
+            $this->status = self::STATUS_PAID;
+            $this->pay_status = 'Paid';
+            $this->payment_created = time();
+
+            $this->sendEmailToVendor();
+            $this->sendEmailToCustomer();
+            $this->notify_vendor = 1;
+            $this->notify_customer = 1;
+            
+            if($this->save()){
+                
+                $transaction->commit();
+                return true;
+                
+            }else{
+                echo 'error saving payment model';
+                if($this->getErrors()){
+                    foreach($this->getErrors() as $error){
+                        if($error){
+                            foreach($error as $e){
+                                echo $e;
+                            }
+                        }
+                    }
+                }
+
+                $transaction->rollBack();
+            }
         }catch(\Exception $e) {
             echo $e->getMessage();
             $transaction->rollBack();
@@ -252,7 +298,8 @@ class Order extends \yii\db\ActiveRecord
 
     public function sendEmailToVendor()
     {
-        return Yii::$app
+        if($this->notify_vendor == 0){
+            return Yii::$app
             ->mailer
             ->compose(
                 ['html' => 'order_completed_vendor-html', 'text' => 'order_completed_vendor-text'],
@@ -262,11 +309,14 @@ class Order extends \yii\db\ActiveRecord
             ->setTo(Yii::$app->params['vendorEmail'])
             ->setSubject('New order has been made at ' . Yii::$app->name. ' Order #' . $this->id)
             ->send();
+        }
+        
     }
 
     public function sendEmailToCustomer()
     {
-        return Yii::$app
+        if ($this->notify_customer == 0) {
+            return Yii::$app
             ->mailer
             ->compose(
                 ['html' => 'order_completed_customer-html', 'text' => 'order_completed_customer-text'],
@@ -276,6 +326,7 @@ class Order extends \yii\db\ActiveRecord
             ->setTo($this->email)
             ->setSubject('Your order & payment are confirmed at ' . Yii::$app->name. ' Order #' . $this->id)
             ->send();
+        }
     }
     
     public function getStatusLabel(){

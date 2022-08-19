@@ -149,9 +149,7 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
             <div class="col-md-5">
               <div class="product-detail-box">
                 <div class="product-option">
-                  <?php $form = ActiveForm::begin(['options' => [
-              'class' => 'custom-form form-pill'
-          ]]); ?>
+                  <?php $form = ActiveForm::begin(); ?>
                    
                   <h2><?=$product->name?></h2>
                   <div class="option rating-option">
@@ -247,7 +245,7 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                         <br />
                     
           
-                   
+                 <div class="custom-form form-pill">  
               <div class="row g-3 g-md-4">
                 <div class="col-12">
                   <div class="input-box">
@@ -305,7 +303,7 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
               </div>
               
 
-
+                 </div>
 
 
 
@@ -335,7 +333,7 @@ Bagi mereka yang sihat, ambil satu (1) sachet sehari sebelum sarapan. Bagi yang 
                       <div class="col-12">
                         <img src="<?=$dirAsset?>/images/ikhtiar/payment/Billplz.png"  style="width:80%;">
                       </div>
-                      <div class="col-12">
+                      <div class="col-12 custom-form form-pill">
                         <br/>
                         <div class="input-box">
                         <?= $form->field($order, 'bank_code')->dropDownList( ArrayHelper::map(Fpx::find()->orderBy('bank_name')->all(),'bank_code', 'bank_name'), ['prompt' => 'Sila Pilih', 'class' => 'form-select form-control'])->label('Perbankan Atas Talian');?>

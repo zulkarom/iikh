@@ -1,1 +1,4 @@
 ALTER TABLE `user` ADD `is_admin` TINYINT(1) NULL DEFAULT '0' AFTER `verification_token`;
+
+
+ALTER TABLE `ecm_orders`  ADD `notify_vendor` SMALLINT NOT NULL DEFAULT '0'  AFTER `billplz_redirect`,  ADD `notify_customer` TINYINT NOT NULL DEFAULT '0'  AFTER `notify_vendor`;

@@ -17,18 +17,9 @@ class Billplz
 	public function __construct()
 	{
 	    $this->is_sandbox = Yii::$app->params['is_sandbox'];
-	    
-	    if($this->is_sandbox){
-			//account skyhint design billplz sandbox
-			$this->collection_id = 'vy44jsw7';
-	        $this->x_signature = 'S-slKdZCywQwkZstV8hXYKmQ';
-	        $this->api_key = '3daa4c5a-fae3-466d-a48f-e3a6752d2f08';
-	    }else{
-			//real billplz account
-			$this->collection_id = '1tupd3l5';
-	        $this->x_signature = 'S-TMffNmtudgQs4DIRTM1KlA';
-	        $this->api_key = '74bffd0e-37ad-48a4-b646-7b6b2b3949d4';
-	    }
+	    $this->collection_id = Yii::$app->params['collection_id'];
+	    $this->x_signature = Yii::$app->params['x_signature'];
+	    $this->api_key = Yii::$app->params['api_key'];
 	}
 	
 	public function createBill($order){
@@ -112,27 +103,36 @@ class Billplz
 	}
 	
 	public function processCallback(){
-	    $data = Connect::getXSignature($this->x_signature, 'bill_callback');
-		if($data){
-			if ($data['paid']) {
-				$order = Order::findOne(['billplz_id' => $data['id']]);
-				if($order){
-					if($order->confirmPayment($data)){
-						return true;
-					}else{
-						$msg = 'The payment failed to update';
-						//echo $msg;
-						throw new \yii\web\HttpException(500, $msg );
-					}
-					
-				}else{
-					$msg = 'The requested payment could not be found';
-					//echo $msg;
-					throw new \yii\web\HttpException(500, $msg);
+		if($this->is_sandbox){
+			$post = Yii::$app->request->post() ;
+			$order = Order::findOne(['billplz_id' => $post['id']]);
+			if ($order) {
+				if ($order->confirmPaymentLocal()) {
+					return true;
 				}
-			} 
-		}
-		
+			}
+		}else{
+    $data = Connect::getXSignature($this->x_signature, 'bill_callback');
+    if ($data) {
+        if ($data['paid']) {
+            $order = Order::findOne(['billplz_id' => $data['id']]);
+            if ($order) {
+                if ($order->confirmPayment($data)) {
+                    return true;
+                } else {
+                    $msg = 'The payment failed to update';
+                    //echo $msg;
+                    throw new \yii\web\HttpException(500, $msg);
+                }
+            } else {
+                $msg = 'The requested payment could not be found';
+                //echo $msg;
+                throw new \yii\web\HttpException(500, $msg);
+            }
+        }
+    }
+}
+	    
 
 		return false;
 	}
