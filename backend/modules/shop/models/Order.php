@@ -88,14 +88,18 @@ class Order extends \yii\db\ActiveRecord
             $this->payment_created = time();
             $this->billplz_paid_at = $bill['paid_at'];
 
-            $this->sendEmailToVendor();
-            $this->sendEmailToCustomer();
-            $this->notify_vendor = 1;
-            $this->notify_customer = 1;
+            
             
             if($this->save()){
                 
                 $transaction->commit();
+
+                $this->sendEmailToVendor();
+                $this->sendEmailToCustomer();
+                $this->notify_vendor = 1;
+                $this->notify_customer = 1;
+                $this->save();
+
                 return true;
                 
             }else{
