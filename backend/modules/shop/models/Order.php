@@ -77,10 +77,10 @@ class Order extends \yii\db\ActiveRecord
             
             if($callback){
                 $this->billplz_state = $bill['state'];
-                $arr['post_data'] = json_encode(Yii::$app->request->post());
+                $arr['post_data'] = Yii::$app->request->post();
                 $this->billplz_callback = json_encode($arr);
             }else{
-                $arr['post_data'] = json_encode(Yii::$app->request->get());
+                $arr['post_data'] = Yii::$app->request->get();
                 $this->billplz_redirect = json_encode($arr);
             }
             $this->status = self::STATUS_PAID;
