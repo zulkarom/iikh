@@ -76,6 +76,9 @@ class Billplz
 		$connect = new Connect($this->api_key);
 		$connect->setStaging($this->is_sandbox);
 		$billplz = new API($connect);
+		print_r($parameter);
+		print_r($optional);
+		die();
 		list ($rheader, $rbody) = $billplz->toArray($billplz->createBill($parameter, $optional));
 		/***********************************************/
 		// Include tracking code here
