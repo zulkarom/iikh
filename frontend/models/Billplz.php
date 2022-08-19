@@ -25,9 +25,9 @@ class Billplz
 	        $this->api_key = '3daa4c5a-fae3-466d-a48f-e3a6752d2f08';
 	    }else{
 			//real billplz account
-			$this->collection_id = 'vy44jsw7';
-	        $this->x_signature = 'S-slKdZCywQwkZstV8hXYKmQ';
-	        $this->api_key = '3daa4c5a-fae3-466d-a48f-e3a6752d2f08';
+			$this->collection_id = '1tupd3l5';
+	        $this->x_signature = 'S-TMffNmtudgQs4DIRTM1KlA';
+	        $this->api_key = '74bffd0e-37ad-48a4-b646-7b6b2b3949d4';
 	    }
 	}
 	
