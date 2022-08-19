@@ -8,6 +8,7 @@ use backend\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
+use common\models\ChangePasswordForm;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -130,4 +131,25 @@ class UserController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionChangePassword()
+    {
+        $id = Yii::$app->user->id;
+     
+        try {
+            $model = new ChangePasswordForm($id);
+        } catch (InvalidParamException $e) {
+            throw new \yii\web\BadRequestHttpException($e->getMessage());
+        }
+     
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->changePassword()) {
+            Yii::$app->session->setFlash('success', 'Password Changed!');
+            return $this->refresh();
+        }
+     
+        return $this->render('change-password', [
+            'model' => $model,
+        ]);
+    }
+
 }

@@ -17,11 +17,14 @@ use common\widgets\MenuAdminLte;
             
 
             ['label' => 'Orders', 'level' => 1, 'url' => ['/shop/order/'], 'icon' => 'fa fa-list-alt', 'children' => []],
-            ['label' => 'Products', 'level' => 1, 'url' => ['/shop/product/view?id=1'], 'icon' => 'fas fa-chart-pie', 'children' => []],
+            ['label' => 'Products', 'level' => 1, 'url' => ['/shop/product/view?id=1'], 'icon' => 'fas fa-cube', 'children' => []],
             ['label' => 'Members', 'level' => 1, 'url' => ['/user/index'], 'icon' => 'fas fa-user', 'children' => []],
 
             ['label' => 'Shipping Rate', 'level' => 1, 'url' => ['/shop/zone/'], 'icon' => 'fa fa-ship', 'children' => []],
             
+            ['label' => 'Change Password', 'level' => 1, 'url' => ['/user/change-password'], 'icon' => 'fas fa-unlock-alt', 'children' => []],
+
+
             ['label' => 'Logout', 'level' => 1, 'url' => ['/site/logout'], ['data-method' => 'post'], 'icon' => 'fas fa-sign-out-alt', 'children' => []],
         ]
     
