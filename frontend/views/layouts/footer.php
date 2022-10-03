@@ -59,7 +59,8 @@ use yii\helpers\Url;
                       <i data-feather="phone"></i><a class="nav" href="tel:185659635"><span> +601116334296 </span></a>
                     </li>
                     <li>
-                      <i data-feather="mail"></i><a class="nav" href="mailto:fashion098@gmail.com"><span> i.ikhriarresources@gmail.com </span></a>
+                      <i data-feather="mail"></i><a class="nav" href="mailto:fashion098@gmail.com"><span> 
+                        i.ikhtiarresources@gmail.com </span></a>
                     </li>
                   </ul>
                 </div>
